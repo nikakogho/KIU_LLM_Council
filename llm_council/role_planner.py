@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 from dataclasses import dataclass
 from typing import Iterable
+import re
 
 from llm_council.clients.base import LLMClient
 from llm_council.roles import (
@@ -37,6 +38,24 @@ NOMINATION_WEIGHT = 0.70
 def _stable_key(m: ModelInfo) -> tuple:
     return (m.provider, m.model, m.idx)
 
+def _normalize_provider(raw: str, allowed: set[str]) -> str | None:
+    """
+    Accept exact provider, or common sloppy outputs like:
+      "provider='openai', model='gpt-5-nano'"
+    Returns normalized provider or None if it can't be mapped safely.
+    """
+    if not raw:
+        return None
+    s = raw.strip()
+    if s in allowed:
+        return s
+
+    tokens = re.findall(r"[a-zA-Z0-9_]+", s.lower())
+    for t in tokens:
+        if t in allowed:
+            return t
+    return None
+
 
 async def ask_for_roles(
     *,
@@ -62,6 +81,19 @@ async def ask_for_roles(
         )
         reply = await client.generate(user_prompt, system_prompt=system_prompt)
         parsed, err = parse_role_opinion(reply.text)
+
+        # Post-validate / normalize recommended_judge.provider against roster
+        allowed = {m.provider for m in roster}
+        if parsed is not None:
+            norm = _normalize_provider(parsed.recommended_judge.provider, allowed)
+            if norm is None:
+                parsed = None
+                err = (err or "") + f" | Invalid recommended_judge.provider='{parsed.recommended_judge.provider}'"
+            elif norm != parsed.recommended_judge.provider:
+                parsed = parsed.model_copy(update={
+                    "recommended_judge": parsed.recommended_judge.model_copy(update={"provider": norm})
+                })
+
         return you.provider, RoleOpinionResult(
             provider=you.provider,
             model=you.model,
