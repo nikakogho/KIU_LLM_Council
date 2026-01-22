@@ -67,3 +67,8 @@ async def ask_all(user_prompt: str, *, system_prompt: str | None = None):
     clients, _ = build_clients_with_roster()
     tasks = [c.generate(user_prompt, system_prompt=system_prompt) for c in clients]
     return await asyncio.gather(*tasks)
+
+def build_client_by_provider():
+    clients, roster = build_clients_with_roster()
+    client_by_provider = {m.provider: c for m, c in zip(roster, clients)}
+    return clients, roster, client_by_provider
