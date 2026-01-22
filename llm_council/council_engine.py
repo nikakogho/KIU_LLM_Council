@@ -13,9 +13,9 @@ from llm_council.role_planner import SuggestedPlan
 from llm_council.types import LLMReply
 
 
-# -------------------------
+
 # JSON schemas
-# -------------------------
+
 
 class PeerReviewJSON(BaseModel):
     reviewer_provider: str
@@ -69,9 +69,9 @@ def _clip(text: str, n: int = 900) -> str:
     return text[:n] + ("..." if len(text) > n else "")
 
 
-# -------------------------
+
 # Result records
-# -------------------------
+
 
 @dataclass(frozen=True)
 class SolutionResult:
@@ -132,9 +132,9 @@ class CouncilState:
     winner_text: str | None = None
 
 
-# -------------------------
+
 # Prompt builders
-# -------------------------
+
 
 def _roster_text(plan: SuggestedPlan) -> str:
     roster = [plan.judge] + plan.solvers
@@ -296,9 +296,9 @@ def build_judge_prompts(
     return system_prompt, user_prompt, schema_text
 
 
-# -------------------------
+
 # Utility: gather tasks and emit as they complete
-# -------------------------
+
 
 async def _gather_as_completed(tasks: list[asyncio.Task], on_item: Callable[[Any], None] | None):
     results = []
@@ -310,9 +310,9 @@ async def _gather_as_completed(tasks: list[asyncio.Task], on_item: Callable[[Any
     return results
 
 
-# -------------------------
+
 # Phase functions
-# -------------------------
+
 
 async def generate_drafts(
     *,
