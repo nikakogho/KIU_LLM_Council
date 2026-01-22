@@ -38,7 +38,7 @@ def build_clients():
 
     return clients
 
-async def ask_all(prompt: str, *, system: str | None = None):
+async def ask_all(user_prompt: str, *, system_prompt: str | None = None):
     clients = build_clients()
-    tasks = [c.generate(prompt, system=system) for c in clients]
+    tasks = [c.generate(user_prompt, system_prompt=system_prompt) for c in clients]
     return await asyncio.gather(*tasks)
