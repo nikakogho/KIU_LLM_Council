@@ -7,19 +7,20 @@ from llm_council.clients.openai_compat import OpenAICompatibleResponsesClient
 @respx.mock
 async def test_openai_responses_parsing():
     mock = {
-        "output": [{
-            "type": "message",
-            "content": [{"type": "output_text", "text": "hello"}],
+        "choices": [{
+            "message": {
+                "content": "hello"
+            }
         }],
         "usage": {"input_tokens": 1, "output_tokens": 1, "total_tokens": 2},
     }
 
-    respx.post("https://api.openai.com/v1/responses").respond(200, json=mock)
+    respx.post("https://api.openai.com/v1/chat/completions").respond(200, json=mock)
 
     c = OpenAICompatibleResponsesClient(
         provider="openai",
         api_key="test",
-        model="gpt-5-nano",
+        model="gpt-4o-mini",
         base_url="https://api.openai.com/v1",
     )
     r = await c.generate("hi")

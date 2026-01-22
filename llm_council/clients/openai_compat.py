@@ -65,11 +65,17 @@ class OpenAICompatibleResponsesClient(LLMClient):
             )
         except Exception as e:
             latency_ms = int((time.perf_counter() - t0) * 1000)
+
+            if not hasattr(e, "response") or e.response is None:
+                error_msg = str(e)
+            else:
+                error_msg = f"{e}\n{e.response.text}"
+
             return LLMReply(
                 provider=self.provider,
                 model=self.model,
                 text="",
                 latency_ms=latency_ms,
                 raw=None,
-                error=f"{e}\n{e.response.text}",
+                error=error_msg,
             )
