@@ -13,7 +13,7 @@ from llm_council.runner import build_client_by_provider
 
 
 def _model_for_provider_from_plan(plan, provider: str) -> str | None:
-    if not plan:
+    if not plan or not provider:
         return None
     roster = [plan.judge] + list(plan.solvers)
     for m in roster:
@@ -76,7 +76,6 @@ def _format_judge_block(state) -> str:
     parsed_ok = (j.parsed is not None) and (j.parse_error is None)
     parsed_d = _as_dict_maybe(j.parsed) if parsed_ok else None
 
-    # Determine whether fallback was used
     used_fallback = True
     judge_winner = None
     if parsed_d:
@@ -92,7 +91,6 @@ def _format_judge_block(state) -> str:
         lines.append(f"Parse error: {j.parse_error}")
     lines.append(f"Used fallback: {'YES' if used_fallback else 'NO'}")
 
-    # Decision details
     if parsed_d:
         lines.append(f"Picked winner: {parsed_d.get('winner_provider')}")
         rationale = parsed_d.get("rationale")
@@ -133,7 +131,6 @@ class CouncilGUI:
 
         self.msgq: queue.Queue[tuple[str, str]] = queue.Queue()
 
-        # State
         self.clients = None
         self.roster = None
         self.client_by_provider = None
@@ -145,20 +142,21 @@ class CouncilGUI:
         self._init_clients()
         self._poll_queue()
 
+        # Initial enable/disable state
+        self._refresh_button_states()
+
     # ---------- UI ----------
 
     def _build_ui(self):
         top = ttk.Frame(self.root, padding=8)
         top.pack(fill="both", expand=True)
 
-        # Problem input
         problem_frame = ttk.LabelFrame(top, text="Problem Statement", padding=8)
         problem_frame.pack(fill="x")
 
         self.problem_text = tk.Text(problem_frame, height=6, wrap="word")
         self.problem_text.pack(fill="x", expand=True)
 
-        # Controls row
         controls = ttk.Frame(top, padding=(0, 8))
         controls.pack(fill="x")
 
@@ -174,7 +172,9 @@ class CouncilGUI:
         self.btn_save = ttk.Button(controls, text="Save last run JSON", command=self.on_save_last_run)
         self.btn_save.pack(side="left", padx=(8, 0))
 
-        # Options
+        self.btn_clear = ttk.Button(controls, text="Clear", command=self.on_clear)
+        self.btn_clear.pack(side="left", padx=(8, 0))
+
         opts = ttk.Frame(controls)
         opts.pack(side="right")
 
@@ -184,7 +184,6 @@ class CouncilGUI:
         ttk.Checkbutton(opts, text="Skip reviews", variable=self.var_no_reviews).pack(side="left", padx=(0, 10))
         ttk.Checkbutton(opts, text="Skip revise", variable=self.var_no_revise).pack(side="left", padx=(0, 10))
 
-        # Judge override (simple)
         judge_frame = ttk.LabelFrame(top, text="Plan + Judge Override", padding=8)
         judge_frame.pack(fill="x")
 
@@ -195,13 +194,15 @@ class CouncilGUI:
         self.plan_label = ttk.Label(row, text="(not planned yet)")
         self.plan_label.pack(side="left", padx=(8, 0))
 
-        ttk.Label(row, text="Override judge:").pack(side="left", padx=(30, 0))
+        ttk.Label(row, text="Pick judge to enable Run:").pack(side="left", padx=(30, 0))
         self.judge_var = tk.StringVar(value="")
         self.judge_combo = ttk.Combobox(row, textvariable=self.judge_var, state="readonly", width=18, values=[])
         self.judge_combo.pack(side="left", padx=(8, 0))
         self.judge_combo.set("")
 
-        # Status bar
+        # When judge selection changes, refresh enabled states
+        self.judge_combo.bind("<<ComboboxSelected>>", lambda _e: self._refresh_button_states())
+
         status_frame = ttk.Frame(top, padding=(0, 8))
         status_frame.pack(fill="x")
 
@@ -213,7 +214,6 @@ class CouncilGUI:
         self.winner_label = ttk.Label(status_frame, text="(none)")
         self.winner_label.pack(side="left", padx=(8, 0))
 
-        # Split view: logs + winner text (bigger now, since no extra panel)
         paned = ttk.Panedwindow(top, orient="horizontal")
         paned.pack(fill="both", expand=True)
 
@@ -233,6 +233,20 @@ class CouncilGUI:
 
         self.winner_text = tk.Text(winner_frame, wrap="word")
         self.winner_text.pack(fill="both", expand=True)
+
+    # ---------- State gating ----------
+
+    def _refresh_button_states(self):
+        # Run enabled only if judge explicitly selected AND plan exists
+        has_plan = self.plan is not None
+        judge_picked = bool((self.judge_var.get() or "").strip())
+        can_run = has_plan and judge_picked
+
+        # Save enabled only if we have a completed run stored
+        can_save = self.last_state is not None and bool((self.last_state.winner_text or "").strip())
+
+        self.btn_run.configure(state=("normal" if can_run else "disabled"))
+        self.btn_save.configure(state=("normal" if can_save else "disabled"))
 
     # ---------- Logging / queue ----------
 
@@ -271,10 +285,20 @@ class CouncilGUI:
         self.root.after(50, self._poll_queue)
 
     def _set_controls_enabled(self, enabled: bool):
+        # Plan/Load/Clear can still be disabled while worker runs (avoid concurrent runs)
         state = "normal" if enabled else "disabled"
-        for b in [self.btn_plan, self.btn_run, self.btn_load, self.btn_save]:
+        for b in [self.btn_plan, self.btn_load, self.btn_clear]:
             b.configure(state=state)
-        self.judge_combo.configure(state=("readonly" if enabled else "disabled"))
+
+        # Run/save depend on gating logic too; so we set them disabled while running,
+        # and on enable we recompute the gates.
+        if not enabled:
+            self.btn_run.configure(state="disabled")
+            self.btn_save.configure(state="disabled")
+            self.judge_combo.configure(state="disabled")
+        else:
+            self.judge_combo.configure(state="readonly")
+            self._refresh_button_states()
 
     def _run_async_in_thread(self, coro):
         self.msgq.put(("disable", ""))
@@ -306,13 +330,39 @@ class CouncilGUI:
                     "Need at least 2 configured providers (API keys) to run a council.",
                 )
 
-            # Log provider + model (requested)
-            joined = ", ".join([f"{m.provider}({m.model})" for m in roster])
-            self._log(f"Loaded providers: {joined}")
+            # Providers one per line (requested)
+            self._log("Loaded providers:")
+            for m in roster:
+                self._log(f"- {m.provider} ({m.model})")
+
         except Exception as e:
             messagebox.showerror("Init error", str(e))
 
-    # ---------- Plan / Run / Load / Save ----------
+    # ---------- Actions ----------
+
+    def on_clear(self):
+        # Keep problem text, clear everything else
+        self.log_text.delete("1.0", "end")
+        self.winner_text.delete("1.0", "end")
+
+        self._set_status("Idle")
+        self._set_winner("(none)")
+
+        self.plan = None
+        self.last_state = None
+
+        self.plan_label.configure(text="(not planned yet)")
+        self.judge_combo["values"] = []
+        self.judge_combo.set("")
+
+        # Re-disable run/save (requested)
+        self._refresh_button_states()
+
+        # Re-log providers (handy)
+        if self.roster:
+            self._log("Loaded providers:")
+            for m in self.roster:
+                self._log(f"- {m.provider} ({m.model})")
 
     def on_plan_roles(self):
         problem = self.problem_text.get("1.0", "end").strip()
@@ -333,22 +383,24 @@ class CouncilGUI:
             self.msgq.put(("log", "=== DONE:  role_planning ==="))
             self.msgq.put(("status", "Plan ready."))
 
-            # Update plan label + override dropdown
             plan_label = f"Judge={plan.judge.provider} | Solvers={[s.provider for s in plan.solvers]}"
             self.msgq.put(("plan_label", plan_label))
 
             providers = [plan.judge.provider] + [s.provider for s in plan.solvers]
-            self.root.after(0, lambda: self._set_judge_options(providers))
 
-            # Put plan + opinions into LIVE LOG (requested)
+            # Require judge pick to enable Run:
+            # set dropdown values, but keep selection empty
+            def set_opts():
+                self.judge_combo["values"] = [""] + providers
+                self.judge_combo.set(plan.judge.provider)
+                self._refresh_button_states()
+
+            self.root.after(0, set_opts)
+
             self.msgq.put(("log", "\n" + _format_plan_block(plan)))
             self.msgq.put(("log", "\n" + _format_opinions_block(plan)))
 
         self._run_async_in_thread(go())
-
-    def _set_judge_options(self, providers: list[str]):
-        self.judge_combo["values"] = [""] + providers  # empty = no override
-        self.judge_combo.set("")
 
     def on_run_council(self):
         problem = self.problem_text.get("1.0", "end").strip()
@@ -359,17 +411,19 @@ class CouncilGUI:
             messagebox.showwarning("No plan", "Click 'Plan roles' first.")
             return
 
-        # Apply override locally (no extra role planning)
-        override = (self.judge_var.get() or "").strip()
+        judge_choice = (self.judge_var.get() or "").strip()
+        if not judge_choice:
+            messagebox.showwarning("Pick judge", "Please pick a judge from the dropdown to enable running.")
+            return
+
         plan = self.plan
-        if override:
-            try:
-                plan = apply_user_override(plan, judge_provider=override)
-                self.msgq.put(("log", f"\n[override] Using judge={plan.judge.provider} ({plan.judge.model})"))
-                self.msgq.put(("plan_label", f"Judge={plan.judge.provider} | Solvers={[s.provider for s in plan.solvers]}"))
-            except Exception as e:
-                messagebox.showerror("Invalid override", str(e))
-                return
+        try:
+            plan = apply_user_override(plan, judge_provider=judge_choice)
+            self.msgq.put(("log", f"\n[judge] Using judge={plan.judge.provider} ({plan.judge.model})"))
+            self.msgq.put(("plan_label", f"Judge={plan.judge.provider} | Solvers={[s.provider for s in plan.solvers]}"))
+        except Exception as e:
+            messagebox.showerror("Invalid judge selection", str(e))
+            return
 
         do_reviews = not self.var_no_reviews.get()
         do_revise = not self.var_no_revise.get()
@@ -410,25 +464,23 @@ class CouncilGUI:
 
             self.last_state = state
 
-            # Judge details into live log (requested)
             self.msgq.put(("log", "\n" + _format_judge_block(state)))
-
             self.msgq.put(("status", "Done."))
             self.msgq.put(("winner", state.winner_provider or "(none)"))
-
-            # Winner text should start with model/provider (requested)
             self.msgq.put(("winner_text", _format_winner_display(state)))
 
-            # Auto-save to default path
             out_path = default_run_path()
             save_state(state, out_path)
             self.msgq.put(("log", f"\n[SAVED] {out_path}"))
 
+            # enable Save (gated)
+            self.root.after(0, self._refresh_button_states)
+
         self._run_async_in_thread(go())
 
     def on_save_last_run(self):
-        if not self.last_state:
-            messagebox.showinfo("No run", "No run in memory yet. Run the council or load a run JSON first.")
+        if not self.last_state or not (self.last_state.winner_text or "").strip():
+            messagebox.showinfo("No completed run", "No completed run to save yet.")
             return
 
         path = filedialog.asksaveasfilename(
@@ -461,18 +513,28 @@ class CouncilGUI:
 
             self.msgq.put(("status", f"Loaded: {Path(path).name}"))
             self.msgq.put(("winner", state.winner_provider or "(none)"))
-
-            # Winner pane with provider+model header (requested)
             self.msgq.put(("winner_text", _format_winner_display(state)))
-
             self._log(f"\n[LOADED] {path}")
+            self._log("\n" + _format_judge_block(state))
 
             if state.plan:
+                self.plan = state.plan
                 plan_label = f"Judge={state.plan.judge.provider} | Solvers={[s.provider for s in state.plan.solvers]}"
                 self.msgq.put(("plan_label", plan_label))
 
-            # Also show judge decision info in log when loading
-            self._log("\n" + _format_judge_block(state))
+                providers = [state.plan.judge.provider] + [s.provider for s in state.plan.solvers]
+
+                # For consistency with your rule: require explicit judge pick to run.
+                # So populate options but keep empty selection.
+                def set_opts():
+                    self.judge_combo["values"] = [""] + providers
+                    self.judge_combo.set("")
+                    self._refresh_button_states()
+
+                self.root.after(0, set_opts)
+
+            # enable Save (gated)
+            self._refresh_button_states()
 
         except Exception as e:
             messagebox.showerror("Load error", str(e))
