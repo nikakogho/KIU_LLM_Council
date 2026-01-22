@@ -21,6 +21,8 @@ class GeminiClient(LLMClient):
         temperature: float = 0.0,
         max_output_tokens: int = 800,
     ):
+        if not api_key:
+            raise ValueError("Gemini API key is required")
         self.api_key = api_key
         self.model = model
         self.timeout_s = timeout_s

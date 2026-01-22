@@ -19,6 +19,8 @@ class AnthropicClient(LLMClient):
         temperature: float = 0.0,
         anthropic_version: str = "2023-06-01",
     ):
+        if not api_key:
+            raise ValueError("Anthropic API key is required")
         self.api_key = api_key
         self.model = model
         self.timeout_s = timeout_s
