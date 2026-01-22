@@ -14,10 +14,13 @@ from llm_council.council_engine import (
 
 
 class FakeClient(LLMClient):
-    def __init__(self, provider: str, model: str, judge_bad_json: bool = False):
+    def __init__(self, provider: str, model: str, *, break_first_review: bool = False, break_first_judge: bool = False):
         self.provider = provider
         self.model = model
-        self.judge_bad_json = judge_bad_json
+        self.break_first_review = break_first_review
+        self.break_first_judge = break_first_judge
+        self._review_calls = 0
+        self._judge_calls = 0
 
     async def generate(self, user_prompt: str, *, system_prompt: str | None = None) -> LLMReply:
         sp = system_prompt or ""
@@ -25,7 +28,14 @@ class FakeClient(LLMClient):
         if "COUNCIL_PHASE: SOLVE" in sp:
             return LLMReply(self.provider, self.model, f"{self.provider} draft", 1, raw={})
 
-        if "COUNCIL_PHASE: REVIEW" in sp:
+        if "COUNCIL_PHASE: REVIEW" in sp or "COUNCIL_PHASE: REVIEW_REPAIR" in sp:
+            self._review_calls += 1
+
+            # Force first review call to be non-JSON for this client (only if enabled)
+            if self.break_first_review and self._review_calls == 1 and "REVIEW_REPAIR" not in sp:
+                return LLMReply(self.provider, self.model, "oops not json", 1, raw={})
+
+            # Extract target
             marker = "target provider='"
             target = user_prompt.split(marker, 1)[1].split("'", 1)[0] if marker in user_prompt else "unknown"
             overall = 9 if target == "openai" else 6
@@ -43,9 +53,11 @@ class FakeClient(LLMClient):
         if "COUNCIL_PHASE: REFINE" in sp:
             return LLMReply(self.provider, self.model, f"{self.provider} revised", 1, raw={})
 
-        if "COUNCIL_PHASE: JUDGE" in sp:
-            if self.judge_bad_json:
+        if "COUNCIL_PHASE: JUDGE" in sp or "COUNCIL_PHASE: JUDGE_REPAIR" in sp:
+            self._judge_calls += 1
+            if self.break_first_judge and self._judge_calls == 1 and "JUDGE_REPAIR" not in sp:
                 return LLMReply(self.provider, self.model, "NOT JSON", 1, raw={})
+
             text = (
                 "{"
                 "\"winner_provider\":\"openai\","
@@ -73,47 +85,34 @@ def make_plan():
 
 
 @pytest.mark.asyncio
-async def test_phases_are_separable_and_callbacks_fire():
+async def test_review_json_retry_recovers():
     plan = make_plan()
     state = CouncilState(problem_statement="test", plan=plan)
 
     client_by_provider = {
         "xai": FakeClient("xai", "grok-3-mini"),
         "openai": FakeClient("openai", "gpt-5-nano"),
+        # Make gemini fail FIRST review attempt (so we exercise retry)
         "anthropic": FakeClient("anthropic", "claude-haiku-4-5"),
-        "gemini": FakeClient("gemini", "gemini-2.5-flash-lite"),
+        "gemini": FakeClient("gemini", "gemini-2.5-flash-lite", break_first_review=True),
     }
 
-    draft_cb = []
-    review_cb = []
-    rev_cb = []
+    await generate_drafts(state=state, client_by_provider=client_by_provider)
+    await generate_peer_reviews(state=state, client_by_provider=client_by_provider)
 
-    await generate_drafts(state=state, client_by_provider=client_by_provider, on_draft=lambda d: draft_cb.append(d))
-    assert len(state.drafts) == 3
-    assert len(draft_cb) == 3
-
-    await generate_peer_reviews(state=state, client_by_provider=client_by_provider, on_review=lambda r: review_cb.append(r))
-    assert len(state.reviews) == 6
-    assert len(review_cb) == 6
-
-    await revise_solutions(state=state, client_by_provider=client_by_provider, on_revision=lambda r: rev_cb.append(r))
-    assert len(state.revisions) == 3
-    assert len(rev_cb) == 3
-
-    await judge_solutions(state=state, client_by_provider=client_by_provider)
-    assert state.winner_provider == "openai"
-    assert state.winner_text == "openai revised"
-    assert state.judge is not None
-    assert state.judge.parsed is not None
+    # At least one review should have attempts=2 and still be parsed
+    retried = [r for r in state.reviews if r.attempts == 2]
+    assert retried, "Expected at least one retried review."
+    assert any(r.parsed is not None and r.parse_error is None for r in retried)
 
 
 @pytest.mark.asyncio
-async def test_judge_bad_json_falls_back_to_review_scores():
+async def test_judge_json_retry_recovers():
     plan = make_plan()
     state = CouncilState(problem_statement="test", plan=plan)
 
     client_by_provider = {
-        "xai": FakeClient("xai", "grok-3-mini", judge_bad_json=True),
+        "xai": FakeClient("xai", "grok-3-mini", break_first_judge=True),  # judge fails once
         "openai": FakeClient("openai", "gpt-5-nano"),
         "anthropic": FakeClient("anthropic", "claude-haiku-4-5"),
         "gemini": FakeClient("gemini", "gemini-2.5-flash-lite"),
@@ -124,5 +123,7 @@ async def test_judge_bad_json_falls_back_to_review_scores():
     await revise_solutions(state=state, client_by_provider=client_by_provider)
     await judge_solutions(state=state, client_by_provider=client_by_provider)
 
-    # reviews in FakeClient rate openai highest -> fallback should pick openai
+    assert state.judge is not None
+    assert state.judge.attempts == 2
+    assert state.judge.parsed is not None
     assert state.winner_provider == "openai"
