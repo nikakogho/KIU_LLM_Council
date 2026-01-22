@@ -19,7 +19,7 @@ async def test_openai_responses_parsing():
     c = OpenAICompatibleResponsesClient(
         provider="openai",
         api_key="test",
-        model="gpt-4o-mini",
+        model="gpt-5-nano",
         base_url="https://api.openai.com/v1",
     )
     r = await c.generate("hi")

@@ -12,7 +12,7 @@ def build_clients():
             clients.append(OpenAICompatibleResponsesClient(
                 provider="openai",
                 api_key=settings.OPENAI_API_KEY,
-                model=settings.OPENAI_MODEL or "gpt-4o-mini",
+                model=settings.OPENAI_MODEL or "gpt-5-nano",
                 base_url="https://api.openai.com/v1",
             ))
         except ValueError:

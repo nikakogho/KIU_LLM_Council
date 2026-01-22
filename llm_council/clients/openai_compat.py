@@ -3,15 +3,6 @@ import httpx
 from llm_council.types import LLMReply
 from llm_council.clients.base import LLMClient
 
-def _extract_responses_output_text(resp_json: dict) -> str:
-    chunks: list[str] = []
-    for item in resp_json.get("output", []):
-        if item.get("type") == "message":
-            for c in item.get("content", []):
-                if c.get("type") == "output_text":
-                    chunks.append(c.get("text", ""))
-    return "".join(chunks).strip()
-
 class OpenAICompatibleResponsesClient(LLMClient):
     def __init__(
         self,
@@ -40,23 +31,29 @@ class OpenAICompatibleResponsesClient(LLMClient):
             "Content-Type": "application/json",
         }
 
-        payload: dict = {
-            "model": self.model,
-            "input": user_prompt,
-            "max_output_tokens": self.max_output_tokens,
-            "temperature": self.temperature,
-        }
-        # OpenAI supports a top-level "instructions" field for system/dev message. :contentReference[oaicite:6]{index=6}
+        messages = []
         if system_prompt:
-            payload["instructions"] = system_prompt
+            messages.append({"role": "system", "content": system_prompt})
+        messages.append({"role": "user", "content": user_prompt})
+
+        payload = {
+            "model": self.model,
+            "messages": messages,
+            "max_tokens": self.max_output_tokens,
+            "temperature": self.temperature
+        }
+
+        if self.model.startswith("gpt-5"):
+            del payload["max_tokens"]
+            del payload["temperature"]
 
         t0 = time.perf_counter()
         try:
             async with httpx.AsyncClient(timeout=self.timeout_s) as client:
-                r = await client.post(f"{self.base_url}/responses", headers=headers, json=payload)
+                r = await client.post(f"{self.base_url}/chat/completions", headers=headers, json=payload)
                 r.raise_for_status()
                 data = r.json()
-            text = _extract_responses_output_text(data)
+            text = data["choices"][0]["message"]["content"].strip()
             latency_ms = int((time.perf_counter() - t0) * 1000)
             return LLMReply(
                 provider=self.provider,
@@ -74,5 +71,5 @@ class OpenAICompatibleResponsesClient(LLMClient):
                 text="",
                 latency_ms=latency_ms,
                 raw=None,
-                error=str(e),
+                error=f"{e}\n{e.response.text}",
             )
