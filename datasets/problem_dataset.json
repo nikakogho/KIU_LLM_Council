@@ -1,0 +1,127 @@
+[
+  {
+    "question": "How many permutations of {1, 2, ..., 8} have no adjacent pair whose values differ by exactly 1?",
+    "answer": "5242",
+    "solution_explanation": "This is a counting problem solvable via the Principle of Inclusion-Exclusion or using recurrence relations for 'permutations with no adjacent successors'. The total is 8! minus permutations with at least one pair (k, k+1) or (k+1, k). The calculation yields 5242."
+  },
+  {
+    "question": "How many integer solutions (x1, ..., x6) satisfy x1 + ... + x6 = 30 with 0 ≤ xi ≤ 7 for all i?",
+    "answer": "5432",
+    "solution_explanation": "Using generating functions, we look for the coefficient of x^30 in (1 + x + ... + x^7)^6 = ((1-x^8)/(1-x))^6. Using inclusion-exclusion: C(35,5) - 6*C(27,5) + 15*C(19,5) - 20*C(11,5) = 324632 - 484380 + 174420 - 9240 = 5432."
+  },
+  {
+    "question": "Evaluate T = Σ_{k=0}^{2026} (-1)^k C(2026,k)/(k+2) as a reduced fraction.",
+    "answer": "1/4110756",
+    "solution_explanation": "Using the integral identity 1/(k+2) = ∫ x^(k+1) dx from 0 to 1, the sum transforms into the Beta integral B(2, 2027) = Γ(2)Γ(2027)/Γ(2029) = 1/((2027)(2028)). Since 2027 and 2028 are coprime, the fraction is 1/4110756."
+  },
+  {
+    "question": "How many 10-tuples of integers (x1, ..., x10) satisfy x1 + ... + x10 = 20 with 0 ≤ xi ≤ 4?",
+    "answer": "856945",
+    "solution_explanation": "We seek the coefficient of x^20 in ((1-x^5)/(1-x))^10. Expanding (1-x^5)^10 * (1-x)^-10 and using inclusion-exclusion: C(29,9) - 10*C(24,9) + 45*C(19,9) - 120*C(14,9) + 210*C(9,9). The sum is 856,945."
+  },
+  {
+    "question": "Calculate the coefficient of x^10 in the expansion of (1 + x + x^2 + x^3)^10.",
+    "answer": "44803",
+    "solution_explanation": "The expression is [(1-x^4)/(1-x)]^10. We need the coefficient of x^10 in (1-x^4)^10 * (1-x)^-10. Summing valid terms for exponents 4k + j = 10 gives: C(19,9) - 10*C(15,9) + 45*C(11,9) = 92378 - 50050 + 2475 = 44803."
+  },
+  {
+    "question": "Determine the number of spanning trees of the complete bipartite graph K_{3,4}.",
+    "answer": "432",
+    "solution_explanation": "Using Scoins' formula, the number of spanning trees for K_{m,n} is m^(n-1) * n^(m-1). For m=3 and n=4: 3^(3) * 4^(2) = 27 * 16 = 432."
+  },
+  {
+    "question": "Find the remainder when 2023^2023 is divided by 1000.",
+    "answer": "847",
+    "solution_explanation": "We calculate 23^2023 mod 1000. Euler's totient phi(1000)=400, reducing the exponent to 23. We compute 23^23 mod 1000 using binary exponentiation (23^16 * 23^4 * 23^2 * 23^1), which yields 847."
+  },
+  {
+    "question": "Calculate the Stirling number of the second kind S(8, 5).",
+    "answer": "1050",
+    "solution_explanation": "S(n,k) counts partitions of n elements into k subsets. Using the explicit formula (1/5!) * Σ (-1)^(5-j) * C(5,j) * j^8 for j=0 to 5, the result is 1050."
+  },
+  {
+    "question": "In a 100 prisoners problem where each can open 50 boxes to find their number, what is the probability of success for all 100?",
+    "answer": "Approximately 0.31",
+    "solution_explanation": "Success relies on the random permutation containing no cycle longer than 50. The probability is 1 - (sum of 1/k for k=51 to 100) ≈ 1 - ln(2) ≈ 0.31."
+  },
+  {
+    "question": "How many distinct ways can you color the faces of a cube with 3 colors, considering rotations as identical?",
+    "answer": "57",
+    "solution_explanation": "Using Burnside's Lemma on the 24 rotational symmetries of a cube: 1 identity (3^6), 6 face rotations (3^3), 3 face rotations (3^4), 8 vertex rotations (3^2), and 6 edge rotations (3^3). The average is 1368/24 = 57."
+  },
+  {
+    "question": "A ball is dropped from height H and rebounds with coefficient of restitution e. What is the total distance traveled?",
+    "answer": "H * (1+e^2)/(1-e^2)",
+    "solution_explanation": "Since kinetic energy is proportional to v^2, the rebound height scales by e^2. The total distance is the initial drop H plus the geometric series of up-and-down bounces: H + 2H(e^2) + 2H(e^4)... summing to H(1+e^2)/(1-e^2)."
+  },
+  {
+    "question": "Two dice are rolled. What is the probability that the product of the numbers is a perfect square?",
+    "answer": "2/9",
+    "solution_explanation": "There are 36 total outcomes. The pairs (a,b) where a*b is a square are: (1,1), (1,4), (4,1), (2,2), (3,3), (4,4), (5,5), (6,6). There are exactly 8 such pairs. Probability = 8/36 = 2/9."
+  },
+  {
+    "question": "A resistor cube has a resistor of resistance R on each edge. What is the equivalent resistance across the body diagonal?",
+    "answer": "5/6 R",
+    "solution_explanation": "Using symmetry and potential equivalence, the path effectively splits into 3 parallel edges (R/3), then 6 parallel edges (R/6), then 3 parallel edges (R/3). Summing these series gives R(1/3 + 1/6 + 1/3) = 5/6 R."
+  },
+  {
+    "question": "Calculate the relativistic relative velocity of two spaceships approaching each other, each moving at 0.9c relative to a central station.",
+    "answer": "0.9945c",
+    "solution_explanation": "Using the relativistic velocity addition formula v = (v1 + v2) / (1 + v1*v2/c^2) with v1=0.9c and v2=0.9c, we get 1.8c / (1 + 0.81) = 1.8c / 1.81 ≈ 0.9945c."
+  },
+  {
+    "question": "How many zeros are at the end of 100!?",
+    "answer": "24",
+    "solution_explanation": "Trailing zeros are determined by factors of 5. Using Legendre's formula: floor(100/5) + floor(100/25) = 20 + 4 = 24."
+  },
+  {
+    "question": "Calculate the Euler totient function phi(2024).",
+    "answer": "880",
+    "solution_explanation": "Factor 2024 into 2^3 * 11 * 23. Then phi(2024) = 2024 * (1/2) * (10/11) * (22/23) = 1012 * 10/11 * 22/23 = 880."
+  },
+  {
+    "question": "What is the probability that three random points on a circle form an acute triangle?",
+    "answer": "1/4",
+    "solution_explanation": "For the triangle to be acute, the center of the circle must lie inside the triangle. This occurs if and only if the arc length between any two points is less than half the circumference. The probability volume for this configuration is 1/4."
+  },
+  {
+    "question": "Determine the last two digits of 7^2023.",
+    "answer": "43",
+    "solution_explanation": "We need 7^2023 mod 100. The period of 7 mod 100 is 4 (7^1=07, 7^2=49, 7^3=43, 7^4=01). 2023 mod 4 is 3. Thus, 7^2023 ≡ 7^3 ≡ 343 ≡ 43 mod 100."
+  },
+  {
+    "question": "How many 5-letter words from {A,B,C} have no two consecutive letters the same?",
+    "answer": "48",
+    "solution_explanation": "The first letter has 3 choices. Each subsequent letter must differ from the previous one, giving 2 choices for each of the remaining 4 positions. Total = 3 * 2^4 = 3 * 16 = 48."
+  },
+  {
+    "question": "Find the number of integer solutions to x^2 - y^2 = 2024.",
+    "answer": "16",
+    "solution_explanation": "Factor as (x-y)(x+y) = 2024. Both factors must have the same parity (both even, since their product is even). 2024/4 = 506. We need factor pairs of 506. 506 = 2*11*23, which has 8 divisors. Each positive divisor pair gives 2 integer solutions (positive/negative variations), totaling 16."
+  },
+  {
+    "question": "What is the value of the infinite product (2/1) * (2/3) * (4/3) * (4/5) * (6/5) * ... (Wallis Product)?",
+    "answer": "pi / 2",
+    "solution_explanation": "This is the classic Wallis Product formula derived from the sine product expansion, converging to π/2."
+  },
+  {
+    "question": "A particle moves in a potential V(x) = k|x|. What is the dependence of the period T on energy E?",
+    "answer": "T is proportional to sqrt(E)",
+    "solution_explanation": "Using dimensional analysis or the period integral T ~ ∫ dx / sqrt(E - V), with turning point x0 ~ E. The integral scales as x0 / sqrt(E) ~ E / sqrt(E) = sqrt(E)."
+  },
+  {
+    "question": "How many ways can 6 people sit around a round table if two specific people refuse to sit next to each other?",
+    "answer": "72",
+    "solution_explanation": "Total circular permutations are (6-1)! = 120. Treat the specific pair as one unit: (5-1)! * 2 (internal arrangement) = 48. Subtracting the restricted cases: 120 - 48 = 72."
+  },
+  {
+    "question": "What is the chromatic number of the Petersen Graph?",
+    "answer": "3",
+    "solution_explanation": "The Petersen graph contains odd cycles (5-cycles), so it requires at least 3 colors. An explicit 3-coloring exists, so the chromatic number is exactly 3."
+  },
+  {
+    "question": "Find the area of the region bounded by |x| + |y| = 1.",
+    "answer": "2",
+    "solution_explanation": "This inequality describes a square rotated by 45 degrees with vertices at (1,0), (0,1), (-1,0), and (0,-1). The diagonals have length 2. The area is 1/2 * d1 * d2 = 1/2 * 2 * 2 = 2."
+  }
+]

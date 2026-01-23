@@ -1,0 +1,252 @@
+[
+  {
+    "question": "Compute the remainder when 7^2026 + 5^2026 is divided by 12.",
+    "answer": "FINAL: 2",
+    "solution_explanation": "Modulo 12: 7^2=49≡1 and 5^2=25≡1, so 7^2026=(7^2)^1013≡1 and 5^2026=(5^2)^1013≡1. Sum ≡1+1=2 (mod 12)."
+  },
+  {
+    "question": "How many 5-tuples (x1,x2,x3,x4,x5) of integers satisfy x1+x2+x3+x4+x5 = 20 with 0 ≤ xi ≤ 6 for all i?",
+    "answer": "FINAL: 826",
+    "solution_explanation": "Count nonnegative solutions, then enforce xi≤6 by inclusion–exclusion. Without upper bounds: C(20+5-1,5-1)=C(24,4)=10626. Subtract cases where at least one xi≥7: for a chosen set of j variables, let yi=xi-7, then sum becomes 20-7j, giving C(20-7j+4,4). So count = Σ_{j=0..⌊20/7⌋} (-1)^j C(5,j) C(20-7j+4,4) = C(24,4) - C(5,1)C(17,4) + C(5,2)C(10,4) = 10626 - 5·2380 + 10·210 = 826."
+  },
+  {
+    "question": "Solve for all real x: x^2 + |x - 1| = 3.",
+    "answer": "FINAL: x = -1,  (-1+√17)/2",
+    "solution_explanation": "Case 1: x≥1 ⇒ |x−1|=x−1. Then x^2+x−1=3 ⇒ x^2+x−4=0 ⇒ x=(−1±√17)/2; keep x≥1 ⇒ x=(−1+√17)/2. Case 2: x<1 ⇒ |x−1|=1−x. Then x^2+1−x=3 ⇒ x^2−x−2=0 ⇒ x=2 or x=−1; keep x<1 ⇒ x=−1."
+  },
+  {
+    "question": "A triangle has side lengths 9, 10, and 17. Compute its inradius.",
+    "answer": "FINAL: 2",
+    "solution_explanation": "Semi-perimeter s=(9+10+17)/2=18. Heron: area = √(18·(18−9)·(18−10)·(18−17)) = √(18·9·8·1)=√1296=36. Inradius r = area/s = 36/18 = 2."
+  },
+  {
+    "question": "A fair coin is tossed until the pattern HTH appears as consecutive tosses. What is the expected number of tosses?",
+    "answer": "FINAL: 10",
+    "solution_explanation": "Use states for the longest suffix that is a prefix of HTH. Let E0 be expected tosses from “no match”, E1 from having last toss = H, E2 from having last two tosses = HT. Equations: E0=1+½E1+½E0 ⇒ E0=2+E1. E1=1+½E1+½E2 ⇒ E1=2+E2. E2=1+½·0+½E0 (H ends, T resets) ⇒ E2=1+½E0. Substitute: E0=2+(2+E2)=4+E2 and E2=1+½(4+E2)=3+½E2 ⇒ ½E2=3 ⇒ E2=6 ⇒ E0=10."
+  },
+  {
+    "question": "Find the smallest positive integer n such that n ≡ 2 (mod 3), n ≡ 3 (mod 5), and n ≡ 4 (mod 7).",
+    "answer": "FINAL: 53",
+    "solution_explanation": "Work mod 105. Numbers ≡4 (mod7): 4,11,18,25,32,39,46,53,... Check mod5: 53≡3 (mod5). Also 53≡2 (mod3). So the smallest positive solution is 53."
+  },
+  {
+    "question": "How many 5-element subsets of {1,2,...,12} contain no two consecutive integers?",
+    "answer": "FINAL: 56",
+    "solution_explanation": "Standard “gap” transform: choose 5 numbers a1<…<a5 with ai+1−ai≥2. Let bi=ai−(i−1). Then 1≤b1<…<b5≤12−4=8 with no extra constraints. Count = C(8,5)=56."
+  },
+  {
+    "question": "How many residue classes x modulo 72 satisfy x^2 ≡ 1 (mod 72)?",
+    "answer": "FINAL: 8",
+    "solution_explanation": "Use CRT since 72=8·9 and gcd(8,9)=1. Mod 8: any odd x has x^2≡1, giving 4 classes (1,3,5,7). Mod 9: x≡±1 gives 2 classes. By CRT, total solutions modulo 72 is 4·2=8."
+  },
+  {
+    "question": "Compute S = Σ_{k=1}^{50} 1/(k(k+1)).",
+    "answer": "FINAL: 50/51",
+    "solution_explanation": "Use 1/(k(k+1)) = 1/k − 1/(k+1). Telescope: S=(1−1/2)+(1/2−1/3)+…+(1/50−1/51)=1−1/51=50/51."
+  },
+  {
+    "question": "A standard 52-card deck is uniformly shuffled. You reveal cards from the top until you see the first Ace. What is the expected number of revealed cards?",
+    "answer": "FINAL: 53/5",
+    "solution_explanation": "The 4 aces occupy 4 random distinct positions among 1..52. The first ace is the minimum of these 4 positions. For k marked positions among 1..n, E[min]= (n+1)/(k+1). Here n=52,k=4 ⇒ E=53/5."
+  },
+  {
+    "question": "How many surjective (onto) functions f from a 6-element set to a 3-element set exist?",
+    "answer": "FINAL: 540",
+    "solution_explanation": "Inclusion–exclusion: total functions 3^6. Subtract those missing at least one target value: C(3,1)·2^6. Add back those using only 1 value: C(3,2)·1^6. So 3^6−3·2^6+3·1=729−192+3=540."
+  },
+  {
+    "question": "Compute the sum of the decimal digits of 2^50.",
+    "answer": "FINAL: 76",
+    "solution_explanation": "2^50 = 1,125,899,906,842,624. Summing digits: 1+1+2+5+8+9+9+0+6+8+4+2+6+2+4 = 76."
+  },
+  {
+    "question": "Solve for real x: log_3(x) + log_3(x − 2) = 2.",
+    "answer": "FINAL: x = 1 + √10",
+    "solution_explanation": "Domain: x>2. Combine logs: log_3(x(x−2))=2 ⇒ x(x−2)=3^2=9 ⇒ x^2−2x−9=0 ⇒ x=1±√10. Only x>2 is 1+√10."
+  },
+  {
+    "question": "How many ways are there to tile a 2×8 rectangle using 2×1 dominoes (dominoes may be rotated)?",
+    "answer": "FINAL: 34",
+    "solution_explanation": "Let T(n) be tilings of 2×n. Recurrence: T(n)=T(n−1)+T(n−2) (either place a vertical domino then tile 2×(n−1), or place two horizontals then tile 2×(n−2)). Base T(0)=1,T(1)=1 ⇒ T(8)=F_9=34."
+  },
+  {
+    "question": "Find the radius of the circle passing through the three points (0,0), (4,0), and (0,3).",
+    "answer": "FINAL: 5/2",
+    "solution_explanation": "These points form a right triangle with right angle at (0,0) (legs 4 and 3). For a right triangle, the circumcenter is the midpoint of the hypotenuse and the circumradius is half the hypotenuse. Hypotenuse length = √(4^2+3^2)=5 ⇒ radius = 5/2."
+  },
+  {
+    "question": "Two fair six-sided dice are rolled. What is E[max(D1,D2)]?",
+    "answer": "FINAL: 161/36",
+    "solution_explanation": "Use P(max ≥ k)=1−P(both ≤ k−1)=1−((k−1)/6)^2. Then E[max]=Σ_{k=1}^6 P(max ≥ k)=Σ_{k=1}^6 (1−((k−1)/6)^2)=6−(1/36)Σ_{j=0}^5 j^2=6−(1/36)·55= (216−55)/36=161/36."
+  },
+  {
+    "question": "How many ordered pairs of positive integers (x,y) satisfy 1/x + 1/y = 1/6 ?",
+    "answer": "FINAL: 9",
+    "solution_explanation": "Rewrite: (x+y)/xy=1/6 ⇒ 6x+6y=xy ⇒ xy−6x−6y=0 ⇒ (x−6)(y−6)=36. For each positive divisor d of 36, set x−6=d, y−6=36/d. Number of positive divisors of 36 is 9, giving 9 ordered pairs."
+  },
+  {
+    "question": "Solve for all real x: x^4 − 4x^3 + 6x^2 − 4x + 1 = 16.",
+    "answer": "FINAL: x = -1, 3",
+    "solution_explanation": "Left side is (x−1)^4 (binomial expansion). So (x−1)^4=16=2^4. Real solutions require x−1=±2 ⇒ x=3 or x=−1."
+  },
+  {
+    "question": "How many permutations of {1,2,3,4,5,6,7} have exactly 2 fixed points?",
+    "answer": "FINAL: 924",
+    "solution_explanation": "Choose which 2 elements are fixed: C(7,2)=21. The remaining 5 elements must be a derangement: !5=5!(1−1/1!+1/2!−1/3!+1/4!−1/5!)=120(1−1+1/2−1/6+1/24−1/120)=44. Total =21·44=924."
+  },
+  {
+    "question": "Compute 9^100 mod 13.",
+    "answer": "FINAL: 9",
+    "solution_explanation": "By Fermat: 9^12≡1 (mod13). Since 100=12·8+4, 9^100≡(9^12)^8·9^4≡9^4 (mod13). Compute 9^2=81≡3, so 9^4≡3^2=9 (mod13)."
+  },
+  {
+    "question": "Find the distance from the point P(3,4) to the line 2x − y + 1 = 0.",
+    "answer": "FINAL: 3√5/5",
+    "solution_explanation": "Distance = |Ax0+By0+C|/√(A^2+B^2). Here A=2,B=−1,C=1. So d=|2·3+(−1)·4+1|/√(4+1)=|3|/√5=3√5/5."
+  },
+  {
+    "question": "For positive real numbers a,b with ab=1, find the minimum value of a^2 + b^2 + a + b.",
+    "answer": "FINAL: 4",
+    "solution_explanation": "By AM–GM: a^2+b^2 ≥ 2ab = 2. Also a+b ≥ 2√(ab)=2. Sum ≥ 4, with equality at a=b=1."
+  },
+  {
+    "question": "How many integer triples (a,b,c) satisfy a+b+c=20 with 0 ≤ a,b,c ≤ 10?",
+    "answer": "FINAL: 66",
+    "solution_explanation": "Without upper bounds: nonnegative solutions count C(22,2)=231. Subtract those with a≥11: let a'=a−11 ⇒ a'+b+c=9 gives C(11,2)=55; similarly for b and c, total subtract 3·55=165. No overlap is possible since two variables ≥11 would force sum ≥22>20. Hence 231−165=66."
+  },
+  {
+    "question": "A fair coin is tossed 6 times. What is the probability that the number of Heads is strictly greater than the number of Tails?",
+    "answer": "FINAL: 11/32",
+    "solution_explanation": "Heads > Tails in 6 tosses means Heads ≥4. Probability = (C(6,4)+C(6,5)+C(6,6))/2^6 = (15+6+1)/64 = 22/64 = 11/32."
+  },
+  {
+    "question": "Find the last two digits of 3^2026 (i.e., 3^2026 mod 100).",
+    "answer": "FINAL: 29",
+    "solution_explanation": "Use CRT with 100=4·25. Mod 4: 3≡−1 ⇒ 3^2026≡1. Mod 25: φ(25)=20, and 2026≡6 (mod20), so 3^2026≡3^6=729≡4 (mod25). Now solve x≡1 (mod4), x≡4 (mod25). Values ≡4 (mod25) are 4,29,54,79; only 29≡1 (mod4)."
+  },
+  {
+    "question": "Determine whether the equation √(x+5) + √(9−x) = 7 has any real solutions. If yes, list them; if no, answer 0 solutions.",
+    "answer": "FINAL: 0 solutions",
+    "solution_explanation": "Let a=√(x+5), b=√(9−x). Then a,b≥0 and a^2+b^2=(x+5)+(9−x)=14. If a+b=7, then (a+b)^2=49= a^2+b^2+2ab =14+2ab ⇒ ab=17.5. But for nonnegative a,b with fixed sum 7, the maximum possible product is (7/2)^2=12.25, contradiction. So no real solutions."
+  },
+  {
+    "question": "How many binary strings of length 10 have exactly 4 ones and no two ones are adjacent?",
+    "answer": "FINAL: 35",
+    "solution_explanation": "Place 4 ones with at least 1 zero between consecutive ones. Think of 4 ones needing 3 mandatory separating zeros: that uses 4+3=7 positions, leaving 3 extra zeros to distribute among 5 gaps (before first 1, between, after last 1) but internal gaps already have 1 zero each. Equivalent standard formula: choose positions for 4 ones in 10−4+1=7 slots ⇒ C(7,4)=35."
+  },
+  {
+    "question": "A regular hexagon has side length 3. Compute its area.",
+    "answer": "FINAL: 27√3/2",
+    "solution_explanation": "Regular hexagon = 6 equilateral triangles side 3. Each triangle area = (√3/4)·3^2 = 9√3/4. Multiply by 6: area = 6·(9√3/4)=54√3/4=27√3/2."
+  },
+  {
+    "question": "Two fair dice are rolled. Given that the sum is 8, what is the probability that at least one die shows a 3?",
+    "answer": "FINAL: 2/5",
+    "solution_explanation": "Condition on sum 8: equally likely outcomes are (2,6),(3,5),(4,4),(5,3),(6,2): 5 outcomes. Favorable have a 3: (3,5),(5,3): 2 outcomes. Probability =2/5."
+  },
+  {
+    "question": "Find the integer n such that C(n,2) = 1225.",
+    "answer": "FINAL: 50",
+    "solution_explanation": "C(n,2)=n(n−1)/2=1225 ⇒ n(n−1)=2450. Since 50·49=2450, n=50."
+  },
+  {
+    "question": "Find all residues x modulo 11 such that x^2 ≡ 3 (mod 11).",
+    "answer": "FINAL: x ≡ 5 or 6 (mod 11)",
+    "solution_explanation": "Check squares mod 11: 5^2=25≡3 and 6^2=36≡3. Since x^2≡3 has at most 2 solutions mod an odd prime, these are all. So x≡5,6 (mod11)."
+  },
+  {
+    "question": "Compute det([[2,1,3],[0,−1,4],[5,2,0]]).",
+    "answer": "FINAL: 19",
+    "solution_explanation": "Expand along row 2: det = (−1)·det([[2,3],[5,0]]) − 4·det([[2,1],[5,2]]) = (−1)(2·0−3·5) − 4(2·2−1·5) = (−1)(−15) − 4(4−5) = 15 − 4(−1)=19."
+  },
+  {
+    "question": "How many ways to distribute 12 identical balls into 4 distinct boxes if each box must contain at least 2 balls?",
+    "answer": "FINAL: 35",
+    "solution_explanation": "Let xi be balls in box i. Constraint xi≥2 and Σxi=12. Set yi=xi−2≥0, then Σyi=4. Nonnegative solutions count C(4+4−1,4−1)=C(7,3)=35."
+  },
+  {
+    "question": "Two integers A and B are chosen independently and uniformly from {1,2,3,4,5,6}. What is P(A+B is prime)?",
+    "answer": "FINAL: 5/12",
+    "solution_explanation": "Prime sums possible: 2,3,5,7,11. Count pairs: sum2:1; sum3:2; sum5:4; sum7:6; sum11:2. Total favorable =1+2+4+6+2=15 out of 36 ⇒ 15/36=5/12."
+  },
+  {
+    "question": "A triangle has side lengths 13, 14, and 15. Compute its inradius.",
+    "answer": "FINAL: 4",
+    "solution_explanation": "Semi-perimeter s=(13+14+15)/2=21. Heron area = √(21·8·7·6)=√7056=84. Inradius r=area/s=84/21=4."
+  },
+  {
+    "question": "Three cards are drawn uniformly at random from a standard 52-card deck without replacement. What is the probability all 3 cards are of the same suit?",
+    "answer": "FINAL: 22/425",
+    "solution_explanation": "Choose the suit (4 ways) and then choose 3 cards from its 13: favorable =4·C(13,3). Total 3-card hands: C(52,3). Probability = 4·C(13,3)/C(52,3) = 22/425."
+  },
+  {
+    "question": "Solve for all real x: |x−2| + |x+1| = 7.",
+    "answer": "FINAL: x = -3, 4",
+    "solution_explanation": "Breakpoints at x=−1 and x=2. For x≥2: (x−2)+(x+1)=2x−1=7 ⇒ x=4. For −1≤x≤2: (2−x)+(x+1)=3 ≠7 ⇒ no solutions. For x≤−1: (2−x)+(−x−1)=1−2x=7 ⇒ x=−3."
+  },
+  {
+    "question": "Find the smallest positive integer n such that n is divisible by 12, n+1 is divisible by 5, and n+2 is divisible by 7.",
+    "answer": "FINAL: 264",
+    "solution_explanation": "Congruences: n≡0 (mod12), n≡4 (mod5), n≡5 (mod7). Mod 5 condition means n≡4. Among multiples of 12, the first ≡4 mod5 is 24. Add lcm(12,5)=60: candidates 24+60k. Mod7: 24≡3 and 60≡4, so 3+4k≡5 ⇒4k≡2 ⇒k≡4 (mod7). Smallest k=4 gives n=24+240=264."
+  },
+  {
+    "question": "A circle has radius 5 and a chord of length 6. What is the distance from the center to the chord?",
+    "answer": "FINAL: 4",
+    "solution_explanation": "Drop perpendicular from center to chord: it bisects chord, so half-chord =3. Right triangle with hypotenuse 5 and leg 3 gives distance d=√(5^2−3^2)=√(25−9)=4."
+  },
+  {
+    "question": "Let p(x)=x^3−ax^2+bx−6 have roots 1,2,3. Find a+b.",
+    "answer": "FINAL: 17",
+    "solution_explanation": "By Vieta: sum of roots = a =1+2+3=6. Sum of pairwise products = b = 1·2+1·3+2·3=11. Hence a+b=17."
+  },
+  {
+    "question": "Two distinct integers are chosen uniformly at random from {1,2,...,10}. What is the probability their gcd is 1?",
+    "answer": "FINAL: 31/45",
+    "solution_explanation": "Unordered pairs total C(10,2)=45. Count coprime pairs by fixing the larger element b (2≤b≤10): the number of a<b with gcd(a,b)=1 is φ(b). So favorable = Σ_{b=2}^{10} φ(b) = 1+2+2+4+2+6+4+6+4 = 31. Probability = 31/45."
+  },
+  {
+    "question": "A ball is thrown straight up from ground with initial speed 20 m/s. Take g = 10 m/s^2. What maximum height does it reach?",
+    "answer": "FINAL: 20",
+    "solution_explanation": "At top, v=0. Use v^2 = v0^2 − 2gh ⇒ 0=20^2−2·10·h ⇒ h=400/20=20."
+  },
+  {
+    "question": "Two resistors of 3Ω and 6Ω are connected in parallel. What is the equivalent resistance?",
+    "answer": "FINAL: 2",
+    "solution_explanation": "1/Req = 1/3 + 1/6 = 1/2 ⇒ Req = 2Ω."
+  },
+  {
+    "question": "A 2 kg block slides on a horizontal surface with kinetic friction coefficient μ = 0.25. Its initial speed is 8 m/s. Take g=10 m/s^2. How far does it slide before stopping?",
+    "answer": "FINAL: 64/5",
+    "solution_explanation": "Friction gives constant deceleration a=μg=0.25·10=2.5. Using 0 = v0^2 − 2ad ⇒ d = v0^2/(2a)=64/(5)=12.8 = 64/5."
+  },
+  {
+    "question": "Two drones start at the same point. One flies east at 3 m/s, the other flies north at 4 m/s. After 10 seconds, how far apart are they?",
+    "answer": "FINAL: 50",
+    "solution_explanation": "Displacements: 30 m east and 40 m north. Distance by Pythagoras: √(30^2+40^2)=√2500=50."
+  },
+  {
+    "question": "A 2 kg cart moving at 3 m/s collides and sticks to a 1 kg cart at rest on a frictionless track. What is the speed immediately after collision?",
+    "answer": "FINAL: 2",
+    "solution_explanation": "Conserve momentum: p_initial =2·3=6. Total mass after sticking =3 kg. v=6/3=2 m/s."
+  },
+  {
+    "question": "Rotate the vector v=(2,2) by +30° counterclockwise about the origin. What is the x-coordinate of the rotated vector (exact form)?",
+    "answer": "FINAL: √3 − 1",
+    "solution_explanation": "Rotation: (x',y')=(x cosθ − y sinθ, x sinθ + y cosθ). With x=y=2 and θ=30°: x' = 2·(√3/2) − 2·(1/2) = √3 − 1."
+  },
+  {
+    "question": "Let A = [[4,1],[2,3]]. Compute the larger eigenvalue of A.",
+    "answer": "FINAL: 5",
+    "solution_explanation": "Characteristic polynomial: λ^2 − (tr A)λ + det A = 0. Here tr=7 and det=4·3−2·1=10. So λ = (7±√(49−40))/2 = (7±3)/2 ⇒ eigenvalues 5 and 2. Larger is 5."
+  },
+  {
+    "question": "How many 5-card poker hands contain exactly 2 hearts?",
+    "answer": "FINAL: 712842",
+    "solution_explanation": "Choose 2 hearts from 13 and 3 non-hearts from the remaining 39 cards: C(13,2)·C(39,3) = 712842."
+  },
+  {
+    "question": "Compute Σ_{k=0}^{10} C(10,k)^2.",
+    "answer": "FINAL: 184756",
+    "solution_explanation": "Use identity Σ_{k=0}^n C(n,k)^2 = C(2n,n). Here n=10 ⇒ sum = C(20,10)=184756."
+  }
+]

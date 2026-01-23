@@ -1,0 +1,212 @@
+[
+  {
+    "question": "Compute the remainder when 2^{2026} + 3^{2026} is divided by 1000.",
+    "answer": "193",
+    "explanation": "Work mod 8 and mod 125, then combine by CRT (since 1000=8·125).\nMod 8: 2^{2026}≡0, 3^{2026}≡(3^2)^{1013}≡1, so sum ≡1 (mod8).\nMod 125: by Euler φ(125)=100, so a^{100}≡1 (mod125) for gcd(a,125)=1. Reduce 2026≡26 (mod100). Compute 2^{26}≡114 (mod125) and 3^{26}≡79 (mod125), so sum ≡114+79≡68 (mod125).\nNow solve x≡68 (mod125), x≡1 (mod8). Try x=68+125t: 68≡4 (mod8) and 125≡5 (mod8), so 4+5t≡1 ⇒ 5t≡5 ⇒ t≡1 (mod8). Smallest gives x=68+125=193, so the remainder is 193."
+  },
+  {
+    "question": "Evaluate 0.999… (with infinitely many 9s) as a real number.",
+    "answer": "1",
+    "explanation": "Let x = 0.999… . Then 10x = 9.999… . Subtract: 10x − x = 9.999… − 0.999… = 9, so 9x=9 and x=1."
+  },
+  {
+    "question": "How many integer solutions (x,y) satisfy x^2 + y^2 = 2026?",
+    "answer": "8",
+    "explanation": "Factor 2026=2·1013, with 1013≡1 (mod4). The number of representations as a sum of two squares is r_2(n)=4(d_1−d_3), where d_1 (resp. d_3) counts positive divisors of n congruent to 1 (resp. 3) mod 4. Divisors of 2026 are 1,2,1013,2026; those ≡1 (mod4) are 1 and 1013, so d_1=2 and d_3=0. Hence r_2(2026)=4·2=8 ordered integer pairs (including signs and order)."
+  },
+  {
+    "question": "How many subsets of {1,2,…,20} have sum divisible by 5?",
+    "answer": "209728",
+    "explanation": "Let F(x)=∏_{k=1}^{20}(1+x^k). The number of subsets with sum ≡0 (mod5) is (1/5)∑_{j=0}^4 F(ω^j), where ω is a primitive 5th root of unity (roots-of-unity filter). For j=0, F(1)=2^{20}=1,048,576. For j=1,…,4, numbers 1..20 contain four of each residue mod 5, so F(ω^j)=∏_{r=0}^4 (1+ω^{jr})^4 = (1+1)^4·(∏_{r=1}^4 (1+ω^{jr}))^4. The set {ω^{jr}: r=1..4} is the nontrivial 5th roots, and ∏_{r=1}^4(1+ω^r)=1, so F(ω^j)=16. Hence count = (1/5)(2^{20}+4·16)=(1/5)(1,048,640)=209,728."
+  },
+  {
+    "question": "What is the largest power of 2 that divides the binomial coefficient C(2026,1013)?",
+    "answer": "256",
+    "explanation": "Use v2(C(n,k)) = v2(n!)−v2(k!)−v2((n−k)!) = s2(k)+s2(n−k)−s2(n), where s2(m) is the number of 1s in the binary expansion (equivalently, Kummer’s theorem/carry count). Here n=2026 and k=n−k=1013. Compute s2(1013)=8 and s2(2026)=8, so v2 = 8+8−8 = 8. Hence the largest power of 2 dividing C(2026,1013) is 2^8=256."
+  },
+  {
+    "question": "Compute the product Π_{k=1}^{2026} (1 − 1/(k+1)^2) as a reduced fraction.",
+    "answer": "1014/2027",
+    "explanation": "Rewrite each factor: 1−1/(k+1)^2 = ((k+1)^2−1)/(k+1)^2 = (k(k+2))/(k+1)^2 = (k/(k+1))·((k+2)/(k+1)). Thus the product splits: Π k/(k+1) from 1..n equals 1/(n+1), and Π (k+2)/(k+1) from 1..n telescopes to (n+2)/2. With n=2026, result = (1/2027)·(2028/2)=1014/2027."
+  },
+  {
+    "question": "Compute S = Σ_{k=1}^{2026} gcd(k,2026).",
+    "answer": "6075",
+    "explanation": "Use the identity Σ_{k=1}^{n} gcd(k,n) = Σ_{d|n} d·φ(n/d). For n=2026=2·1013, divisors are 1,2,1013,2026. So S = 1·φ(2026)+2·φ(1013)+1013·φ(2)+2026·φ(1) = 1·1012 + 2·1012 + 1013·1 + 2026·1 = 6075."
+  },
+  {
+    "question": "How many integers k with 1 ≤ k ≤ 2026 satisfy 2026 | (k^2 − 1)?",
+    "answer": "2",
+    "explanation": "Solve k^2≡1 (mod2026) with 2026=2·1013. Mod 2, k must be odd. Mod 1013 (prime), k≡±1. Combine with CRT: the solution to (k≡1 mod1013, k odd) is k≡1 mod2026; the solution to (k≡−1 mod1013, k odd) is k≡−1≡2025 mod2026. In 1..2026 these are k=1 and k=2025, so there are 2."
+  },
+  {
+    "question": "Compute S = Σ_{k=1}^{2026} k^{1013} modulo 2026.",
+    "answer": "1013",
+    "explanation": "Work mod 2 and mod 1013, then CRT.\nMod 2: k^{1013}≡k (since k is 0 or 1), so S≡(number of odd k in 1..2026)≡1013≡1 (mod2).\nMod 1013 (prime): residues 1..1012 each appear twice among 1..2026, and 0 appears twice. For a≠0, a^{1013}=a^{1012}·a≡1·a≡a. Hence S≡2·Σ_{a=1}^{1012} a ≡2·(1012·1013/2)≡0 (mod1013).\nThe unique number mod 2026 that is 0 mod1013 and 1 mod2 is 1013. So S≡1013 (mod2026)."
+  },
+  {
+    "question": "Find 3^{2026} modulo 2026.",
+    "answer": "9",
+    "explanation": "Compute mod 2 and mod 1013. Mod 2: 3^{2026}≡1. Mod 1013 (prime): by Fermat, 3^{1012}≡1, so 3^{2026}=3^{2·1013}≡3^{2026 mod 1012}=3^2=9 (mod1013) since 2026≡2 (mod1012). The CRT solution with x≡1 (mod2) and x≡9 (mod1013) is x≡9 (mod2026)."
+  },
+  {
+    "question": "How many ordered pairs of positive integers (a,b) satisfy gcd(a,b)=2 and lcm(a,b)=2026?",
+    "answer": "2",
+    "explanation": "Let gcd(a,b)=2 ⇒ a=2x, b=2y with gcd(x,y)=1. Then lcm(a,b)=2·lcm(x,y)=2xy (since x,y coprime). Set 2xy=2026 ⇒ xy=1013 (prime). Coprime factor pairs are (1,1013) and (1013,1), giving (a,b)=(2,2026) and (2026,2)."
+  },
+  {
+    "question": "Let a0=0, a1=1, and a_{n+2}=3a_{n+1}−2a_n. Compute a_{2026} modulo 1000.",
+    "answer": "863",
+    "explanation": "Characteristic equation r^2−3r+2=0 has roots 1 and 2, so a_n=A·1^n+B·2^n=A+B·2^n. From a0=0 ⇒ A+B=0, and a1=1 ⇒ A+2B=1, giving B=1, A=−1. Thus a_n=2^n−1. Therefore a_{2026}≡2^{2026}−1≡864−1≡863 (mod1000)."
+  },
+  {
+    "question": "How many 5-digit integers have digit sum 20?",
+    "answer": "4998",
+    "explanation": "Let digits be d1…d5 with d1∈{1,…,9}, others ∈{0,…,9}, and sum 20. Set d1'=d1−1 (so 0≤d1'≤8). Then d1'+d2+d3+d4+d5=19 with bounds d1'≤8, di≤9 (i≥2). Unbounded solutions: C(23,4)=8855. Subtract d1'≥9: set d1''=d1'−9 ⇒ sum 10 ⇒ C(14,4)=1001. Subtract each di≥10 (4 choices): set di'=di−10 ⇒ sum 9 ⇒ C(13,4)=715 each ⇒ 2860. Add back overlaps d1'≥9 and one di≥10: remaining sum 0 ⇒ 1 each, 4 total. Result 8855−(1001+2860)+4=4998."
+  },
+  {
+    "question": "Compute det of the 4×4 matrix with (i,j) entry = i^{j-1} for i=1,2,3,4 and j=1,2,3,4; i.e. rows [1,1,1,1], [1,2,4,8], [1,3,9,27], [1,4,16,64].",
+    "answer": "12",
+    "explanation": "This is a Vandermonde matrix with x-values 1,2,3,4 (columns are x^0,x^1,x^2,x^3). The determinant is ∏_{1≤i<j≤4}(x_j−x_i)=(2−1)(3−1)(4−1)(3−2)(4−2)(4−3)=1·2·3·1·2·1=12."
+  },
+  {
+    "question": "A fair six-sided die is rolled repeatedly until the running total is strictly greater than 6. What is the expected number of rolls? Give the exact value as a reduced fraction.",
+    "answer": "117649/46656",
+    "explanation": "Let E(s) be the expected additional rolls when the current sum is s (0≤s≤6), and E(s)=0 for s>6. For 0≤s≤6: E(s)=1+(1/6)·(E(s+1)+…+E(s+6)), where any term with s+k>6 is 0.\nCompute backward:\nE(6)=1 (any next roll ends).\nE(5)=1+E(6)/6=1+1/6=7/6.\nE(4)=1+(E(5)+E(6))/6=1+(7/6+1)/6=49/36=(7/6)^2.\nContinuing similarly gives the pattern E(6−m)=(7/6)^m, so E(0)=(7/6)^6=117649/46656."
+  },
+  {
+    "question": "How many permutations of {1,2,3,4,5,6,7,8} have no adjacent pair whose values differ by 1?",
+    "answer": "5242",
+    "explanation": "Use inclusion–exclusion on the 7 adjacency events E_k: “k and k+1 are adjacent (in either order)”. For any subset S of m edges, the forced adjacencies partition into c runs (components) along the path 1–2–…–8. Each run becomes one block, with 2 orientations (increasing or decreasing), so assignments count = 2^c·(8−m)!. The number of edge-subsets with m edges and c runs is C(m−1,c−1)·C(8−m,c). Thus the count is Σ_{m=0}^7 (−1)^m Σ_{c=1}^{m} C(m−1,c−1)C(8−m,c)·2^c·(8−m)!, which evaluates to 5242."
+  },
+  {
+    "question": "How many binary strings of length 20 contain no substring '111'?",
+    "answer": "223317",
+    "explanation": "Let a_n be the count for length n. Any valid string ends with 0, 10, or 110. Removing that suffix gives a_{n−1}, a_{n−2}, a_{n−3} possibilities respectively, so a_n=a_{n−1}+a_{n−2}+a_{n−3}. Bases: a_0=1 (empty), a_1=2, a_2=4. Iterating to n=20 gives a_20=223317."
+  },
+  {
+    "question": "Find the remainder when 1^3+2^3+…+2026^3 is divided by 2026.",
+    "answer": "1013",
+    "explanation": "Use Σ_{k=1}^n k^3 = (n(n+1)/2)^2. For n=2026: (2026·2027/2)^2=(1013·2027)^2. Mod 2026=2·1013, we have 2027≡1 (mod1013), so 1013·2027≡1013 (mod2026). Then (1013·2027)^2≡1013^2≡1013 (mod2026) because 1013^2−1013=1013·1012 is divisible by 2·1013."
+  },
+  {
+    "question": "If x is a real number satisfying x + 1/x = 3, compute x^5 + 1/x^5.",
+    "answer": "123",
+    "explanation": "Let S_n = x^n + x^{−n}. Then S_0=2, S_1=3, and multiplying x+1/x=3 by x^{n−1}+x^{−(n−1)} gives the recurrence S_n = 3S_{n−1} − S_{n−2}. Compute: S_2=3·3−2=7, S_3=3·7−3=18, S_4=3·18−7=47, S_5=3·47−18=123."
+  },
+  {
+    "question": "How many integer pairs (x,y) satisfy x^2 + y^2 = 2026?",
+    "answer": "8",
+    "explanation": "Factor 2026=2·1013, with 1013≡1 (mod4). The number of representations as a sum of two squares is r_2(n)=4(d_1−d_3), where d_1 (resp. d_3) counts positive divisors of n congruent to 1 (resp. 3) mod 4. Divisors of 2026 are 1,2,1013,2026; those ≡1 (mod4) are 1 and 1013, so d_1=2 and d_3=0. Hence r_2(2026)=4·2=8 ordered integer pairs (including signs and order)."
+  },
+  {
+    "question": "How many solutions in integers (x1,…,x6) satisfy x1+…+x6=30 with 0≤xi≤7 for all i?",
+    "answer": "5432",
+    "explanation": "Count nonnegative solutions then use inclusion–exclusion for xi≥8. Unbounded: C(30+6−1,5)=C(35,5). If a chosen set of j variables are ≥8, subtract 8 from each: remaining sum is 30−8j, giving C(30−8j+5,5) solutions. Thus count = Σ_{j=0}^3 (−1)^j C(6,j) C(30−8j+5,5) = C(35,5) −6C(27,5)+15C(19,5)−20C(11,5)=5432."
+  },
+  {
+    "question": "Compute Σ_{k=0}^{10} C(10,k)^2.",
+    "answer": "184756",
+    "explanation": "Use Vandermonde’s identity: Σ_{k} C(n,k)C(n,n−k)=C(2n,n). Here Σ_{k=0}^{10} C(10,k)^2 = C(20,10)=184756."
+  },
+  {
+    "question": "Let F0=0, F1=1, and F_{n+2}=F_{n+1}+F_n. Find F_{2026} modulo 1000.",
+    "answer": "143",
+    "explanation": "Use fast doubling (or periodicity mod 1000) to compute Fibonacci numbers modulo 1000 efficiently. Carrying out the computation gives F_{2026}≡143 (mod1000)."
+  },
+  {
+    "question": "Compute Σ_{k=1}^{20} k·2^k.",
+    "answer": "39845890",
+    "explanation": "Use the standard sum: Σ_{k=1}^n k r^k = (r − (n+1)r^{n+1} + n r^{n+2})/(1−r)^2. With r=2, this simplifies to 2 − (n+1)2^{n+1} + n2^{n+2} = 2 + (n−1)2^{n+1}. For n=20: 2 + 19·2^{21} = 39,845,890."
+  },
+  {
+    "question": "How many triples of positive integers (a,b,c) with a≤b≤c satisfy 1/a + 1/b + 1/c = 1?",
+    "answer": "3",
+    "explanation": "With a≤b≤c, we have 3/a ≥ 1 ⇒ a≤3. Check cases:\n- a=3: then 1/b+1/c=2/3. With b≥3, 1/b≤1/3 so 1/c≥1/3 ⇒ c≤3, giving (3,3,3).\n- a=2: then 1/b+1/c=1/2. With b≥2. If b=2 then 1/c=0 impossible. If b=3 then 1/c=1/6 ⇒ c=6. If b=4 then 1/c=1/4 ⇒ c=4. If b≥5 then 1/b+1/c≤2/5<1/2 impossible.\nThus (2,3,6),(2,4,4),(3,3,3): 3 solutions."
+  },
+  {
+    "question": "How many residues x modulo 1024 satisfy x^2 ≡ 1 (mod 1024)?",
+    "answer": "4",
+    "explanation": "For 2^n with n≥3, the congruence x^2≡1 (mod2^n) has exactly 4 solutions: x≡±1 and x≡±(1+2^{n−1}). Here n=10, so solutions mod 1024 are x≡1,1023,513,511, giving 4 residues."
+  },
+  {
+    "question": "Over integers modulo 1013, how many ordered pairs (x,y) satisfy x^2 + y^2 ≡ 0 (mod 1013)?",
+    "answer": "2025",
+    "explanation": "Since 1013≡1 (mod4), −1 is a quadratic residue mod 1013, so choose i with i^2≡−1. If x=0 then y=0 is the only solution. If x≠0, then y^2≡−x^2 ⇒ y≡±ix, giving exactly 2 solutions for each of the 1012 nonzero x. Total = 1 + 2·1012 = 2025."
+  },
+  {
+    "question": "How many lattice paths from (0,0) to (10,10) using only steps (1,0) and (0,1) stay on or below the line y=x?",
+    "answer": "16796",
+    "explanation": "By the Catalan number: paths that never go above y=x from (0,0) to (n,n) are C(2n,n)/(n+1). For n=10: C(20,10)/11 = 184756/11 = 16796."
+  },
+  {
+    "question": "Let A be the 2026×2026 matrix with 2 on the diagonal and 1 in every off-diagonal entry. Compute det(A).",
+    "answer": "2027",
+    "explanation": "Write A = J + I, where J is the all-ones matrix and I is identity. J has eigenvalues 2026 (once, eigenvector all-ones) and 0 (multiplicity 2025). Therefore A has eigenvalues 2026+1=2027 (once) and 1 (multiplicity 2025). The determinant is the product of eigenvalues: 2027·1^{2025}=2027."
+  },
+  {
+    "question": "A fair coin is flipped until the pattern HTH appears as three consecutive flips. What is the expected number of flips?",
+    "answer": "10",
+    "explanation": "Use states by longest suffix matching a prefix of HTH. Let E0 be expected flips with no partial match, E1 after seeing suffix 'H', E2 after 'HT'. Recurrences:\nE0=1+(E1+E0)/2 ⇒ E0=2+E1.\nE1=1+(E1+E2)/2 ⇒ E1=2+E2.\nE2=1+(0+E0)/2 ⇒ E2=1+E0/2.\nSolve: E0=2+(2+E2)=4+E2=4+1+E0/2 ⇒ E0=10."
+  },
+  {
+    "question": "Compute Σ_{k=0}^{2026} (−1)^k C(2026,k) k^3.",
+    "answer": "0",
+    "explanation": "The binomial sum Σ_{k=0}^n (−1)^k C(n,k) f(k) equals the n-th finite difference of f at 0. If f(k)=k^3 has degree 3 and n=2026>3, its 2026-th finite difference is 0. Hence the sum is 0."
+  },
+  {
+    "question": "Evaluate T = Σ_{k=0}^{2026} (−1)^k C(2026,k)/(k+2) as a reduced fraction.",
+    "answer": "1/4110756",
+    "explanation": "Consider ∫_0^1 x(1−x)^{2026} dx. Expand (1−x)^{2026}=Σ C(2026,k)(−1)^k x^k. Then x(1−x)^{2026}=Σ C(2026,k)(−1)^k x^{k+1}, so integrating termwise gives T. But ∫_0^1 x(1−x)^{2026} dx is a Beta integral: 1/((2026+1)(2026+2))=1/(2027·2028)=1/4110756."
+  },
+  {
+    "question": "Find the remainder when the polynomial x^{2026} + x^{1013} + 1 is divided by x^2 + x + 1.",
+    "answer": "0",
+    "explanation": "Since x^3−1=(x−1)(x^2+x+1), we have x^3≡1 (mod x^2+x+1). Reduce exponents mod 3: 2026≡1, 1013≡2. Thus x^{2026}+x^{1013}+1 ≡ x + x^2 + 1, which is exactly x^2+x+1. So the remainder is 0."
+  },
+  {
+    "question": "Compute the remainder when 2^{2026} − 1 is divided by 31.",
+    "answer": "1",
+    "explanation": "Since 31=2^5−1, we have 2^5≡1 (mod31). Reduce exponent: 2026≡1 (mod5). Thus 2^{2026}≡2 (mod31), so 2^{2026}−1≡1 (mod31)."
+  },
+  {
+    "question": "A triangle has side lengths 7, 8, and 9. What is the length of the median to the side of length 8?",
+    "answer": "7",
+    "explanation": "For side a=8 with other sides b=7, c=9, the median length is m_a = (1/2)√(2b^2+2c^2−a^2) = (1/2)√(2·49+2·81−64) = (1/2)√196 = 7."
+  },
+  {
+    "question": "A triangle has side lengths 13,14,15. What is its circumradius R?",
+    "answer": "65/8",
+    "explanation": "Compute area by Heron: s=(13+14+15)/2=21, so area A=√(21·8·7·6)=√7056=84. Circumradius formula: R=abc/(4A)=13·14·15/(4·84)=2730/336=65/8."
+  },
+  {
+    "question": "How many integer lattice points (x,y) satisfy x^2 + y^2 ≤ 25?",
+    "answer": "81",
+    "explanation": "Count by x. For each integer x with |x|≤5, y ranges over integers with y^2≤25−x^2.\n|x|=0: y=−5…5 →11.\n|x|=1,2,3: 25−x^2 is 24,21,16 so |y|≤4 →9 each, times 2 signs →18 each.\n|x|=4: 25−16=9 so |y|≤3 →7 each, times 2 →14.\n|x|=5: 25−25=0 so y=0 →1 each, times 2 →2.\nTotal 11+18+18+18+14+2=81."
+  },
+  {
+    "question": "Find the smallest positive integer x such that 3x ≡ 1 (mod 2026).",
+    "answer": "1351",
+    "explanation": "Compute the inverse of 3 mod 2026. Using extended Euclid: 2026=3·675+1 ⇒ 1=2026−3·675. Thus 3·(−675)≡1 (mod2026), so x≡2026−675=1351 (mod2026). Smallest positive is 1351."
+  },
+  {
+    "question": "How many quadruples (a,b,c,d) with a,b,c,d ∈ {−1,0,1} satisfy a + 2b + 3c + 4d = 0?",
+    "answer": "7",
+    "explanation": "Case on d.\nIf d=1, then a+2b+3c=−4. Try c=−1 ⇒ a+2b=−1. With b∈{−1,0,1}, only (b,a)=(0,−1) or (−1,1) work. For c=0 or 1 the left side cannot reach −4 with allowed a,b. So 2 solutions.\nIf d=−1, then a+2b+3c=4. Try c=1 ⇒ a+2b=1. Only (b,a)=(0,1) or (1,−1) work. For c=0 or −1 it’s impossible. So 2 solutions.\nIf d=0, then a+2b+3c=0. Checking c=0 gives b=0,a=0; c=1 gives b=−1,a=−1; c=−1 gives b=1,a=1. So 3 solutions.\nTotal 2+2+3=7."
+  },
+  {
+    "question": "How many spanning trees does the complete bipartite graph K_{3,4} have?",
+    "answer": "432",
+    "explanation": "For complete bipartite K_{m,n}, the number of spanning trees is m^{n−1} n^{m−1}. With (m,n)=(3,4): 3^{4−1}·4^{3−1}=3^3·4^2=27·16=432."
+  },
+  {
+    "question": "How many 10-tuples of integers (x1,…,x10) satisfy x1+…+x10=20 with 0≤xi≤4?",
+    "answer": "856945",
+    "explanation": "Use inclusion–exclusion on the upper bound. Unbounded nonnegative solutions: C(20+10−1,9)=C(29,9). If j variables are ≥5, subtract 5 from each: remaining sum 20−5j gives C(20−5j+9,9) solutions. Thus count = Σ_{j=0}^4 (−1)^j C(10,j) C(20−5j+9,9) = 856945."
+  },
+  {
+    "question": "How many residues x modulo 2026^2 satisfy x^2 ≡ 1 (mod 2026^2)?",
+    "answer": "4",
+    "explanation": "Factor 2026^2=(2·1013)^2=4·1013^2 with gcd(4,1013^2)=1. By CRT, the number of solutions mod 2026^2 is the product of the numbers of solutions mod 4 and mod 1013^2. Mod 4, x^2≡1 has 2 solutions (1,3). For odd prime powers p^k, x^2≡1 has exactly 2 solutions (±1), so mod 1013^2 there are 2. Hence total 2·2=4 solutions."
+  }
+]

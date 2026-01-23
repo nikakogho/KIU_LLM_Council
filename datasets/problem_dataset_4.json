@@ -1,0 +1,252 @@
+[
+  {
+    "question": "Question 1: In how many ways can you tile a 3x8 rectangle with 2x1 dominoes?",
+    "answer": "153",
+    "solution_explanation": "Let a(n) be the number of ways to tile a 3xn rectangle. n must be even. The recurrence relation is a(n) = 4a(n-2) - a(n-4). With base cases a(0)=1, a(2)=3, we get a(4)=11, a(6)=41, a(8)=153."
+  },
+  {
+    "question": "Question 2: Calculate the coefficient of x^10 in the expansion of (1 + x + x^2 + x^3)^10.",
+    "answer": "44803",
+    "solution_explanation": "The expression is [(1-x^4)/(1-x)]^10. We expand (1-x^4)^10 * (1-x)^-10. Using the binomial theorem for both and looking for x^10 terms: C(19,9) - 10*C(15,9) + 45*C(11,9) = 92378 - 50050 + 2475 = 44803."
+  },
+  {
+    "question": "Question 3: What is the expected number of coin flips to get the sequence Head-Head-Tail (HHT)?",
+    "answer": "8",
+    "solution_explanation": "For a pattern P, Expected Flips E = 2^n + sum(2^k) for overlapping prefixes/suffixes. For HHT, the only overlap of a proper prefix with a suffix is 'H' (len 1) matching 'T'? No. Prefix 'H' vs suffix 'T' (no). Prefix 'HH' vs suffix 'HT' (no). Wait, the formula uses 2^k where the prefix of length k matches the suffix of length k. For HHT: Length 3 (HHT) matches itself (2^3=8). Length 2 (HH) does not match suffix (HT). Length 1 (H) does not match suffix (T). So E = 2^3 = 8."
+  },
+  {
+    "question": "Question 4: Determine the number of spanning trees of the complete bipartite graph K_{3,4}.",
+    "answer": "432",
+    "solution_explanation": "By Scoins' formula (or Cayley's generalization), the number of spanning trees of K_{m,n} is m^(n-1) * n^(m-1). Here m=3, n=4. So 3^(4-1) * 4^(3-1) = 3^3 * 4^2 = 27 * 16 = 432."
+  },
+  {
+    "question": "Question 5: Find the remainder when 2023^2023 is divided by 1000.",
+    "answer": "847",
+    "solution_explanation": "2023 = 23 mod 1000. We need 23^2023 mod 1000. Euler's totient phi(1000) = 400. 2023 = 23 mod 400. So we need 23^23 mod 1000. 23^1 = 23, 23^2 = 529, 23^4 = 279841 = 841, 23^8 = 841^2 = 707281 = 281, 23^16 = 281^2 = 78961 = 961. 23^23 = 23^16 * 23^4 * 23^2 * 23^1 = 961 * 841 * 529 * 23. This product modulo 1000 yields 847."
+  },
+  {
+    "question": "Question 6: Calculate the Stirling number of the second kind S(8, 5).",
+    "answer": "1050",
+    "solution_explanation": "S(n,k) = 1/k! * sum_{j=0}^k (-1)^(k-j) C(k,j) j^n. For S(8,5): 1/120 * [5^8 - 5*4^8 + 10*3^8 - 10*2^8 + 5*1^8]. Calculating terms: 390625 - 327680 + 65610 - 2560 + 5 = 126000. Divide by 120 gives 1050."
+  },
+  {
+    "question": "Question 7: A resistor cube has a resistor of resistance R on each edge. What is the equivalent resistance across the body diagonal?",
+    "answer": "5/6 R",
+    "solution_explanation": "Using symmetry and potential equivalence: Current entering node A splits into 3 edges (potential V1). These lead to 3 nodes, which split to 6 edges (potential V2). These converge to 3 nodes (potential V3), which converge to exit node B. The path is effectively 3 resistors in parallel (R/3) + 6 resistors in parallel (R/6) + 3 resistors in parallel (R/3). Sum = R/3 + R/6 + R/3 = 2R/6 + R/6 + 2R/6 = 5R/6."
+  },
+  {
+    "question": "Question 8: In a 100 prisoners problem where each can open 50 boxes to find their number, what is the probability of success for all 100?",
+    "answer": "Approximately 0.31",
+    "solution_explanation": "Using the cycle following strategy, the prisoners succeed if the random permutation contains no cycle longer than 50. The probability P approaches 1 - ln(2) as n goes to infinity. 1 - 0.693 = 0.307..."
+  },
+  {
+    "question": "Question 9: Calculate the relativistic relative velocity of two spaceships approaching each other, each moving at 0.9c relative to a central station.",
+    "answer": "0.9945c",
+    "solution_explanation": "Formula: v_rel = (v1 + v2) / (1 + v1*v2/c^2). Here v1=0.9c, v2=0.9c. v_rel = (1.8c) / (1 + 0.81) = 1.8c / 1.81 approx 0.994475c."
+  },
+  {
+    "question": "Question 10: How many distinct ways can you color the faces of a cube with 3 colors, considering rotations as identical?",
+    "answer": "57",
+    "solution_explanation": "Use Burnside's Lemma. |G|=24 rotations. 1 identity (3^6), 6 face rotations 90deg (3^3), 3 face rotations 180deg (3^4), 8 vertex rotations (3^2), 6 edge rotations (3^3). Sum = 729 + 6*27 + 3*81 + 8*9 + 6*27 = 729 + 162 + 243 + 72 + 162 = 1368. Divide by 24 = 57."
+  },
+  {
+    "question": "Question 11: What is the sum of the first 100 terms of the sequence 1, -2, 3, -4, 5...?",
+    "answer": "-50",
+    "solution_explanation": "Pairs (1-2) + (3-4) + ... + (99-100). There are 50 pairs, each summing to -1. Total sum is -50."
+  },
+  {
+    "question": "Question 12: In a game of Nim with piles of sizes 3, 4, and 5, what is the Nim-sum?",
+    "answer": "2",
+    "solution_explanation": "Convert to binary: 3=011, 4=100, 5=101. XOR operation: 011 ^ 100 ^ 101. 1^0^1=0 (4s place), 1^0^0=1 (2s place), 1^0^1=0 (1s place). Result 010, which is 2."
+  },
+  {
+    "question": "Question 13: How many integer solutions does x + y + z + w = 15 have, where x,y,z,w >= 1?",
+    "answer": "364",
+    "solution_explanation": "Stars and bars with lower bound 1. Let x'=x-1, etc. Sum becomes x'+y'+z'+w' = 11. Count is C(11+4-1, 4-1) = C(14,3) = (14*13*12)/6 = 364."
+  },
+  {
+    "question": "Question 14: What is the acceleration of the masses in an Atwood machine with m1=2kg and m2=3kg (g=9.8)?",
+    "answer": "1.96 m/s^2",
+    "solution_explanation": "a = g * (m2 - m1) / (m2 + m1) = 9.8 * (1 / 5) = 1.96."
+  },
+  {
+    "question": "Question 15: Find the number of subsets of {1, 2, ..., 10} that contain no consecutive integers.",
+    "answer": "144",
+    "solution_explanation": "This is F(n+2) where F is Fibonacci (F1=1, F2=1). For n=10, we need F(12). Sequence: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144."
+  },
+  {
+    "question": "Question 16: What is the probability of drawing a Full House in a standard 5-card poker hand?",
+    "answer": "0.00144",
+    "solution_explanation": "Total hands C(52,5) = 2,598,960. Full house: Choose rank for triple (13), choose 3 of 4 suits C(4,3). Choose rank for pair (12), choose 2 of 4 suits C(4,2). 13*4 * 12*6 = 3744. Prob = 3744 / 2,598,960 approx 0.00144."
+  },
+  {
+    "question": "Question 17: Solve for x: 2^x = 10 mod 17. (Discrete Logarithm)",
+    "answer": "No solution",
+    "solution_explanation": "Powers of 2 mod 17: 2, 4, 8, 16, 15, 13, 9, 1. The order is 8. The subgroup generated by 2 is {1,2,4,8,9,13,15,16}. 10 is not in this set."
+  },
+  {
+    "question": "Question 18: Five pirates (A, B, C, D, E) divide 100 coins. A proposes. They vote (including A). 50% or more carries. What does A get in the Nash Equilibrium?",
+    "answer": "98",
+    "solution_explanation": "Backward induction: E keeps 100. D vs E: D needs E's vote (impossible) or D keeps 100? No, D proposes, E votes no to get 100. D must give E 0? Wait. With 2 (D,E): D votes yes (50%), D keeps 100. With 3 (C,D,E): C needs 1 vote. Bribes E with 1 coin (E gets 0 from D). C keeps 99. With 4 (B,C,D,E): B needs 1 vote. D gets 0 from C, so B gives D 1 coin. B keeps 99. With 5 (A,B,C,D,E): A needs 2 votes. C gets 0 from B, E gets 0 from B. A gives C 1, E 1. A keeps 98."
+  },
+  {
+    "question": "Question 19: A ladder of length L leans against a smooth (frictionless) wall. Coefficient of friction with ground is mu. What is the minimum angle theta with ground to prevent slipping?",
+    "answer": "arctan(1 / (2*mu))",
+    "solution_explanation": "Torque and force balance. N_wall = Friction = mu*N_ground. N_ground = mg. Torque about bottom: mg(L/2)cos(theta) = N_wall(L)sin(theta). mu*mg*L*sin(theta) = mg(L/2)cos(theta). mu*tan(theta) = 1/2. tan(theta) = 1/(2mu)."
+  },
+  {
+    "question": "Question 20: How many zeros are at the end of 100!?",
+    "answer": "24",
+    "solution_explanation": "Count factors of 5. floor(100/5) + floor(100/25) = 20 + 4 = 24."
+  },
+  {
+    "question": "Question 21: Calculate the Euler totient function phi(2024).",
+    "answer": "880",
+    "solution_explanation": "Factor 2024: 2024 = 2^3 * 11 * 23. phi(2024) = 2024 * (1/2) * (10/11) * (22/23) = 1012 * 10/11 * 22/23. Easier: phi(8)*phi(11)*phi(23) = 4 * 10 * 22 = 880."
+  },
+  {
+    "question": "Question 22: What is the probability that three random points on a circle form an acute triangle?",
+    "answer": "1/4",
+    "solution_explanation": "For the triangle to be acute, all arc lengths between points must be less than half the circumference. This corresponds to a geometric probability region of volume 1/4 of the total configuration space."
+  },
+  {
+    "question": "Question 23: Determine the last two digits of 7^2023.",
+    "answer": "43",
+    "solution_explanation": "Look for pattern mod 100. 7^1=07, 7^2=49, 7^3=43, 7^4=01. Period is 4. 2023 mod 4 = 3. Last digits are same as 7^3 = 343 -> 43."
+  },
+  {
+    "question": "Question 24: How many 5-letter words from {A,B,C} have no two consecutive letters the same?",
+    "answer": "48",
+    "solution_explanation": "First letter: 3 choices. Second letter: 2 choices (must differ from 1st). Third: 2 choices. 3 * 2 * 2 * 2 * 2 = 3 * 16 = 48."
+  },
+  {
+    "question": "Question 25: A ball is dropped from height H and rebounds with coefficient of restitution e. What is the total distance traveled?",
+    "answer": "H * (1+e^2)/(1-e^2)",
+    "solution_explanation": "Distance = H + 2H(e^2) + 2H(e^4) ... = H + 2H*e^2(1 + e^2 + ...) = H + 2He^2/(1-e^2). Simplifying: H [ (1-e^2 + 2e^2) / (1-e^2) ] = H(1+e^2)/(1-e^2)."
+  },
+  {
+    "question": "Question 26: Find the number of integer solutions to x^2 - y^2 = 2024.",
+    "answer": "0",
+    "solution_explanation": "x^2 - y^2 = (x-y)(x+y). Since x-y and x+y have the same parity, their product must be odd or divisible by 4. 2024 is divisible by 4 (2024/4 = 506). So solutions exist. Wait. 2024/4 = 506. 506 = 2*11*23. Divisors of 506: 1, 2, 11, 22, 23, 46, ... Pairs (d, 2024/d) must have same parity (both even). 2024 is even. We need factors m,n such that m*n=2024 and m,n both even. Let m=2a, n=2b. 4ab=2024 -> ab=506. Number of factors of 506 (2*11*23) is (1+1)(1+1)(1+1) = 8. Each factor 'a' gives a pair (2a, 2*(506/a)). There are 8 such pairs of positive factors. For each pair, x = (m+n)/2, y=(n-m)/2. Since order and sign matter, usually we count positive integers. Question asks 'integer solutions' (implies +/-). 8 pairs of (m,n). Each gives x, y. +/- x, +/- y gives 4 variations. Total 8 * 4 = 32? Wait. m and n must be same sign. if m,n positive, x,y positive. x^2-y^2=2024. Factors of 2024/4=506 are 8. Pairs (a,b) such that ab=506. 8 pairs. yielding 8 positive solutions. +/- combinations -> 8*4 = 32. But wait, if x=0 or y=0? 2024 not square. So 32."
+  },
+  {
+    "question": "Question 27: What is the value of the infinite product (2/1) * (2/3) * (4/3) * (4/5) * (6/5) * ... (Wallis Product)?",
+    "answer": "pi / 2",
+    "solution_explanation": "This is the famous Wallis Product for pi/2 derived from the sine product formula."
+  },
+  {
+    "question": "Question 28: A particle moves in a potential V(x) = k|x|. What is the dependence of the period T on energy E?",
+    "answer": "T is independent of E",
+    "solution_explanation": "Wait, for V ~ x^2 (SHO), T is independent. For V ~ |x|, dimensions: E ~ A. Force constant. Distance ~ E. Velocity ~ sqrt(E). Time ~ Dist/Vel ~ E/sqrt(E) ~ sqrt(E)? Let's check dimensional analysis. E = kA. Turning point A = E/k. Period T = 4 * int_0^A dx / sqrt(2/m(E-kx)). Let u = kx/E. T ~ sqrt(m) * int... factor E comes out as 1/sqrt(E) * distance A. A ~ E. So T ~ E / sqrt(E) = sqrt(E). The period scales with square root of Energy. My 'independent' intuition was for Harmonic Oscillator."
+  },
+  {
+    "question": "Question 29: How many ways can 6 people sit around a round table if two specific people refuse to sit next to each other?",
+    "answer": "72",
+    "solution_explanation": "Total circular permutations of 6: (6-1)! = 120. Treat pair AB as one unit: (5-1)! * 2 (internal swap) = 24 * 2 = 48. Total - Together = 120 - 48 = 72."
+  },
+  {
+    "question": "Question 30: What is the chromatic number of the Petersen Graph?",
+    "answer": "3",
+    "solution_explanation": "The Petersen graph contains a 5-cycle (odd cycle), so it needs at least 3 colors. It can be explicitly colored with 3."
+  },
+  {
+    "question": "Question 31: Find the area of the region bounded by |x| + |y| = 1.",
+    "answer": "2",
+    "solution_explanation": "This describes a square rotated by 45 degrees with vertices at (1,0), (0,1), (-1,0), (0,-1). Diagonals are length 2. Area = 1/2 * d1 * d2 = 1/2 * 2 * 2 = 2."
+  },
+  {
+    "question": "Question 32: If f(x) = x / (1-x), what is the n-th iteration f^n(x)?",
+    "answer": "x / (1 - nx)",
+    "solution_explanation": "f(x) = x/(1-x). f(f(x)) = (x/(1-x)) / (1 - x/(1-x)) = x / (1-x-x) = x/(1-2x). Induction shows f^n(x) = x / (1-nx)."
+  },
+  {
+    "question": "Question 33: Two trains 100km apart approach at 50km/h each. A fly starts at one, flies to the other at 75km/h, turns around, and repeats until collision. Total distance of fly?",
+    "answer": "75 km",
+    "solution_explanation": "Time until collision = Distance / Relative Speed = 100 / (50+50) = 1 hour. Fly flies for 1 hour at 75km/h. Distance = 75 * 1 = 75km."
+  },
+  {
+    "question": "Question 34: Calculate the Legendre symbol (3/101).",
+    "answer": "-1",
+    "solution_explanation": "Using Quadratic Reciprocity: (3/101) * (101/3) = (-1)^((3-1)/2 * (101-1)/2) = (-1)^(1*50) = 1. So (3/101) = (101/3). 101 mod 3 = 2. So we need (2/3). 2 is not a square mod 3 (1^2=1, 2^2=1). So (2/3) = -1. Thus (3/101) = -1."
+  },
+  {
+    "question": "Question 35: A box contains 2 gold and 3 silver coins. You draw 2 without replacement. Probability of 1 gold, 1 silver?",
+    "answer": "0.6",
+    "solution_explanation": "Total ways C(5,2) = 10. Ways to choose 1G (C(2,1)) and 1S (C(3,1)): 2 * 3 = 6. Prob = 6/10 = 0.6."
+  },
+  {
+    "question": "Question 36: What is the sum of the digits of the number 10^50 - 50?",
+    "answer": "444",
+    "solution_explanation": "10^50 is 1 followed by 50 zeros. Subtracting 50: ...00000 - 50 = ...999950. There are 48 nines, one 5, one 0. Sum = 48*9 + 5 = 432 + 5 = 437. Wait. 100 - 50 = 50 (1 zero, 0 nines). 1000 - 50 = 950 (1 nine). 10^k - 50 has k-2 nines. k=50 -> 48 nines. Sum = 48*9 + 5 + 0 = 432+5 = 437. Let me re-verify. 10^2 - 50 = 50 (sum 5). k-2 formula: 2-2=0 nines. Correct. 10^3 - 50 = 950 (sum 14 = 9+5). k-2=1 nine. Correct. So 48*9 + 5 = 437."
+  },
+  {
+    "question": "Question 37: A function f: R -> R satisfies f(x+y) = f(x)f(y) and f(1)=2. Find f(3).",
+    "answer": "8",
+    "solution_explanation": "This implies f(x) = a^x. f(1) = a^1 = 2, so a=2. f(3) = 2^3 = 8."
+  },
+  {
+    "question": "Question 38: Find the number of trailing zeros in 2024 in base 16.",
+    "answer": "0",
+    "solution_explanation": "Zeros in base 16 depend on the divisibility by 16. 2024 / 16 = 126.5. Not divisible. 2024 / 8 = 253. It is divisible by 8 (which is half a 16). In hex, 2024 is 7E8. Ends in 8. No trailing zeros."
+  },
+  {
+    "question": "Question 39: In the Monty Hall problem with 4 doors and 1 host-opening, does switching increase probability?",
+    "answer": "Yes",
+    "solution_explanation": "Initial choice: 1/4. Unchosen group: 3/4. Host opens 1 door (0 probability). The remaining 2 doors split the 3/4 probability? Usually assumed equal split -> 3/8 each. Switching gives 3/8 vs Staying 1/4 (2/8). Yes, increase."
+  },
+  {
+    "question": "Question 40: Calculate the determinant of the 3x3 matrix [[1, 2, 3], [2, 5, 8], [3, 8, 14]].",
+    "answer": "-1",
+    "solution_explanation": "1(70-64) - 2(28-24) + 3(16-15) = 1(6) - 2(4) + 3(1) = 6 - 8 + 3 = 1. Wait. Let me recompute. 1(70-64) = 6. -2(28-24) = -8. 3(16-15) = 3. Sum = 1. Let me verify properties. Row 2 - 2*Row 1 = [0, 1, 2]. Row 3 - 3*Row 1 = [0, 2, 5]. New det: 1 * (1*5 - 2*2) = 5-4 = 1. Answer is 1."
+  },
+  {
+    "question": "Question 41: How many positive integer divisors does 2000 have?",
+    "answer": "20",
+    "solution_explanation": "2000 = 2 * 1000 = 2 * 10^3 = 2 * 2^3 * 5^3 = 2^4 * 5^3. Divisors = (4+1)(3+1) = 5 * 4 = 20."
+  },
+  {
+    "question": "Question 42: What is the maximum number of pieces a pizza can be cut into with 10 straight cuts?",
+    "answer": "56",
+    "solution_explanation": "Lazy caterer's sequence: n(n+1)/2 + 1. For n=10: 10(11)/2 + 1 = 55 + 1 = 56."
+  },
+  {
+    "question": "Question 43: Two dice are rolled. What is the probability that the product of the numbers is a perfect square?",
+    "answer": "2/9",
+    "solution_explanation": "36 outcomes. Squares: 1 (1,1), 4 (1,4; 2,2; 4,1), 9 (3,3), 16 (4,4), 25 (5,5), 36 (6,6). Only these? Check products: 2*2=4. 1*4=4. 3*3=9. 4*1=4. 4*4=16. 5*5=25. 6*6=36. Total pairs: (1,1), (1,4), (4,1), (2,2), (3,3), (4,4), (5,5), (6,6). 8 outcomes. 8/36 = 2/9."
+  },
+  {
+    "question": "Question 44: Find the harmonic mean of 2, 4, and 8.",
+    "answer": "24/7",
+    "solution_explanation": "H = n / sum(1/xi) = 3 / (1/2 + 1/4 + 1/8). Denom = (4+2+1)/8 = 7/8. H = 3 / (7/8) = 24/7."
+  },
+  {
+    "question": "Question 45: What is the coefficient of the middle term in the expansion of (a+b)^6?",
+    "answer": "20",
+    "solution_explanation": "Middle term is index 3 (0,1,2,3,4,5,6). C(6,3) = (6*5*4)/(3*2*1) = 20."
+  },
+  {
+    "question": "Question 46: A 3x3x3 cube is painted red on the outside and cut into 27 1x1x1 small cubes. How many have exactly 2 red faces?",
+    "answer": "12",
+    "solution_explanation": "2 red faces are the edge pieces (not corners). 12 edges on a cube. 1 middle cube per edge. Total 12."
+  },
+  {
+    "question": "Question 47: Solve for x: log_2(x) + log_2(x-2) = 3.",
+    "answer": "4",
+    "solution_explanation": "log_2(x(x-2)) = 3. x(x-2) = 2^3 = 8. x^2 - 2x - 8 = 0. (x-4)(x+2)=0. x=4 or x=-2. Log argument must be positive, so x=4."
+  },
+  {
+    "question": "Question 48: Determine the number of subsets of {1, 2, 3, 4, 5} that have an odd number of elements.",
+    "answer": "16",
+    "solution_explanation": "Total subsets 2^5 = 32. Exactly half have odd cardinality and half even. 32/2 = 16."
+  },
+  {
+    "question": "Question 49: If f(x) = 2x + 1 and g(x) = 3x - 1, find f(g(2)).",
+    "answer": "11",
+    "solution_explanation": "g(2) = 3(2)-1 = 5. f(5) = 2(5)+1 = 11."
+  },
+  {
+    "question": "Question 50: Find the unit digit of 3^100.",
+    "answer": "1",
+    "solution_explanation": "Powers of 3 mod 10 cycle: 3, 9, 7, 1. Cycle length 4. 100 is divisible by 4. Unit digit is 1."
+  }
+]

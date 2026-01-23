@@ -1,0 +1,127 @@
+[
+  {
+    "question": "Geometry G1:\nA circle is tangent to both coordinate axes in the first quadrant and passes through the point (6, 8).\nFind the **smaller** possible radius r.\n\nInstructions: Show key steps briefly. End with `FINAL: r = ...` (exact form preferred).",
+    "answer": "FINAL: r = 14 - 4*sqrt(6)  (approx 4.202)",
+    "solution_explanation": "Tangency to both axes in the first quadrant implies the center is (r, r). Using the point-on-circle condition: (6-r)^2 + (8-r)^2 = r^2, which simplifies to r^2 - 28r + 100 = 0. Solving gives r = 14 +/- 4*sqrt(6); the smaller radius is 14 - 4*sqrt(6)."
+  },
+  {
+    "question": "Geometry G2:\nIn triangle ABC, AB=13, AC=14, BC=15. Point D lies on BC such that BD:DC = 2:3.\nFind the area of triangle ABD.\n\nInstructions: Show key steps briefly. End with `FINAL: <number>` (exact fraction preferred).",
+    "answer": "FINAL: 168/5",
+    "solution_explanation": "Heron's formula gives area(ABC)=84. Triangles ABD and ABC share the same altitude from A to line BC, so areas scale with their bases on BC: area(ABD) = (BD/BC)*area(ABC). With BD = (2/5)*15 = 6 and BC=15, area(ABD)=(6/15)*84=168/5."
+  },
+  {
+    "question": "Algebra A1:\nConsider x^2 - (k+5)x + 4k = 0.\nFind all integers k for which **both roots are integers**.\n\nInstructions: Show key steps briefly. End with `FINAL: k = {...}`.",
+    "answer": "FINAL: k = {0, 3, 6}",
+    "solution_explanation": "For integer roots, the discriminant must be a perfect square and roots must have correct parity. D=(k+5)^2-16k = k^2-6k+25 = (k-3)^2+16. Checking integer k where this becomes a square yields k=0,3,6 (giving roots (0,5), (2,6), (3,8))."
+  },
+  {
+    "question": "Algebra A2:\nA function f: Z->Z satisfies f(0)=1 and for all integers n>=0: f(n+1)=2f(n)+1.\nFind a closed form for f(n) and compute f(10).\n\nInstructions: Show key steps briefly. End with `FINAL: f(n)=..., f(10)=...`.",
+    "answer": "FINAL: f(n)=2^(n+1)-1, f(10)=2047",
+    "solution_explanation": "This is a linear recurrence: f(n+1)+1 = 2(f(n)+1). With f(0)+1=2, we get f(n)+1=2^(n+1), hence f(n)=2^(n+1)-1 and f(10)=2^11-1=2047."
+  },
+  {
+    "question": "Algebra A3:\nReal numbers x,y,z satisfy:\nx+y+z=6,\nxy+yz+zx=11,\nxyz=6.\nFind x^2+y^2+z^2.\n\nInstructions: Show key steps briefly. End with `FINAL: <number>`.",
+    "answer": "FINAL: 14",
+    "solution_explanation": "x,y,z are roots of t^3-6t^2+11t-6=0. This factors as (t-1)(t-2)(t-3)=0, so {x,y,z}={1,2,3}. Then x^2+y^2+z^2=1^2+2^2+3^2=14."
+  },
+  {
+    "question": "Physics P1:\nBlock A (3 kg) on a horizontal table has coefficient of kinetic friction muk=0.2. It is connected by a light string over a frictionless pulley to hanging block B (2 kg). Take g=9.8 m/s^2.\nFind the acceleration magnitude a and the string tension T.\n\nInstructions: Show key steps briefly. End with `FINAL: a=... m/s^2, T=... N` (round to 3 decimals).",
+    "answer": "FINAL: a=2.744 m/s^2, T=14.112 N",
+    "solution_explanation": "Friction on A: f=muk*mA*g=0.2*3*9.8=5.88 N. Net driving force: mB*g - f = 19.6-5.88=13.72 N. Total mass = 5 kg, so a=13.72/5=2.744. Tension from block A: T = mA*a + f = 3*2.744+5.88=14.112 N."
+  },
+  {
+    "question": "Physics P2:\nA bullet of mass m=0.020 kg embeds in a wooden block of mass M=1.98 kg suspended by a light string. After impact, the combined mass rises to a maximum height h=0.50 m. Take g=9.8 m/s^2.\nFind the bullet's initial speed.\n\nInstructions: Show key steps briefly. End with `FINAL: v=... m/s` (round to 2 decimals).",
+    "answer": "FINAL: v=313.05 m/s",
+    "solution_explanation": "After collision, mechanical energy converts to potential: (1/2)(M+m)V^2=(M+m)gh => V=sqrt(2gh)=sqrt(9.8)=3.1305 m/s. Momentum conservation during inelastic impact: m*v=(M+m)*V. With (M+m)=2.00 kg and m=0.02 kg, v=(2.00/0.02)*V=100*V approx 313.05 m/s."
+  },
+  {
+    "question": "Physics P3:\nA capacitor C=100 uF charges through a resistor R=2 kOhm from a 12 V ideal battery. Initially uncharged.\nHow long until the capacitor reaches 9 V?\n\nInstructions: Show key steps briefly. End with `FINAL: t=... s` (round to 4 decimals).",
+    "answer": "FINAL: t=0.2773 s",
+    "solution_explanation": "Charging law: Vc(t)=V(1-e^(-t/RC)). Here 9/12=0.75=1-e^(-t/RC) => e^(-t/RC)=0.25 => t=RC*ln(4). With RC=2000*100e-6=0.2 s, t=0.2*ln(4) approx 0.2773 s."
+  },
+  {
+    "question": "Physics P4 (fixed):\nA ball is thrown from the ground with speed 20 m/s at angle 30 deg above horizontal. At the instant of launch, a small cart (treat as a point target) is 30 m away and moves directly away from the launcher at constant speed vc. Neglect air resistance. Take g=10 m/s^2.\nFind the **maximum** cart speed vc such that the ball can still land on the cart.\n\nInstructions: Show key steps briefly. End with `FINAL: vc=... m/s` (exact form or round to 3 decimals).",
+    "answer": "FINAL: vc = 10*sqrt(3) - 15  (approx 2.321 m/s)",
+    "solution_explanation": "Time of flight: T=2*v*sin(theta)/g = 2*20*0.5/10 = 2 s. Range: R=v^2*sin(2theta)/g = 400*sin(60)/10 = 40*(sqrt(3)/2)=20*sqrt(3). Cart position at landing: 30 + vc*T. For landing on the point cart at t=T: 30+2vc=20*sqrt(3) => vc=10*sqrt(3)-15 approx 2.321 m/s."
+  },
+  {
+    "question": "Physics P5:\nA solid cylinder rolls without slipping down an incline from rest through a vertical height h=2.0 m. Take g=9.8 m/s^2.\nFind its speed at the bottom.\n\nInstructions: Show key steps briefly. End with `FINAL: v=... m/s` (round to 3 decimals).",
+    "answer": "FINAL: v=5.112 m/s",
+    "solution_explanation": "Energy conservation: mgh=(1/2)mv^2+(1/2)I*omega^2. For a solid cylinder, I=(1/2)mR^2 and omega=v/R, so rotational KE=(1/4)mv^2. Total KE=(3/4)mv^2 => v^2=(4/3)gh. With g=9.8, h=2, v=sqrt((4/3)*9.8*2)=5.112 m/s."
+  },
+  {
+    "question": "Robotics R1:\nA differential-drive robot has wheelbase L=0.30 m. Over a short interval, the left wheel travels dL=0.80 m and the right wheel travels dR=1.20 m. The robot starts at (x,y)=(0,0) facing +x.\nAssuming constant-curvature motion, find the final pose (x,y,theta) where theta is in radians (CCW from +x).\n\nInstructions: Show key steps briefly. End with `FINAL: x=..., y=..., theta=...` (round x,y to 3 decimals; theta may be exact).",
+    "answer": "FINAL: x=0.729, y=0.574, theta=4/3 rad (approx 1.333)",
+    "solution_explanation": "Heading change dtheta=(dR-dL)/L = 0.4/0.3=4/3. Arc length d=(dR+dL)/2=1. ICC radius R=d/dtheta=0.75. With initial heading 0: x=R*sin(dtheta), y=R*(1-cos(dtheta)). Numerically x approx 0.72895, y approx 0.57357."
+  },
+  {
+    "question": "Robotics R2:\nA planar 2-link arm has lengths L1=3 and L2=4. The end-effector target is (x,y)=(0,5).\nFind joint angles (theta1, theta2) in radians for the **elbow-up** solution, where theta1 is measured from +x and theta2 is the elbow angle between links.\n\nInstructions: Show key steps briefly. End with `FINAL: theta1=..., theta2=...` (round to 4 decimals).",
+    "answer": "FINAL: theta1=0.6435 rad, theta2=1.5708 rad",
+    "solution_explanation": "Distance to target is 5. Law of cosines: cos(theta2)=(L1^2+L2^2-d^2)/(2L1L2)=(9+16-25)/24=0 => theta2=pi/2. Let phi=atan2(y,x)=pi/2 and alpha=atan2(L2*sin(theta2), L1+L2*cos(theta2))=atan2(4,3). Elbow-up gives theta1=phi-alpha=pi/2-atan2(4,3) approx 0.6435."
+  },
+  {
+    "question": "Robotics R3:\nYou track a 1D position x. Prior belief: x ~ N(10, 4) (mean 10, variance 4). A sensor measures z=13 with measurement noise variance R=9. Measurement model: z = x + noise.\nCompute the posterior mean and variance after one Kalman update.\n\nInstructions: Show key steps briefly. End with `FINAL: mean=..., var=...` (exact fractions preferred; otherwise 4 decimals).",
+    "answer": "FINAL: mean=142/13 (approx 10.9231), var=36/13 (approx 2.7692)",
+    "solution_explanation": "Kalman gain K=P/(P+R)=4/(4+9)=4/13. Posterior mean = mu + K(z-mu)=10+(4/13)*3=142/13. Posterior variance=(1-K)P=(9/13)*4=36/13."
+  },
+  {
+    "question": "Robotics R4:\nA point in robot frame is pr=(2,1). The robot frame is rotated by 90 deg CCW relative to the world frame, and the robot origin is at world coordinates (5, -3).\nCompute the point in world coordinates pw.\n\nInstructions: Show key steps briefly. End with `FINAL: (x,y)=(...,...)`.",
+    "answer": "FINAL: (x,y)=(4,-1)",
+    "solution_explanation": "A 90 deg CCW rotation maps (x,y)->(-y,x). So (2,1)->(-1,2). Then translate by (5,-3): (5-1, -3+2)=(4,-1)."
+  },
+  {
+    "question": "Robotics R5:\nA robot moves on a 5x5 grid from S to G using only up/down/left/right moves. Each move costs 1. Obstacles (#) are blocked.\nGrid (row 1 at top):\nRow1: S . # . .\nRow2: . . # . #\nRow3: # . . . .\nRow4: . # # . .\nRow5: . . . # G\nFind the length of the shortest path.\n\nInstructions: Show key steps briefly. End with `FINAL: <integer>`.",
+    "answer": "FINAL: 8",
+    "solution_explanation": "This is a shortest path on an unweighted grid, solvable by BFS. Exploring from S through free cells yields the minimum distance to G as 8 moves."
+  },
+  {
+    "question": "Logic L1:\nOn an island, Knights always tell the truth and Knaves always lie.\nA says: \"B is a Knave.\"\nB says: \"C is a Knave.\"\nC says: \"A and B are of different types.\"\nDetermine who is Knight/Knave.\n\nInstructions: Show key steps briefly. End with `FINAL: A=..., B=..., C=...`.",
+    "answer": "FINAL: A=Knight, B=Knave, C=Knight",
+    "solution_explanation": "Assume A is a Knight -> B is a Knave. Then B's statement must be false -> C is a Knight. C's statement then says A and B differ, which holds. Other assumptions lead to contradictions."
+  },
+  {
+    "question": "Logic L2:\nThree friends make statements about a positive integer n. Exactly one statement is false:\n1) n is divisible by 6\n2) n is divisible by 4\n3) n is divisible by 3\nFind the smallest positive n that satisfies this.\n\nInstructions: Show key steps briefly. End with `FINAL: n=...`.",
+    "answer": "FINAL: n=6",
+    "solution_explanation": "We need exactly one false. Testing small n: n=6 makes (1) true, (2) false, (3) true, so exactly one is false, and it is the smallest such n."
+  },
+  {
+    "question": "Logic L3 (fixed):\nYou see two cards, each with a statement:\nCard 1: \"Exactly one of these two cards is true.\"\nCard 2: \"Card 1 is false.\"\nAssume each statement is either True or False (no paradoxes).\nDetermine the truth values.\n\nInstructions: Show key steps briefly. End with `FINAL: Card1=..., Card2=...`.",
+    "answer": "FINAL: Card1=True, Card2=False",
+    "solution_explanation": "Let T1, T2 be truth values. If T1 is true, then 'exactly one is true' forces T2 false; Card2 says Card1 is false, which is then false, consistent. If T1 is false, then the 'exactly one true' statement is false, implying either both true or both false, but Card2 would become true (since Card1 is false), contradiction. So only T1 true, T2 false."
+  },
+  {
+    "question": "Logic L4:\nThree people (Aria, Ben, Cato) each own a different pet (Cat, Dog, Fish) and live in different colored houses (Red, Blue, Green).\nClues:\n1) Aria does not live in Red.\n2) The Fish is owned by the person in Blue.\n3) Ben does not own the Dog.\n4) Cato lives in Green.\nDetermine each person's house color and pet.\n\nInstructions: Show key steps briefly. End with `FINAL: Aria=(color,pet), Ben=(color,pet), Cato=(color,pet)`.",
+    "answer": "FINAL: Aria=(Blue,Fish), Ben=(Red,Cat), Cato=(Green,Dog)",
+    "solution_explanation": "Cato is Green. Aria cannot be Red, so Aria must be Blue. Fish is in Blue, so Aria has Fish. Ben is then Red, and Ben cannot have Dog, so Ben has Cat. Remaining pet for Cato is Dog."
+  },
+  {
+    "question": "Logic L5:\nYou have three boxes labeled Apples, Oranges, Mixed. Each label is wrong. You may draw one fruit from one box (without looking inside) and must correctly relabel all boxes.\nWhich box do you pick from, and how do you relabel?\n\nInstructions: Show key steps briefly. End with `FINAL: pick=<...>; relabel: Apples->..., Oranges->..., Mixed->...`.",
+    "answer": "FINAL: pick=Mixed; if draw Apple: Mixed->Apples, Oranges->Mixed, Apples->Oranges; if draw Orange: Mixed->Oranges, Apples->Mixed, Oranges->Apples",
+    "solution_explanation": "All labels are wrong, so the box labeled Mixed is not mixed; it's a pure box (all Apples or all Oranges). Drawing one fruit from it reveals which. Then the remaining two boxes must be assigned by elimination because their labels are also wrong."
+  },
+  {
+    "question": "Probability PR1:\nA disease affects 2% of people. A test has sensitivity 95% and specificity 90%.\nIf someone tests positive, what is P(disease | +)? Round to 3 decimals.\n\nInstructions: Show key steps briefly. End with `FINAL: <decimal>`.",
+    "answer": "FINAL: 0.162",
+    "solution_explanation": "Bayes: P(D|+)= (0.95*0.02) / (0.95*0.02 + 0.10*0.98) = 0.019 / 0.117 approx 0.16239, so 0.162."
+  },
+  {
+    "question": "Probability PR2:\nThere are 4 doors: 1 car and 3 goats. You pick 1 door. The host then opens exactly two other doors, always revealing goats. If multiple valid ways to open two goat doors exist, the host chooses uniformly among them.\nYou then switch to the only remaining unopened door.\nWhat is the probability you win the car if you switch?\n\nInstructions: Show key steps briefly. End with `FINAL: <fraction or decimal>`.",
+    "answer": "FINAL: 3/4",
+    "solution_explanation": "If your initial pick is a goat (prob 3/4), the host must open the other two goats, leaving the car as the only unopened door, so switching wins. If your initial pick is the car (1/4), switching loses. Therefore P(win by switching)=3/4."
+  },
+  {
+    "question": "Probability PR3:\nTwo cards are drawn from a standard 52-card deck without replacement.\nGiven that at least one card is a heart, what is the probability that both are hearts?\n\nInstructions: Show key steps briefly. End with `FINAL: <fraction>`.",
+    "answer": "FINAL: 2/15",
+    "solution_explanation": "P(HH)=(13/52)(12/51)=13/221. P(at least one heart)=1-(39/52)(38/51)=195/442. Conditional probability is (13/221)/(195/442)=26/195=2/15."
+  },
+  {
+    "question": "Probability PR4:\nAn urn contains 3 red and 2 blue balls. Two balls are drawn without replacement.\nGiven that the two balls are different colors, what is the probability that the first ball drawn was red?\n\nInstructions: Show key steps briefly. End with `FINAL: <fraction>`.",
+    "answer": "FINAL: 1/2",
+    "solution_explanation": "P(R then B)=(3/5)(2/4)=3/10 and P(B then R)=(2/5)(3/4)=3/10. Given different colors, RB and BR are equally likely, so P(first red | different)= (3/10)/(3/10+3/10)=1/2."
+  },
+  {
+    "question": "Probability PR5:\nYou roll a fair die repeatedly until you see a 6, or until you have rolled exactly 4 times (whichever comes first).\nWhat is the expected number of rolls?\n\nInstructions: Show key steps briefly. End with `FINAL: E=...` (exact fraction preferred; otherwise 5 decimals).",
+    "answer": "FINAL: E = 671/216 (approx 3.10648)",
+    "solution_explanation": "Let T be geometric with success probability 1/6. E[min(T,4)] = sum_{k=1 to 4} P(T>=k). Here P(T>=k)=(5/6)^(k-1). So E = 1 + (5/6) + (5/6)^2 + (5/6)^3 = 671/216 approx 3.10648."
+  }
+]

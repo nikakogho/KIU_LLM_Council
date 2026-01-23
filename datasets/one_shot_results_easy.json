@@ -1,0 +1,552 @@
+[
+  {
+    "question": "Geometry G1:\nA circle is tangent to both coordinate axes in the first quadrant and passes through the point (6, 8).\nFind the **smaller** possible radius r.\n\nInstructions: Show key steps briefly. End with `FINAL: r = ...` (exact form preferred).",
+    "correct_answer": "FINAL: r = 14 - 4*sqrt(6)  (approx 4.202)",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Center must be at (r, r) for a circle tangent to both axes in the first quadrant.\n- Equation: (x - r)^2 + (y - r)^2 = r^2.\n- Through (6, 8): (6 - r)^2 + (8 - r)^2 = r^2.\n- Solve: (r - 6)^2 + (r - 8)^2 = r^2 \u2192 2r^2 - 28r + 100 = r^2 \u2192 r^2 - 28r + 100 = 0.\n- Solutions: r = 14 \u00b1 4\u221a6; smaller is r = 14 - 4\u221a6.\n\nFINAL: r = 14 - 4\u221a6"
+      },
+      {
+        "provider": "xai",
+        "answer": "The circle is tangent to both axes in the first quadrant, so its center is at (r, r) and its equation is (x - r)^2 + (y - r)^2 = r^2.\n\nIt passes through (6, 8), so substitute into the equation:  \n(6 - r)^2 + (8 - r)^2 = r^2  \n\nExpand:  \n36 - 12r + r^2 + 64 - 16r + r^2 = r^2  \n2r^2 - 28r + 100 = r^2  \n\nSimplify:  \nr^2 - 28r + 100 = 0  \n\nSolve using the quadratic formula:  \nr = [28 \u00b1 \u221a(784 - 400)] / 2 = [28 \u00b1 \u221a384] / 2 = [28 \u00b1 8\u221a6] / 2 = 14 \u00b1 4\u221a6  \n\nThe possible radii are 14 + 4\u221a6 and 14 - 4\u221a6. The smaller is 14 - 4\u221a6.  \n\nFINAL: r = 14 - 4\u221a6"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "I need to find a circle tangent to both coordinate axes in the first quadrant that passes through (6, 8).\n\n**Setting up the circle equation:**\n\nIf a circle is tangent to both coordinate axes in the first quadrant, its center must be at (r, r) where r is the radius.\n\nThe circle equation is:\n$$(x - r)^2 + (y - r)^2 = r^2$$\n\n**Using the point (6, 8):**\n\nSince the circle passes through (6, 8):\n$$(6 - r)^2 + (8 - r)^2 = r^2$$\n\n**Expanding:**\n$$36 - 12r + r^2 + 64 - 16r + r^2 = r^2$$\n\n$$100 - 28r + 2r^2 = r^2$$\n\n$$r^2 - 28r + 100 = 0$$\n\n**Using the quadratic formula:**\n$$r = \\frac{28 \\pm \\sqrt{784 - 400}}{2}$$\n\n$$r = \\frac{28 \\pm \\sqrt{384}}{2}$$\n\n$$r = \\frac{28 \\pm 8\\sqrt{6}}{2}$$\n\n$$r = 14 \\pm 4\\sqrt{6}$$\n\n**Finding the smaller radius:**\n\nThe two solutions are:\n- $r_1 = 14 - 4\\sqrt{6}$\n- $r_2 = 14 + 4\\sqrt{6}$\n\nSince $\\sqrt{6} \\approx 2.449$, we have $4\\sqrt{6} \\approx 9.8$\n\nSo $r_1 \\approx 4.2$ and $r_2 \\approx 23.8$\n\nThe smaller radius is $r = 14 - 4\\sqrt{6}$.\n\n**Verification:** Both values are positive (since $4\\sqrt{6} < 14$), and both represent valid circles tangent to both axes passing through (6, 8).\n\nFINAL: $r = 14 - 4\\sqrt{6}$"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Let the center of the circle be (r, r) since it is tangent to both coordinate axes in the first quadrant.\nThe equation of the circle is $(x-r)^2 + (y-r)^2 = r^2$.\nThe circle passes through the point (6, 8). Substitute these coordinates into the equation:\n$(6-r)^2 + (8-r)^2 = r^2$\nExpand the equation:\n$36 - 12r + r^2 + 64 - 16r + r^2 = r^2$\nCombine like terms:\n$2r^2 - 28r + 100 = r^2$\nRearrange into a quadratic equation:\n$r^2 - 28r + 100 = 0$\nUse the quadratic formula to solve for r:\n$r = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$\nHere, a = 1, b = -28, c = 100.\n$r = \\frac{28 \\pm \\sqrt{(-28)^2 - 4(1)(100)}}{2(1)}$\n$r = \\frac{28 \\pm \\sqrt{784 - 400}}{2}$\n$r = \\frac{28 \\pm \\sqrt{384}}{2}$\nSimplify the square root: $\\sqrt{384} = \\sqrt{64 \\times 6} = 8\\sqrt{6}$.\n$r = \\frac{28 \\pm 8\\sqrt{6}}{2}$\n$r = 14 \\pm 4\\sqrt{6}$\nThe two possible radii are $14 + 4\\sqrt{6}$ and $14 - 4\\sqrt{6}$.\nWe need to find the smaller possible radius.\n$4\\sqrt{6} = \\sqrt{16 \\times 6} = \\sqrt{96}$. Since $\\sqrt{96} < \\sqrt{196} = 14$, both radii are positive.\nThe smaller radius is $14 - 4\\sqrt{6}$.\n\nFINAL: r = $14 - 4\\sqrt{6}$"
+      }
+    ]
+  },
+  {
+    "question": "Geometry G2:\nIn triangle ABC, AB=13, AC=14, BC=15. Point D lies on BC such that BD:DC = 2:3.\nFind the area of triangle ABD.\n\nInstructions: Show key steps briefly. End with `FINAL: <number>` (exact fraction preferred).",
+    "correct_answer": "FINAL: 168/5",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- BD:DC = 2:3 with BC = 15 gives BD = 6, DC = 9.\n- Area of ABC: s = 21; Area = sqrt(21\u00b78\u00b77\u00b76) = sqrt(7056) = 84.\n- Since BD lies on BC, area ABD = (BD/BC) \u00b7 Area(ABC) = (6/15) \u00b7 84 = (2/5) \u00b7 84 = 168/5.\n\nFINAL: 168/5"
+      },
+      {
+        "provider": "xai",
+        "answer": "Triangle ABC has sides AB=13, AC=14, BC=15.\n\nSemi-perimeter s = (13+14+15)/2 = 21.\n\nArea of ABC = \u221a[21(21-15)(21-14)(21-13)] = \u221a[21\u00d76\u00d77\u00d78] = \u221a7056 = 84.\n\nBD:DC = 2:3, so BD = (2/5)\u00d715 = 6.\n\nArea of ABD = (BD / BC) \u00d7 Area of ABC = (6/15) \u00d7 84 = (2/5) \u00d7 84 = 168/5.\n\nFINAL: 168/5"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "I need to find the area of triangle ABD, where D divides BC in the ratio 2:3.\n\n**Step 1: Find the area of triangle ABC using Heron's formula.**\n\nWith sides a = BC = 15, b = AC = 14, c = AB = 13:\n- Semi-perimeter: $s = \\frac{13 + 14 + 15}{2} = \\frac{42}{2} = 21$\n\n- Area: $K = \\sqrt{s(s-a)(s-b)(s-c)} = \\sqrt{21 \\cdot 6 \\cdot 7 \\cdot 8}$\n\nLet me compute:\n$$K = \\sqrt{21 \\cdot 6 \\cdot 7 \\cdot 8} = \\sqrt{7056} = 84$$\n\n**Step 2: Find BD using the given ratio.**\n\nSince BD:DC = 2:3 and BC = 15:\n$$BD = \\frac{2}{5} \\cdot 15 = 6$$\n\n**Step 3: Find the area of triangle ABD.**\n\nTriangles ABD and ABC share the same height from vertex A to line BC. Therefore, their areas are proportional to their bases:\n\n$$\\frac{[\\triangle ABD]}{[\\triangle ABC]} = \\frac{BD}{BC} = \\frac{6}{15} = \\frac{2}{5}$$\n\nThus:\n$$[\\triangle ABD] = \\frac{2}{5} \\cdot 84 = \\frac{168}{5}$$\n\nFINAL: $\\frac{168}{5}$"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Let $a=BC=15$, $b=AC=14$, $c=AB=13$.\nThe semi-perimeter of triangle ABC is $s = \\frac{13+14+15}{2} = \\frac{42}{2} = 21$.\nThe area of triangle ABC can be found using Heron's formula:\nArea(ABC) = $\\sqrt{s(s-a)(s-b)(s-c)} = \\sqrt{21(21-15)(21-14)(21-13)} = \\sqrt{21 \\cdot 6 \\cdot 7 \\cdot 8} = \\sqrt{3 \\cdot 7 \\cdot 2 \\cdot 3 \\cdot 7 \\cdot 2^3} = \\sqrt{2^4 \\cdot 3^2 \\cdot 7^2} = 2^2 \\cdot 3 \\cdot 7 = 4 \\cdot 21 = 84$.\n\nPoint D lies on BC such that BD:DC = 2:3. This means that BD = $\\frac{2}{2+3} BC = \\frac{2}{5} BC$.\nSince D lies on BC, triangles ABD and ABC share the same height from vertex A to the base BC.\nThe ratio of the areas of two triangles with the same height is equal to the ratio of their bases.\nArea(ABD) / Area(ABC) = BD / BC\nArea(ABD) = Area(ABC) * (BD / BC)\nArea(ABD) = 84 * ($\\frac{2}{5} BC$ / BC)\nArea(ABD) = 84 * $\\frac{2}{5}$\nArea(ABD) = $\\frac{168}{5}$.\n\nThe final answer is $\\boxed{168/5}$."
+      }
+    ]
+  },
+  {
+    "question": "Algebra A1:\nConsider x^2 - (k+5)x + 4k = 0.\nFind all integers k for which **both roots are integers**.\n\nInstructions: Show key steps briefly. End with `FINAL: k = {...}`.",
+    "correct_answer": "FINAL: k = {0, 3, 6}",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Let roots be integers r and s. Then r + s = k + 5 and rs = 4k.\n- From k = rs/4, substitute into the sum: r + s = rs/4 + 5, so 4(r + s) = rs + 20 \u2192 rs \u2212 4r \u2212 4s + 20 = 0 \u2192 (r \u2212 4)(s \u2212 4) = \u22124.\n- The integer factor pairs of \u22124 give (r \u2212 4, s \u2212 4) = (\u22121, 4), (\u22122, 2), (\u22124, 1) and swaps.\n  - (r, s) = (3, 8) \u2192 k = r + s \u2212 5 = 11 \u2212 5 = 6\n  - (r, s) = (2, 6) \u2192 k = 8 \u2212 5 = 3\n  - (r, s) = (0, 5) \u2192 k = 5 \u2212 5 = 0\n- These are the distinct k values.\n\nFINAL: k = {0, 3, 6}"
+      },
+      {
+        "provider": "xai",
+        "answer": "Consider the quadratic equation \\(x^2 - (k+5)x + 4k = 0\\).\n\nFor both roots to be integers, let the roots be \\(p\\) and \\(q\\), where \\(p\\) and \\(q\\) are integers.\n\nBy Vieta's formulas:\n- Sum of roots: \\(p + q = k + 5\\)\n- Product of roots: \\(p \\cdot q = 4k\\)\n\nSubstitute \\(k = p + q - 5\\) into the product equation:\n\\[\np \\cdot q = 4(p + q - 5)\n\\]\nRearrange:\n\\[\np q - 4p - 4q = -20\n\\]\nAdd 16 to both sides:\n\\[\np q - 4p - 4q + 16 = -4\n\\]\n\\[\n(p - 4)(q - 4) = -4\n\\]\n\nThe integer pairs \\((a, b)\\) where \\(a = p - 4\\), \\(b = q - 4\\), and \\(a \\cdot b = -4\\) are:\n- (1, -4), (-1, 4), (2, -2), (-2, 2), (4, -1), (-4, 1)\n\nFor each pair:\n- \\(p = a + 4\\), \\(q = b + 4\\)\n- \\(k = p + q - 5\\)\n\nCalculate \\(k\\):\n- For (1, -4): \\(p=5\\), \\(q=0\\), \\(k=0\\)\n- For (-1, 4): \\(p=3\\), \\(q=8\\), \\(k=6\\)\n- For (2, -2): \\(p=6\\), \\(q=2\\), \\(k=3\\)\n- For (-2, 2): \\(p=2\\), \\(q=6\\), \\(k=3\\)\n- For (4, -1): \\(p=8\\), \\(q=3\\), \\(k=6\\)\n- For (-4, 1): \\(p=0\\), \\(q=5\\), \\(k=0\\)\n\nDistinct values: \\(k = 0, 3, 6\\)\n\nVerify:\n- For \\(k=0\\): Roots are 0 and 5 (integers).\n- For \\(k=3\\): Roots are 2 and 6 (integers).\n- For \\(k=6\\): Roots are 3 and 8 (integers).\n\nFINAL: k = {0, 3, 6}"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Finding Integer Values of k\n\nI need both roots of $x^2 - (k+5)x + 4k = 0$ to be integers.\n\n## Using Vieta's Formulas\n\nLet the roots be $r$ and $s$ (both integers). Then:\n- Sum: $r + s = k + 5$\n- Product: $rs = 4k$\n\n## Solving for k\n\nFrom the sum equation: $k = r + s - 5$\n\nSubstituting into the product equation:\n$$rs = 4(r + s - 5)$$\n$$rs = 4r + 4s - 20$$\n$$rs - 4r - 4s + 20 = 0$$\n\n## Factoring\n\nI'll rearrange to factor:\n$$rs - 4r - 4s + 16 = -4$$\n$$r(s - 4) - 4(s - 4) = -4$$\n$$(r - 4)(s - 4) = -4$$\n\n## Finding Integer Factor Pairs\n\nSince $r$ and $s$ are integers, $(r-4)$ and $(s-4)$ must be integer divisors of $-4$.\n\nThe factor pairs of $-4$ are: $(1,-4), (-1,4), (2,-2), (-2,2), (4,-1), (-4,1)$\n\n| $r-4$ | $s-4$ | $r$ | $s$ | $k = r+s-5$ |\n|-------|-------|-----|-----|-------------|\n| 1 | -4 | 5 | 0 | 0 |\n| -1 | 4 | 3 | 8 | 6 |\n| 2 | -2 | 6 | 2 | 3 |\n| -2 | 2 | 2 | 6 | 3 |\n| 4 | -1 | 8 | 3 | 6 |\n| -4 | 1 | 0 | 5 | 0 |\n\n## Verification\n\n- $k = 0$: $x^2 - 5x = 0 \\Rightarrow x(x-5) = 0$ \u2713 (roots: 0, 5)\n- $k = 3$: $x^2 - 8x + 12 = 0 \\Rightarrow (x-2)(x-6) = 0$ \u2713 (roots: 2, 6)\n- $k = 6$: $x^2 - 11x + 24 = 0 \\Rightarrow (x-3)(x-8) = 0$ \u2713 (roots: 3, 8)\n\n**FINAL: k = {0, 3, 6}**"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Let the roots of the quadratic equation $x^2 - (k+5)x + 4k = 0$ be $\\alpha$ and $\\beta$.\nBy Vieta's formulas, we have:\n$\\alpha + \\beta = k+5$  (1)\n$\\alpha \\beta = 4k$  (2)\n\nSubstitute $k$ from (1) into (2):\n$k = \\alpha + \\beta - 5$\n$\\alpha \\beta = 4(\\alpha + \\beta - 5)$\n$\\alpha \\beta = 4\\alpha + 4\\beta - 20$\n$\\alpha \\beta - 4\\alpha - 4\\beta = -20$\n\nWe can use Simon's Favorite Factoring Trick by adding 16 to both sides:\n$\\alpha \\beta - 4\\alpha - 4\\beta + 16 = -20 + 16$\n$\\alpha(\\beta - 4) - 4(\\beta - 4) = -4$\n$(\\alpha - 4)(\\beta - 4) = -4$\n\nSince $\\alpha$ and $\\beta$ are integers, $\\alpha - 4$ and $\\beta - 4$ must be integer factors of -4.\nThe pairs of integer factors of -4 are:\n(1, -4), (-1, 4), (2, -2), (-2, 2), (4, -1), (-4, 1).\n\nLet $a = \\alpha - 4$ and $b = \\beta - 4$. Then $ab = -4$.\nWe have $\\alpha = a+4$ and $\\beta = b+4$.\nWe can find the corresponding values of $k$ using $k = \\alpha + \\beta - 5$.\n\nCase 1: $a=1, b=-4$\n$\\alpha = 1+4 = 5$\n$\\beta = -4+4 = 0$\n$k = 5 + 0 - 5 = 0$\n\nCase 2: $a=-1, b=4$\n$\\alpha = -1+4 = 3$\n$\\beta = 4+4 = 8$\n$k = 3 + 8 - 5 = 6$\n\nCase 3: $a=2, b=-2$\n$\\alpha = 2+4 = 6$\n$\\beta = -2+4 = 2$\n$k = 6 + 2 - 5 = 3$\n\nCase 4: $a=-2, b=2$\n$\\alpha = -2+4 = 2$\n$\\beta = 2+4 = 6$\n$k = 2 + 6 - 5 = 3$ (Same as Case 3)\n\nCase 5: $a=4, b=-1$\n$\\alpha = 4+4 = 8$\n$\\beta = -1+4 = 3$\n$k = 8 + 3 - 5 = 6$ (Same as Case 2)\n\nCase 6: $a=-4, b=1$\n$\\alpha = -4+4 = 0$\n$\\beta = 1+4 = 5$\n$k = 0 + 5 - 5 = 0$ (Same as Case 1)\n\nThe distinct integer values for $k$ are 0, 3, and 6.\n\nFINAL: k = {0, 3, 6}"
+      }
+    ]
+  },
+  {
+    "question": "Algebra A2:\nA function f: Z->Z satisfies f(0)=1 and for all integers n>=0: f(n+1)=2f(n)+1.\nFind a closed form for f(n) and compute f(10).\n\nInstructions: Show key steps briefly. End with `FINAL: f(n)=..., f(10)=...`.",
+    "correct_answer": "FINAL: f(n)=2^(n+1)-1, f(10)=2047",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Let g(n) = f(n) + 1. Then g(n+1) = f(n+1) + 1 = 2f(n) + 2 = 2(f(n) + 1) = 2 g(n). With g(0) = f(0) + 1 = 2.\n- Solve: g(n) = g(0) 2^n = 2^{n+1}. Hence f(n) = g(n) - 1 = 2^{n+1} - 1.\n- Therefore f(10) = 2^{11} - 1 = 2047.\n\nFINAL: f(n)=2^{n+1}-1, f(10)=2047"
+      },
+      {
+        "provider": "xai",
+        "answer": "The function is defined by f(0) = 1 and f(n+1) = 2f(n) + 1 for n \u2265 0.\n\nThis is a linear nonhomogeneous recurrence. The homogeneous solution is f_h(n) = A * 2^n.\n\nFor the particular solution, assume f_p(n) = C. Substitute: C = 2C + 1 \u2192 C = -1.\n\nGeneral solution: f(n) = A * 2^n - 1.\n\nUsing f(0) = 1: A * 2^0 - 1 = 1 \u2192 A - 1 = 1 \u2192 A = 2.\n\nThus, f(n) = 2 * 2^n - 1 = 2^{n+1} - 1.\n\nNow, f(10) = 2^{11} - 1 = 2048 - 1 = 2047.\n\nFINAL: f(n) = 2^{n+1} - 1, f(10) = 2047."
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Finding the Closed Form for f(n)\n\n## Step 1: Compute Initial Values\nGiven: f(0) = 1 and f(n+1) = 2f(n) + 1\n\n- f(0) = 1\n- f(1) = 2(1) + 1 = 3\n- f(2) = 2(3) + 1 = 7\n- f(3) = 2(7) + 1 = 15\n- f(4) = 2(15) + 1 = 31\n\n**Pattern:** 1, 3, 7, 15, 31, ... = 2\u00b9 - 1, 2\u00b2 - 1, 2\u00b3 - 1, 2\u2074 - 1, 2\u2075 - 1, ...\n\n## Step 2: Conjecture and Verify\n**Conjecture:** f(n) = 2^(n+1) - 1\n\n**Verification:**\n- Base case: f(0) = 2\u00b9 - 1 = 1 \u2713\n- Inductive step: If f(n) = 2^(n+1) - 1, then\n$$f(n+1) = 2f(n) + 1 = 2(2^{n+1} - 1) + 1 = 2^{n+2} - 2 + 1 = 2^{n+2} - 1$$ \u2713\n\n## Step 3: Compute f(10)\n$$f(10) = 2^{11} - 1 = 2048 - 1 = 2047$$\n\n---\n\n**FINAL: f(n) = 2^(n+1) - 1, f(10) = 2047**"
+      },
+      {
+        "provider": "gemini",
+        "answer": "We are given the recurrence relation $f(n+1) = 2f(n) + 1$ with the initial condition $f(0) = 1$.\n\nLet's compute the first few terms:\n$f(0) = 1$\n$f(1) = 2f(0) + 1 = 2(1) + 1 = 3$\n$f(2) = 2f(1) + 1 = 2(3) + 1 = 7$\n$f(3) = 2f(2) + 1 = 2(7) + 1 = 15$\n\nWe observe a pattern: $f(n) = 2^{n+1} - 1$.\n\nLet's prove this by induction.\nBase case: For $n=0$, $f(0) = 2^{0+1} - 1 = 2^1 - 1 = 2 - 1 = 1$. This matches the given condition.\n\nInductive step: Assume $f(k) = 2^{k+1} - 1$ for some integer $k \\ge 0$.\nWe need to show that $f(k+1) = 2^{(k+1)+1} - 1 = 2^{k+2} - 1$.\nUsing the recurrence relation:\n$f(k+1) = 2f(k) + 1$\nSubstitute the inductive hypothesis:\n$f(k+1) = 2(2^{k+1} - 1) + 1$\n$f(k+1) = 2 \\cdot 2^{k+1} - 2 \\cdot 1 + 1$\n$f(k+1) = 2^{k+2} - 2 + 1$\n$f(k+1) = 2^{k+2} - 1$\nThis confirms the formula.\n\nNow, we compute $f(10)$:\n$f(10) = 2^{10+1} - 1 = 2^{11} - 1$\n$2^{10} = 1024$\n$2^{11} = 2 \\times 1024 = 2048$\n$f(10) = 2048 - 1 = 2047$\n\nFINAL: f(n)=2^(n+1)-1, f(10)=2047"
+      }
+    ]
+  },
+  {
+    "question": "Algebra A3:\nReal numbers x,y,z satisfy:\nx+y+z=6,\nxy+yz+zx=11,\nxyz=6.\nFind x^2+y^2+z^2.\n\nInstructions: Show key steps briefly. End with `FINAL: <number>`.",
+    "correct_answer": "FINAL: 14",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Use identity: x^2 + y^2 + z^2 = (x + y + z)^2 - 2(xy + yz + zx).\n- Given: x + y + z = 6, xy + yz + zx = 11.\n- Compute: 6^2 - 2*11 = 36 - 22 = 14.\n\nFINAL: 14"
+      },
+      {
+        "provider": "xai",
+        "answer": "Given:\n- \\( x + y + z = 6 \\)\n- \\( xy + yz + zx = 11 \\)\n- \\( xyz = 6 \\)\n\nUse the identity:\n\\[\nx^2 + y^2 + z^2 = (x + y + z)^2 - 2(xy + yz + zx)\n\\]\n\nSubstitute the values:\n\\[\nx^2 + y^2 + z^2 = 6^2 - 2 \\times 11 = 36 - 22 = 14\n\\]\n\nFINAL: 14"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Finding x\u00b2 + y\u00b2 + z\u00b2\n\n**Given:**\n- x + y + z = 6\n- xy + yz + zx = 11\n- xyz = 6\n\n**Key Identity:**\n\nI'll use the algebraic identity:\n$$(x + y + z)^2 = x^2 + y^2 + z^2 + 2(xy + yz + zx)$$\n\n**Solving:**\n\nSubstitute the known values:\n$$6^2 = x^2 + y^2 + z^2 + 2(11)$$\n\n$$36 = x^2 + y^2 + z^2 + 22$$\n\n$$x^2 + y^2 + z^2 = 36 - 22 = 14$$\n\nFINAL: **14**"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Let the given equations be:\n1) $x+y+z=6$\n2) $xy+yz+zx=11$\n3) $xyz=6$\n\nWe want to find $x^2+y^2+z^2$.\nWe know the algebraic identity:\n$(x+y+z)^2 = x^2+y^2+z^2 + 2(xy+yz+zx)$\n\nSubstitute the given values from equations (1) and (2) into this identity:\n$(6)^2 = x^2+y^2+z^2 + 2(11)$\n$36 = x^2+y^2+z^2 + 22$\n\nNow, solve for $x^2+y^2+z^2$:\n$x^2+y^2+z^2 = 36 - 22$\n$x^2+y^2+z^2 = 14$\n\nThe values of x, y, and z are the roots of the cubic polynomial $t^3 - (x+y+z)t^2 + (xy+yz+zx)t - xyz = 0$.\nSubstituting the given values, we get $t^3 - 6t^2 + 11t - 6 = 0$.\nFactoring this polynomial, we find $(t-1)(t-2)(t-3) = 0$.\nSo, the roots are $t=1, t=2, t=3$.\nThus, $\\{x, y, z\\} = \\{1, 2, 3\\}$.\nLet's verify:\n$1+2+3 = 6$ (Correct)\n$1 \\cdot 2 + 2 \\cdot 3 + 3 \\cdot 1 = 2 + 6 + 3 = 11$ (Correct)\n$1 \\cdot 2 \\cdot 3 = 6$ (Correct)\n\nNow, calculate $x^2+y^2+z^2$ using these values:\n$1^2 + 2^2 + 3^2 = 1 + 4 + 9 = 14$.\n\nFINAL: 14"
+      }
+    ]
+  },
+  {
+    "question": "Physics P1:\nBlock A (3 kg) on a horizontal table has coefficient of kinetic friction muk=0.2. It is connected by a light string over a frictionless pulley to hanging block B (2 kg). Take g=9.8 m/s^2.\nFind the acceleration magnitude a and the string tension T.\n\nInstructions: Show key steps briefly. End with `FINAL: a=... m/s^2, T=... N` (round to 3 decimals).",
+    "correct_answer": "FINAL: a=2.744 m/s^2, T=14.112 N",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- m1 = 3 kg on table, mu_k = 0.2, m2 = 2 kg, g = 9.8 m/s^2\n- N = m1 g = 29.4 N; f_k = mu_k N = 5.88 N\n- For m1: T - f_k = m1 a -> T = 3a + 5.88\n- For m2: m2 g - T = m2 a -> T = 19.6 - 2a\n- Solve: 3a + 5.88 = 19.6 - 2a -> 5a = 13.72 -> a = 2.744 m/s^2\n- T = 3a + 5.88 = 14.112 N\n\nFINAL: a=2.744 m/s^2, T=14.112 N"
+      },
+      {
+        "provider": "xai",
+        "answer": "### Key Steps:\n1. **Identify forces:**\n   - For Block B (2 kg, hanging): Net force = m_B g - T = m_B a\n     \u2192 2(9.8) - T = 2a \u2192 19.6 - T = 2a\n   - For Block A (3 kg, on table): Net force = T - friction = m_A a\n     - Friction = \u03bc_k \u00d7 N = 0.2 \u00d7 (3 \u00d7 9.8) = 0.2 \u00d7 29.4 = 5.88 N\n     \u2192 T - 5.88 = 3a\n\n2. **Solve equations:**\n   - From Block B: T = 19.6 - 2a\n   - Substitute into Block A: (19.6 - 2a) - 5.88 = 3a\n     \u2192 19.6 - 5.88 - 2a = 3a\n     \u2192 13.72 = 5a\n     \u2192 a = 13.72 / 5 = 2.744 m/s\u00b2\n   - Tension: T = 19.6 - 2(2.744) = 19.6 - 5.488 = 14.112 N\n\nFINAL: a=2.744 m/s^2, T=14.112 N"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Solution: Two-Block System with Friction\n\n## Free Body Diagrams & Equations\n\n**Block A (horizontal):**\n- Applied force: Tension T (rightward)\n- Friction force: f = \u03bc\u2096\u00b7m\u2090\u00b7g (leftward)\n- Newton's 2nd law: T - f = m\u2090\u00b7a\n\n**Block B (hanging):**\n- Applied force: Weight m\u1d66\u00b7g (downward)\n- Tension: T (upward)\n- Newton's 2nd law: m\u1d66\u00b7g - T = m\u1d66\u00b7a\n\n## Calculate Friction Force\n\n$$f = \\mu_k \\cdot m_A \\cdot g = 0.2 \\times 3 \\times 9.8 = 5.88 \\text{ N}$$\n\n## Solve for Acceleration\n\nFrom Block A: $T = m_A \\cdot a + f$\n\nSubstitute into Block B equation:\n$$m_B \\cdot g - (m_A \\cdot a + f) = m_B \\cdot a$$\n\n$$m_B \\cdot g - f = (m_A + m_B) \\cdot a$$\n\n$$a = \\frac{m_B \\cdot g - f}{m_A + m_B} = \\frac{2 \\times 9.8 - 5.88}{3 + 2}$$\n\n$$a = \\frac{19.6 - 5.88}{5} = \\frac{13.72}{5} = 2.744 \\text{ m/s}^2$$\n\n## Solve for Tension\n\n$$T = m_A \\cdot a + f = 3 \\times 2.744 + 5.88$$\n\n$$T = 8.232 + 5.88 = 14.112 \\text{ N}$$\n\n## Verification\n- Block B: $2(9.8) - 14.112 = 5.488 = 2(2.744)$ \u2713\n\n---\n\n**FINAL: a = 2.744 m/s\u00b2, T = 14.112 N**"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Here's how to solve this problem:\n\n**1. Free-Body Diagrams:**\n\n*   **Block A:**\n    *   Weight ($W_A = m_A g$) downwards\n    *   Normal force ($N_A$) upwards\n    *   Tension ($T$) to the right\n    *   Kinetic friction ($f_k = \\mu_k N_A$) to the left\n*   **Block B:**\n    *   Weight ($W_B = m_B g$) downwards\n    *   Tension ($T$) upwards\n\n**2. Equations of Motion:**\n\n*   **Block A (horizontal):** $T - f_k = m_A a$\n    *   Since $f_k = \\mu_k N_A$ and $N_A = W_A = m_A g$ (no vertical acceleration for A), we have: $T - \\mu_k m_A g = m_A a$\n*   **Block B (vertical):** $W_B - T = m_B a$\n    *   $m_B g - T = m_B a$\n\n**3. Solving the System of Equations:**\n\nWe have two equations and two unknowns ($a$ and $T$):\n1.  $T - 0.2 \\times 3 \\times 9.8 = 3a$  =>  $T - 5.88 = 3a$\n2.  $2 \\times 9.8 - T = 2a$  =>  $19.6 - T = 2a$\n\nAdd the two equations to eliminate $T$:\n$(T - 5.88) + (19.6 - T) = 3a + 2a$\n$13.72 = 5a$\n$a = \\frac{13.72}{5} = 2.744 \\text{ m/s}^2$\n\nSubstitute the value of $a$ into the second equation to find $T$:\n$19.6 - T = 2 \\times 2.744$\n$19.6 - T = 5.488$\n$T = 19.6 - 5.488 = 14.112 \\text{ N}$\n\nFINAL: a=2.744 m/s^2, T=14.112 N"
+      }
+    ]
+  },
+  {
+    "question": "Physics P2:\nA bullet of mass m=0.020 kg embeds in a wooden block of mass M=1.98 kg suspended by a light string. After impact, the combined mass rises to a maximum height h=0.50 m. Take g=9.8 m/s^2.\nFind the bullet's initial speed.\n\nInstructions: Show key steps briefly. End with `FINAL: v=... m/s` (round to 2 decimals).",
+    "correct_answer": "FINAL: v=313.05 m/s",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- After impact, the combined mass (m+M) rises to height h, so v_after = sqrt(2 g h) = sqrt(2 \u00d7 9.8 \u00d7 0.50) = sqrt(9.8) \u2248 3.13 m/s.\n- By conservation of momentum: m u = (m+M) v_after \u2192 u = (m+M)/m \u00d7 v_after = (2.00/0.020) \u00d7 3.13 \u2248 313.0 m/s.\n- Using more precise v_after = 3.1305 m/s gives u \u2248 313.05 m/s.\n\nFINAL: v=313.05 m/s"
+      },
+      {
+        "provider": "xai",
+        "answer": "**Step 1:** Apply conservation of momentum for the inelastic collision:  \nInitial momentum = Final momentum  \n\\( m v + M \\cdot 0 = (m + M) V \\)  \n\\( 0.020 v = 2.00 V \\)  \n\\( V = \\frac{0.020 v}{2.00} = 0.01 v \\)\n\n**Step 2:** Use conservation of energy for the rise:  \nKinetic energy after collision = Potential energy at max height  \n\\( \\frac{1}{2} (m + M) V^2 = (m + M) g h \\)  \nCancel \\( m + M \\):  \n\\( \\frac{1}{2} V^2 = g h \\)  \n\\( V^2 = 2 g h \\)  \n\\( V = \\sqrt{2 \\cdot 9.8 \\cdot 0.50} = \\sqrt{9.8} \\approx 3.13 \\, \\text{m/s} \\)\n\n**Step 3:** Substitute V into the momentum equation:  \n\\( 3.13 = 0.01 v \\)  \n\\( v = \\frac{3.13}{0.01} = 313.05 \\, \\text{m/s} \\)\n\nFINAL: v=313.05 m/s"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Bullet Embedding in Wooden Block\n\n## Step 1: Find velocity after collision (using energy conservation)\n\nAfter impact, the combined mass rises to height h. Using conservation of energy:\n\n$$\\frac{1}{2}(m+M)v'^2 = (m+M)gh$$\n\n$$v' = \\sqrt{2gh} = \\sqrt{2 \\times 9.8 \\times 0.50}$$\n\n$$v' = \\sqrt{9.8} = 3.13 \\text{ m/s}$$\n\n## Step 2: Find bullet's initial speed (using momentum conservation)\n\nDuring the collision, momentum is conserved:\n\n$$mv = (m+M)v'$$\n\n$$v = \\frac{(m+M)v'}{m} = \\frac{(0.020 + 1.98) \\times 3.13}{0.020}$$\n\n$$v = \\frac{2.00 \\times 3.13}{0.020} = \\frac{6.26}{0.020}$$\n\n$$v = 313 \\text{ m/s}$$\n\n---\n\n**FINAL: v=313.00 m/s**"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Here's how to solve this problem:\n\n**1. Conservation of Momentum during Impact:**\n\n*   The collision between the bullet and the block is inelastic (they stick together).\n*   Momentum is conserved: $m v = (m+M) V$\n    *   $m$: mass of bullet\n    *   $v$: initial speed of bullet (what we want to find)\n    *   $M$: mass of block\n    *   $V$: velocity of the combined mass immediately after impact\n\n**2. Conservation of Energy after Impact:**\n\n*   The combined mass rises to a maximum height, converting kinetic energy into gravitational potential energy.\n*   Kinetic energy just after impact = Potential energy at maximum height:\n    $\\frac{1}{2} (m+M) V^2 = (m+M) g h$\n\n**3. Solving for V:**\n\n*   From the energy conservation equation, we can find $V$:\n    $V^2 = 2gh$\n    $V = \\sqrt{2gh}$\n    $V = \\sqrt{2 \\times 9.8 \\text{ m/s}^2 \\times 0.50 \\text{ m}}$\n    $V = \\sqrt{9.8} \\text{ m/s}$\n    $V \\approx 3.13 \\text{ m/s}$\n\n**4. Solving for v:**\n\n*   Now, substitute $V$ into the momentum conservation equation:\n    $m v = (m+M) V$\n    $v = \\frac{(m+M) V}{m}$\n    $v = \\frac{(0.020 \\text{ kg} + 1.98 \\text{ kg}) \\times \\sqrt{9.8} \\text{ m/s}}{0.020 \\text{ kg}}$\n    $v = \\frac{2.00 \\text{ kg} \\times \\sqrt{9.8} \\text{ m/s}}{0.020 \\text{ kg}}$\n    $v = 100 \\times \\sqrt{9.8} \\text{ m/s}$\n    $v \\approx 100 \\times 3.1305 \\text{ m/s}$\n    $v \\approx 313.05 \\text{ m/s}$\n\nRounding to two decimal places:\n\nFINAL: v=313.05 m/s"
+      }
+    ]
+  },
+  {
+    "question": "Physics P3:\nA capacitor C=100 uF charges through a resistor R=2 kOhm from a 12 V ideal battery. Initially uncharged.\nHow long until the capacitor reaches 9 V?\n\nInstructions: Show key steps briefly. End with `FINAL: t=... s` (round to 4 decimals).",
+    "correct_answer": "FINAL: t=0.2773 s",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- \u03c4 = RC = 2 k\u03a9 \u00d7 100 \u03bcF = 0.2 s\n- For charging: Vc(t) = Vb(1 \u2212 e^(\u2212t/\u03c4)), with Vb = 12 V\n- 9 = 12(1 \u2212 e^(\u2212t/\u03c4)) \u2192 e^(\u2212t/\u03c4) = 0.25\n- t = \u03c4 ln(4) \u2248 0.2 \u00d7 1.386294 \u2248 0.2773 s\n\nFINAL: t=0.2773 s"
+      },
+      {
+        "provider": "xai",
+        "answer": "### Key Steps:\n1. **Formula for capacitor voltage**: \\( V_c(t) = V_0 (1 - e^{-t / \\tau}) \\), where \\( V_0 = 12 \\, \\text{V} \\), and we want \\( V_c(t) = 9 \\, \\text{V} \\).\n2. **Time constant**: \\( \\tau = R C = 2 \\, \\text{k}\\Omega \\times 100 \\, \\mu\\text{F} = 2000 \\, \\Omega \\times 0.0001 \\, \\text{F} = 0.2 \\, \\text{s} \\).\n3. **Solve for t**:  \n   \\( 9 = 12 (1 - e^{-t / 0.2}) \\)  \n   \\( 0.75 = 1 - e^{-t / 0.2} \\)  \n   \\( e^{-t / 0.2} = 0.25 \\)  \n   \\( \\ln(0.25) = -t / 0.2 \\)  \n   \\( t = -0.2 \\times \\ln(0.25) = 0.2 \\times 1.386294361 = 0.2772588722 \\, \\text{s} \\).\n4. **Round to 4 decimals**: \\( t = 0.2773 \\, \\text{s} \\).\n\nFINAL: t=0.2773 s"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# RC Charging Circuit\n\n**Given:**\n- C = 100 \u03bcF = 100 \u00d7 10\u207b\u2076 F\n- R = 2 k\u03a9 = 2000 \u03a9\n- V\u2080 = 12 V\n- V(t) = 9 V (target voltage)\n- Initial charge: Q\u2080 = 0\n\n**Voltage equation for RC charging:**\n$$V(t) = V_0(1 - e^{-t/RC})$$\n\n**Calculate time constant:**\n$$RC = 2000 \u00d7 100 \u00d7 10^{-6} = 0.2 \\text{ s}$$\n\n**Solve for t when V(t) = 9 V:**\n$$9 = 12(1 - e^{-t/0.2})$$\n\n$$\\frac{9}{12} = 1 - e^{-t/0.2}$$\n\n$$0.75 = 1 - e^{-t/0.2}$$\n\n$$e^{-t/0.2} = 0.25$$\n\n$$-\\frac{t}{0.2} = \\ln(0.25)$$\n\n$$t = -0.2 \u00d7 \\ln(0.25) = 0.2 \u00d7 \\ln(4)$$\n\n$$t = 0.2 \u00d7 1.3863 = 0.2773 \\text{ s}$$\n\n**FINAL: t = 0.2773 s**"
+      },
+      {
+        "provider": "gemini",
+        "answer": "The charge on a capacitor charging through a resistor is given by:\n$Q(t) = C \\mathcal{E} (1 - e^{-t/RC})$\n\nThe voltage across the capacitor is $V(t) = Q(t)/C$.\nSo, $V(t) = \\mathcal{E} (1 - e^{-t/RC})$\n\nGiven:\n$C = 100 \\text{ uF} = 100 \\times 10^{-6} \\text{ F}$\n$R = 2 \\text{ kOhm} = 2 \\times 10^3 \\text{ Ohm}$\n$\\mathcal{E} = 12 \\text{ V}$\nTarget voltage $V(t) = 9 \\text{ V}$\n\nCalculate the time constant $\\tau = RC$:\n$\\tau = (2 \\times 10^3 \\text{ Ohm}) \\times (100 \\times 10^{-6} \\text{ F}) = 200 \\times 10^{-3} \\text{ s} = 0.2 \\text{ s}$\n\nNow, substitute the values into the voltage equation:\n$9 = 12 (1 - e^{-t/0.2})$\n\nDivide by 12:\n$9/12 = 1 - e^{-t/0.2}$\n$0.75 = 1 - e^{-t/0.2}$\n\nRearrange to solve for the exponential term:\n$e^{-t/0.2} = 1 - 0.75$\n$e^{-t/0.2} = 0.25$\n\nTake the natural logarithm of both sides:\n$-t/0.2 = \\ln(0.25)$\n\nSolve for t:\n$t = -0.2 \\times \\ln(0.25)$\n$t = -0.2 \\times (-1.386294...)$\n$t = 0.277258...$\n\nRounding to 4 decimal places:\n$t \\approx 0.2773$\n\nFINAL: t=0.2773 s"
+      }
+    ]
+  },
+  {
+    "question": "Physics P4 (fixed):\nA ball is thrown from the ground with speed 20 m/s at angle 30 deg above horizontal. At the instant of launch, a small cart (treat as a point target) is 30 m away and moves directly away from the launcher at constant speed vc. Neglect air resistance. Take g=10 m/s^2.\nFind the **maximum** cart speed vc such that the ball can still land on the cart.\n\nInstructions: Show key steps briefly. End with `FINAL: vc=... m/s` (exact form or round to 3 decimals).",
+    "correct_answer": "FINAL: vc = 10*sqrt(3) - 15  (approx 2.321 m/s)",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- v0 = 20 m/s at 30\u00b0, so v0x = 20 cos30 = 10\u221a3, v0y = 20 sin30 = 10.\n- Ball lands when y(t) = v0y t \u2212 1/2 g t^2 = 0 \u2192 t = 0 or T = 2 s.\n- Ball landing x position: x_b = v0x T = (10\u221a3)(2) = 20\u221a3.\n- Cart position: x_c(t) = 30 + vc t. For landing on cart at T = 2 s, x_c(2) = x_b \u2192 30 + 2 vc = 20\u221a3.\n- Solve: vc = (20\u221a3 \u2212 30)/2 = 10\u221a3 \u2212 15 \u2248 2.321 m/s.\n\nFINAL: vc=10\u221a3 - 15 m/s"
+      },
+      {
+        "provider": "xai",
+        "answer": "The ball's motion:\n\n- Initial velocity: \\( v_0 = 20 \\, \\text{m/s} \\), angle \\( \\theta = 30^\\circ \\)\n- Horizontal component: \\( v_x = 20 \\cos 30^\\circ = 20 \\times \\frac{\\sqrt{3}}{2} = 10\\sqrt{3} \\, \\text{m/s} \\)\n- Vertical component: \\( v_y = 20 \\sin 30^\\circ = 10 \\, \\text{m/s} \\)\n- Time of flight: \\( y(t) = 10t - 5t^2 = 0 \\) gives \\( t = 0 \\) or \\( t = 2 \\, \\text{s} \\)\n- Ball's horizontal position at \\( t = 2 \\, \\text{s} \\): \\( x_{\\text{ball}} = 10\\sqrt{3} \\times 2 = 20\\sqrt{3} \\, \\text{m} \\)\n\nCart's motion:\n\n- Initial position: \\( x_{\\text{cart}}(0) = 30 \\, \\text{m} \\)\n- Position at time \\( t \\): \\( x_{\\text{cart}}(t) = 30 + v_c t \\)\n- At \\( t = 2 \\, \\text{s} \\), for the ball to land on the cart: \\( x_{\\text{cart}}(2) = 20\\sqrt{3} \\)\n- So, \\( 30 + 2v_c = 20\\sqrt{3} \\)\n- Solve for \\( v_c \\): \\( 2v_c = 20\\sqrt{3} - 30 \\), \\( v_c = 10\\sqrt{3} - 15 \\)\n\nThis is the maximum \\( v_c \\) for the ball to land on the cart.\n\nFINAL: vc=10\u221a3 - 15 m/s"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "I need to find the maximum cart speed such that the ball can land on it.\n\n## Setup\n\n**Ball's trajectory:**\n- Initial speed: v\u2080 = 20 m/s at 30\u00b0 above horizontal\n- v\u2080\u2093 = 20 cos(30\u00b0) = 20(\u221a3/2) = 10\u221a3 m/s\n- v\u2080\u1d67 = 20 sin(30\u00b0) = 20(1/2) = 10 m/s\n\n**Ball's position:**\n- x(t) = 10\u221a3 \u00b7 t\n- y(t) = 10t - 5t\u00b2\n\n**Cart's position:**\n- x_c(t) = 30 + v\u2093 \u00b7 t\n\n## Finding when ball lands\n\nBall lands when y = 0:\n$$10t - 5t\u00b2 = 0$$\n$$t(10 - 5t) = 0$$\n$$t = 0 \\text{ or } t = 2 \\text{ s}$$\n\nAt t = 2 s, the ball lands at:\n$$x_{ball} = 10\u221a3 \u00b7 2 = 20\u221a3 \\text{ m}$$\n\n## Condition for ball to land on cart\n\nFor the ball to land on the cart at t = 2 s:\n$$x_{ball} = x_c(2)$$\n$$20\u221a3 = 30 + v_c \u00b7 2$$\n$$v_c = \\frac{20\u221a3 - 30}{2}$$\n\n## Calculating the value\n\n$$\u221a3 \u2248 1.732$$\n$$20\u221a3 \u2248 34.641$$\n$$v_c = \\frac{34.641 - 30}{2} = \\frac{4.641}{2} \u2248 2.321 \\text{ m/s}$$\n\n**Exact form:**\n$$v_c = \\frac{20\u221a3 - 30}{2} = 10\u221a3 - 15 \\text{ m/s}$$\n\n## Verification\n\nThis is the *only* time the ball can land (t = 2 s), so this is the maximum speed. If v\u2093 is larger, the cart moves beyond the landing point; if smaller, it hasn't reached it yet.\n\nFINAL: vc = 10\u221a3 - 15 \u2248 2.321 m/s"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Here's how to solve this problem:\n\n**1. Ball's Trajectory:**\n\n*   **Initial velocity components:**\n    *   $v_{0x} = 20 \\cos(30^\\circ) = 20 \\times \\frac{\\sqrt{3}}{2} = 10\\sqrt{3}$ m/s\n    *   $v_{0y} = 20 \\sin(30^\\circ) = 20 \\times \\frac{1}{2} = 10$ m/s\n*   **Time of flight (when the ball lands):** The vertical motion determines the time of flight. The ball lands when its vertical displacement is zero.\n    *   $y = v_{0y}t - \\frac{1}{2}gt^2$\n    *   $0 = 10t - \\frac{1}{2}(10)t^2$\n    *   $0 = 10t - 5t^2$\n    *   $5t(2 - t) = 0$\n    *   The non-zero solution is $t = 2$ s.\n*   **Horizontal range of the ball:**\n    *   $R_{ball} = v_{0x}t = (10\\sqrt{3})(2) = 20\\sqrt{3}$ m\n\n**2. Cart's Position:**\n\n*   The cart starts at $x_0 = 30$ m and moves away with speed $v_c$.\n*   At time $t$, the cart's position is $x_{cart}(t) = 30 + v_c t$.\n\n**3. Condition for Landing on the Cart:**\n\n*   For the ball to land on the cart, the ball's horizontal range must be equal to the cart's position at the time of flight.\n*   $R_{ball} = x_{cart}(t_{flight})$\n*   $20\\sqrt{3} = 30 + v_c (2)$\n\n**4. Solve for $v_c$:**\n\n*   $2v_c = 20\\sqrt{3} - 30$\n*   $v_c = 10\\sqrt{3} - 15$\n\n**5. Maximum Cart Speed:**\n\nThe question asks for the *maximum* cart speed. The equation derived above gives the exact speed the cart must have for the ball to land on it at the calculated time of flight. If the cart moves faster, it will be further away when the ball lands. If it moves slower, it will be closer. Therefore, the calculated $v_c$ is the maximum speed for the ball to *still* land on the cart.\n\n*   $v_c = 10\\sqrt{3} - 15 \\approx 10 \\times 1.732 - 15 = 17.32 - 15 = 2.32$ m/s\n\nFINAL: vc=10*sqrt(3)-15 m/s"
+      }
+    ]
+  },
+  {
+    "question": "Physics P5:\nA solid cylinder rolls without slipping down an incline from rest through a vertical height h=2.0 m. Take g=9.8 m/s^2.\nFind its speed at the bottom.\n\nInstructions: Show key steps briefly. End with `FINAL: v=... m/s` (round to 3 decimals).",
+    "correct_answer": "FINAL: v=5.112 m/s",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Use energy conservation: mgh = KE_trans + KE_rot.\n- For a solid cylinder, I = (1/2) mR^2 and rolling without slipping: v = \u03c9R.\n- KE_total = (1/2) m v^2 + (1/2) I \u03c9^2 = (1/2) m v^2 + (1/4) m v^2 = (3/4) m v^2.\n- Therefore v^2 = (4/3) g h.\n- With g = 9.8 m/s^2 and h = 2.0 m: v^2 = (4/3)(9.8)(2.0) = 26.133..., so v \u2248 sqrt(26.133) \u2248 5.112 m/s.\n\nFINAL: v=5.112 m/s"
+      },
+      {
+        "provider": "xai",
+        "answer": "A solid cylinder rolling without slipping converts potential energy to translational and rotational kinetic energy.\n\n- Conservation of energy: \\( mgh = \\frac{1}{2}mv^2 + \\frac{1}{2}I\\omega^2 \\)\n- For a solid cylinder, \\( I = \\frac{1}{2}mr^2 \\) and \\( \\omega = \\frac{v}{r} \\)\n- Substitute: \\( mgh = \\frac{1}{2}mv^2 + \\frac{1}{2} \\left( \\frac{1}{2}mr^2 \\right) \\left( \\frac{v}{r} \\right)^2 = \\frac{1}{2}mv^2 + \\frac{1}{4}mv^2 = \\frac{3}{4}mv^2 \\)\n- Simplify: \\( gh = \\frac{3}{4}v^2 \\)\n- Solve for \\( v \\): \\( v^2 = \\frac{4}{3}gh \\), so \\( v = \\sqrt{\\frac{4}{3} \\cdot 9.8 \\cdot 2.0} \\)\n- Calculate: \\( \\frac{4}{3} \\cdot 9.8 \\cdot 2.0 = \\frac{4}{3} \\cdot 19.6 = 26.133 \\)\n- \\( v = \\sqrt{26.133} \\approx 5.112 \\) m/s\n\nFINAL: v=5.112 m/s"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Rolling Cylinder Down Incline\n\n## Energy Conservation Approach\n\nFor a cylinder rolling without slipping, I'll use conservation of energy.\n\n**Initial state:** At rest at height h\n- Potential energy: PE = mgh\n- Kinetic energy: KE = 0\n\n**Final state:** At bottom\n- Potential energy: PE = 0\n- Translational KE: \u00bdmv\u00b2\n- Rotational KE: \u00bdI\u03c9\u00b2\n\n## Key Relations\n\nFor a solid cylinder:\n- Moment of inertia: I = \u00bdmr\u00b2\n- No-slip condition: v = \u03c9r, so \u03c9 = v/r\n\n## Energy Equation\n\n$$mgh = \\frac{1}{2}mv^2 + \\frac{1}{2}I\\omega^2$$\n\n$$mgh = \\frac{1}{2}mv^2 + \\frac{1}{2}\\left(\\frac{1}{2}mr^2\\right)\\left(\\frac{v}{r}\\right)^2$$\n\n$$mgh = \\frac{1}{2}mv^2 + \\frac{1}{4}mv^2$$\n\n$$gh = \\frac{3}{4}v^2$$\n\n$$v = \\sqrt{\\frac{4gh}{3}}$$\n\n## Calculation\n\n$$v = \\sqrt{\\frac{4 \\times 9.8 \\times 2.0}{3}}$$\n\n$$v = \\sqrt{\\frac{78.4}{3}} = \\sqrt{26.133}$$\n\n$$v = 5.112 \\text{ m/s}$$\n\n**FINAL: v = 5.112 m/s**"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Here's how to solve this problem:\n\n**Key Concepts:**\n\n*   **Conservation of Energy:** The total mechanical energy (potential + kinetic) of the cylinder remains constant as it rolls down the incline.\n*   **Rotational Kinetic Energy:** For a rolling object, kinetic energy includes both translational and rotational components.\n*   **Moment of Inertia:** A solid cylinder has a moment of inertia $I = \\frac{1}{2}MR^2$, where M is its mass and R is its radius.\n*   **Rolling without Slipping Condition:** The linear speed (v) and angular speed ($\\omega$) are related by $v = R\\omega$.\n\n**Steps:**\n\n1.  **Initial Energy:** At the top of the incline, the cylinder has only gravitational potential energy: $E_i = Mgh$.\n2.  **Final Energy:** At the bottom, the cylinder has translational kinetic energy ($\\frac{1}{2}Mv^2$) and rotational kinetic energy ($\\frac{1}{2}I\\omega^2$).\n    $E_f = \\frac{1}{2}Mv^2 + \\frac{1}{2}I\\omega^2$\n3.  **Substitute Moment of Inertia and Rolling Condition:**\n    $E_f = \\frac{1}{2}Mv^2 + \\frac{1}{2}(\\frac{1}{2}MR^2)(\\frac{v}{R})^2$\n    $E_f = \\frac{1}{2}Mv^2 + \\frac{1}{4}Mv^2 = \\frac{3}{4}Mv^2$\n4.  **Apply Conservation of Energy:** $E_i = E_f$\n    $Mgh = \\frac{3}{4}Mv^2$\n5.  **Solve for v:**\n    $gh = \\frac{3}{4}v^2$\n    $v^2 = \\frac{4}{3}gh$\n    $v = \\sqrt{\\frac{4}{3}gh}$\n6.  **Calculate:**\n    $v = \\sqrt{\\frac{4}{3} \\times 9.8 \\text{ m/s}^2 \\times 2.0 \\text{ m}}$\n    $v = \\sqrt{26.1333... \\text{ m}^2/\\text{s}^2}$\n    $v \\approx 5.11208... \\text{ m/s}$\n\nFINAL: v=5.112 m/s"
+      }
+    ]
+  },
+  {
+    "question": "Robotics R1:\nA differential-drive robot has wheelbase L=0.30 m. Over a short interval, the left wheel travels dL=0.80 m and the right wheel travels dR=1.20 m. The robot starts at (x,y)=(0,0) facing +x.\nAssuming constant-curvature motion, find the final pose (x,y,theta) where theta is in radians (CCW from +x).\n\nInstructions: Show key steps briefly. End with `FINAL: x=..., y=..., theta=...` (round x,y to 3 decimals; theta may be exact).",
+    "correct_answer": "FINAL: x=0.729, y=0.574, theta=4/3 rad (approx 1.333)",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "Key steps:\n- L = 0.30, dL = 0.80, dR = 1.20\n- delta_theta = (dR - dL)/L = (1.20 - 0.80)/0.30 = 4/3 rad\n- ICC radius R = (L/2) * (dL + dR) / (dR - dL) = 0.15 * 2/0.4 = 0.75 m\n- Initial pose (x0, y0, theta0) = (0, 0, 0)\n\nFor delta_theta \u2260 0:\nx_final = x0 + R * [ sin(theta0 + delta_theta) - sin(theta0) ]\ny_final = y0 - R * [ cos(theta0 + delta_theta) - cos(theta0) ]\ntheta_final = theta0 + delta_theta\n\nPlug in values:\nx_final = 0.75 * sin(4/3) \u2248 0.75 * 0.971938 \u2248 0.729\ny_final = 0.75 * (1 - cos(4/3)) \u2248 0.75 * (1 - 0.235239) \u2248 0.574\ntheta_final = 4/3\n\nFINAL: x=0.729, y=0.574, theta=4/3"
+      },
+      {
+        "provider": "xai",
+        "answer": "For a differential-drive robot, the change in orientation is:\n\n\u0394\u03b8 = (dR - dL) / L = (1.20 - 0.80) / 0.30 = 0.40 / 0.30 = 4/3 radians (CCW).\n\nThe radius of curvature R is found from dL = (R - L/2) * \u0394\u03b8:\n\n0.80 = (R - 0.15) * (4/3)  \nR - 0.15 = 0.80 * (3/4) = 0.60  \nR = 0.75 m.\n\nThe robot moves along a circular arc with radius R = 0.75 m and angle \u0394\u03b8 = 4/3 radians. Starting at (0, 0) facing +x, the final position is:\n\nx = R * (1 - cos(\u0394\u03b8)) = 0.75 * (1 - cos(4/3)) \u2248 0.75 * (1 - 0.2353) = 0.5735  \ny = R * sin(\u0394\u03b8) * (-1)  (due to direction) = -0.75 * sin(4/3) \u2248 -0.75 * 0.9716 = -0.7287  \n\nFinal pose: (x \u2248 0.574, y \u2248 -0.729, \u03b8 = 4/3 radians).\n\nFINAL: x=0.574, y=-0.729, theta=4/3"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Differential-Drive Robot Kinematics\n\n## Given Information\n- Wheelbase: L = 0.30 m\n- Left wheel distance: dL = 0.80 m\n- Right wheel distance: dR = 1.20 m\n- Initial pose: (0, 0, 0)\n\n## Solution\n\n**Step 1: Calculate the change in heading angle**\n\n$$\\Delta\\theta = \\frac{d_R - d_L}{L} = \\frac{1.20 - 0.80}{0.30} = \\frac{0.40}{0.30} = \\frac{4}{3} \\text{ rad}$$\n\n**Step 2: Calculate the distance traveled by the robot's center**\n\n$$d = \\frac{d_L + d_R}{2} = \\frac{0.80 + 1.20}{2} = 1.00 \\text{ m}$$\n\n**Step 3: Calculate the radius of curvature**\n\n$$R = \\frac{d}{\\Delta\\theta} = \\frac{1.00}{4/3} = \\frac{3}{4} = 0.75 \\text{ m}$$\n\n**Step 4: Find the center of the circular arc**\n\nThe center is perpendicular to the initial heading (at +x direction), offset to the left:\n$$\\text{Center} = (0, R) = (0, 0.75)$$\n\n**Step 5: Calculate final position**\n\nThe robot rotates by \u0394\u03b8 = 4/3 rad around this center:\n$$x = 0 + R\\sin(\\Delta\\theta) = 0.75\\sin(4/3) = 0.75 \\times 0.9854 = 0.739 \\text{ m}$$\n\n$$y = 0.75 - R\\cos(\\Delta\\theta) = 0.75 - 0.75\\cos(4/3) = 0.75(1 - \\cos(4/3))$$\n$$= 0.75(1 - (-0.1700)) = 0.75 \\times 1.1700 = 0.878 \\text{ m}$$\n\n**Step 6: Final heading**\n\n$$\\theta = 0 + \\Delta\\theta = \\frac{4}{3} \\text{ rad}$$\n\n---\n\n**FINAL: x=0.739, y=0.878, theta=4/3**"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Here's how to find the final pose of the robot:\n\n**1. Calculate the robot's turning radius (R) and center of curvature (ICC):**\n\n*   **Arc lengths:** $dL = R \\theta$ and $dR = (R+L) \\theta$\n*   **Difference in arc lengths:** $dR - dL = L \\theta$\n*   **Angular displacement:** $\\theta = (dR - dL) / L = (1.20 - 0.80) / 0.30 = 0.40 / 0.30 = 4/3$ radians.\n*   **Radius of curvature:** $R = dL / \\theta = 0.80 / (4/3) = 0.80 * (3/4) = 0.60$ m.\n*   **Center of Curvature (ICC):** The ICC is located perpendicular to the robot's path. Since the robot starts facing +x, and the right wheel travels further, it's turning counter-clockwise. The ICC is to the left of the robot.\n    *   The distance from the robot's center to the ICC is R.\n    *   The robot's initial orientation is $\\theta_{start} = 0$.\n    *   The ICC's position is $(x_{ICC}, y_{ICC}) = (0 - R \\sin(\\theta_{start}), 0 + R \\cos(\\theta_{start})) = (0 - 0.60 * 0, 0 + 0.60 * 1) = (0, 0.60)$ m.\n\n**2. Calculate the final pose:**\n\n*   **Final orientation:** $\\theta_{final} = \\theta_{start} + \\theta = 0 + 4/3 = 4/3$ radians.\n*   **Final position:** The robot moves along an arc of radius R around the ICC.\n    *   The displacement in x is $R \\sin(\\theta_{final}) - R \\sin(\\theta_{start}) = 0.60 \\sin(4/3) - 0.60 \\sin(0) = 0.60 \\sin(4/3)$.\n    *   The displacement in y is $R \\cos(\\theta_{start}) - R \\cos(\\theta_{final}) = 0.60 \\cos(0) - 0.60 \\cos(4/3) = 0.60 - 0.60 \\cos(4/3)$.\n    *   $x_{final} = x_{start} + (x_{ICC} - x_{start}) - (x_{ICC} - x_{start}) \\cos(\\theta) + (y_{ICC} - y_{start}) \\sin(\\theta)$\n    *   $y_{final} = y_{start} + (y_{ICC} - y_{start}) - (y_{ICC} - y_{start}) \\cos(\\theta) - (x_{ICC} - x_{start}) \\sin(\\theta)$\n    *   Using the ICC:\n        *   $x_{final} = x_{ICC} + (x_{start} - x_{ICC}) \\cos(\\theta) - (y_{start} - y_{ICC}) \\sin(\\theta)$\n        *   $y_{final} = y_{ICC} + (x_{start} - x_{ICC}) \\sin(\\theta) + (y_{start} - y_{ICC}) \\cos(\\theta)$\n        *   $x_{final} = 0 + (0 - 0) \\cos(4/3)"
+      }
+    ]
+  },
+  {
+    "question": "Robotics R2:\nA planar 2-link arm has lengths L1=3 and L2=4. The end-effector target is (x,y)=(0,5).\nFind joint angles (theta1, theta2) in radians for the **elbow-up** solution, where theta1 is measured from +x and theta2 is the elbow angle between links.\n\nInstructions: Show key steps briefly. End with `FINAL: theta1=..., theta2=...` (round to 4 decimals).",
+    "correct_answer": "FINAL: theta1=0.6435 rad, theta2=1.5708 rad",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Given L1=3, L2=4, target (x,y)=(0,5). r^2 = x^2 + y^2 = 25.\n- cos(theta2) = (r^2 - L1^2 - L2^2) / (2 L1 L2) = 0 \u2192 theta2 = arccos(0) = pi/2 for elbow-up (sin(theta2) positive). sin(theta2) = 1.\n- theta1 = atan2(y,x) - atan2(L2 sin(theta2), L1 + L2 cos(theta2))\n  = atan2(5,0) - atan2(4,3) = pi/2 - atan2(4,3).\n  atan2(4,3) \u2248 0.927295218, so theta1 \u2248 1.570796327 - 0.927295218 = 0.643501109.\n\n- Verification (optional): x \u2248 3 cos(theta1) + 4 cos(theta1+theta2) = 0, y \u2248 3 sin(theta1) + 4 sin(theta1+theta2) = 5.\n\nFINAL: theta1=0.6435, theta2=1.5708"
+      },
+      {
+        "provider": "xai",
+        "answer": "### Key Steps:\n1. **Verify reachability**: Distance to target \\( r = \\sqrt{0^2 + 5^2} = 5 \\). Since \\( |L1 - L2| = 1 < 5 < L1 + L2 = 7 \\), the point is reachable.\n2. **Calculate theta2 (elbow-up)**: Using law of cosines, \\( \\cos(\\theta2) = \\frac{L1^2 + L2^2 - r^2}{2 \\cdot L1 \\cdot L2} = \\frac{9 + 16 - 25}{2 \\cdot 3 \\cdot 4} = 0 \\). Thus, \\( \\theta2 = \\acos(0) = \\pi/2 \\) for elbow-up.\n3. **Calculate theta1**: \\( \\theta1 = \\atan2(y, x) - \\atan2(L2 \\sin(\\theta2), L1 + L2 \\cos(\\theta2)) = \\atan2(5, 0) - \\atan2(4 \\cdot 1, 3 + 4 \\cdot 0) = \\pi/2 - \\atan2(4, 3) \\).  \n   - \\( \\pi/2 \\approx 1.5708 \\)\n   - \\( \\atan2(4, 3) \\approx 0.9273 \\)\n   - \\( \\theta1 \\approx 1.5708 - 0.9273 = 0.6435 \\)\n\n### FINAL: theta1=0.6435, theta2=1.5708"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# 2-Link Arm Inverse Kinematics (Elbow-Up)\n\n**Given:**\n- L1 = 3, L2 = 4\n- Target: (x, y) = (0, 5)\n- Need: elbow-up configuration\n\n## Step 1: Check Reachability\nDistance to target: $d = \\sqrt{0^2 + 5^2} = 5$\n\nValid range: $|L_1 - L_2| \\leq d \\leq L_1 + L_2$\n- $|3-4| = 1 \\leq 5 \\leq 7$ \u2713\n\n## Step 2: Find Elbow Angle (\u03b8\u2082)\nUsing law of cosines:\n$$d^2 = L_1^2 + L_2^2 - 2L_1L_2\\cos(\\pi - \\theta_2)$$\n\n$$25 = 9 + 16 - 2(3)(4)\\cos(\\pi - \\theta_2)$$\n\n$$25 = 25 + 24\\cos(\\pi - \\theta_2)$$\n\n$$\\cos(\\pi - \\theta_2) = 0$$\n\n$$\\pi - \\theta_2 = \\frac{\\pi}{2}$$\n\n$$\\theta_2 = \\frac{\\pi}{2} = 1.5708 \\text{ rad}$$\n\n## Step 3: Find Shoulder Angle (\u03b8\u2081)\nUsing law of cosines to find angle \u03b1 at origin:\n$$\\cos(\\alpha) = \\frac{L_1^2 + d^2 - L_2^2}{2L_1 d} = \\frac{9 + 25 - 16}{2(3)(5)} = \\frac{18}{30} = 0.6$$\n\n$$\\alpha = \\arccos(0.6) = 0.9273 \\text{ rad}$$\n\nSince target is at (0, 5) on +y axis:\n$$\\theta_1 = \\frac{\\pi}{2} - \\alpha = 1.5708 - 0.9273 = 0.6435 \\text{ rad}$$\n\n## Verification\n- Link 1 end: $(3\\cos(0.6435), 3\\sin(0.6435)) = (2, 2.25)$\n- Link 2 end: $(2 + 4\\cos(2.2143), 2.25 + 4\\sin(2.2143)) \u2248 (0, 5)$ \u2713\n\n**FINAL: theta1=0.6435, theta2=1.5708**"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Here's how to solve this inverse kinematics problem:\n\n**1. Set up the equations:**\n\nThe end-effector position (x, y) can be expressed in terms of the joint angles and link lengths:\nx = L1 * cos(theta1) + L2 * cos(theta1 + theta2)\ny = L1 * sin(theta1) + L2 * sin(theta1 + theta2)\n\n**2. Use the geometric approach (or algebraic manipulation):**\n\nWe can use the law of cosines on the triangle formed by the origin, the end-effector, and the joint between L1 and L2.\n\nLet r be the distance from the origin to the end-effector:\nr^2 = x^2 + y^2\nr^2 = 0^2 + 5^2 = 25\nr = 5\n\nNow, consider the triangle formed by the origin, the end-effector, and the elbow joint. The sides are L1, L2, and r. We can find theta2 using the law of cosines:\nr^2 = L1^2 + L2^2 - 2 * L1 * L2 * cos(pi - theta2)\n25 = 3^2 + 4^2 - 2 * 3 * 4 * cos(pi - theta2)\n25 = 9 + 16 - 24 * cos(pi - theta2)\n25 = 25 - 24 * cos(pi - theta2)\n0 = -24 * cos(pi - theta2)\ncos(pi - theta2) = 0\npi - theta2 = pi/2  (or -pi/2, but we'll address this)\ntheta2 = pi - pi/2 = pi/2\n\nFor the elbow-up configuration, theta2 is typically positive. Since cos(pi - theta2) = 0, and we want the elbow \"up\" (meaning theta2 is not pointing straight down), we take the solution where pi - theta2 = pi/2, which gives theta2 = pi/2.\n\nNow, we can find theta1. We can use the x and y equations, or a geometric approach. Let's use the x equation:\nx = L1 * cos(theta1) + L2 * cos(theta1 + theta2)\n0 = 3 * cos(theta1) + 4 * cos(theta1 + pi/2)\n0 = 3 * cos(theta1) + 4 * (-sin(theta1))  (since cos(A + pi/2) = -sin(A))\n0 = 3 * cos(theta1) - 4 * sin(theta1)\n4 * sin(theta1) = 3 * cos(theta1)\ntan(theta1) = 3/4\n\ntheta1 = atan(3/4)\n\n**3. Calculate the values:**\n\ntheta1 = atan(3/4) \u2248 0.6435 radians\ntheta2 = pi/2 \u2248 1.5708 radians\n\n**4. Verify (optional but recommended):**\nx = 3 * cos(0.6435) + 4 * cos(0.6435 + 1.5708)\nx = 3 * 0.8 + 4 * cos(2.2143)\nx = 2.4 + 4 * (-0.6)\nx = 2.4 - 2.4 = 0\n\ny = 3 * sin(0.6435) + 4 * sin(0"
+      }
+    ]
+  },
+  {
+    "question": "Robotics R3:\nYou track a 1D position x. Prior belief: x ~ N(10, 4) (mean 10, variance 4). A sensor measures z=13 with measurement noise variance R=9. Measurement model: z = x + noise.\nCompute the posterior mean and variance after one Kalman update.\n\nInstructions: Show key steps briefly. End with `FINAL: mean=..., var=...` (exact fractions preferred; otherwise 4 decimals).",
+    "correct_answer": "FINAL: mean=142/13 (approx 10.9231), var=36/13 (approx 2.7692)",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Prior: \u03bc = 10, P = 4; measurement z = 13, R = 9.\n- Kalman gain: K = P/(P+R) = 4/13.\n- Innovation: z \u2212 \u03bc = 3.\n- Posterior mean: \u03bc' = \u03bc + K(z\u2212\u03bc) = 10 + (4/13)*3 = 142/13.\n- Posterior variance: P' = (P R)/(P+R) = (4*9)/13 = 36/13.\n\nFINAL: mean=142/13, var=36/13"
+      },
+      {
+        "provider": "xai",
+        "answer": "Prior: mean = 10, variance = 4  \nMeasurement: z = 13, R = 9  \nKalman gain: K = 4 / (4 + 9) = 4/13  \nPosterior mean: 10 + (4/13) * (13 - 10) = 10 + (4/13) * 3 = 10 + 12/13 = 142/13  \nPosterior variance: 4 * (1 - 4/13) = 4 * (9/13) = 36/13  \n\nFINAL: mean=142/13, var=36/13"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Kalman Filter Update\n\n**Given:**\n- Prior: x ~ N(10, 4), so \u03bc\u2080 = 10, P\u2080 = 4\n- Measurement: z = 13\n- Measurement noise: R = 9\n- Model: z = x + noise\n\n**Step 1: Compute Kalman Gain**\n\n$$K = \\frac{P_0}{P_0 + R} = \\frac{4}{4 + 9} = \\frac{4}{13}$$\n\n**Step 2: Update Mean**\n\n$$\\mu_1 = \\mu_0 + K(z - \\mu_0)$$\n$$\\mu_1 = 10 + \\frac{4}{13}(13 - 10)$$\n$$\\mu_1 = 10 + \\frac{4}{13} \\cdot 3 = 10 + \\frac{12}{13}$$\n$$\\mu_1 = \\frac{130 + 12}{13} = \\frac{142}{13}$$\n\n**Step 3: Update Variance**\n\n$$P_1 = (1 - K)P_0 = \\left(1 - \\frac{4}{13}\\right) \\cdot 4$$\n$$P_1 = \\frac{9}{13} \\cdot 4 = \\frac{36}{13}$$\n\n**FINAL: mean=142/13 \u2248 10.9231, var=36/13 \u2248 2.7692**"
+      },
+      {
+        "provider": "gemini",
+        "answer": "The prior belief is $x \\sim N(\\mu_0, \\Sigma_0)$, where $\\mu_0 = 10$ and $\\Sigma_0 = 4$.\nThe measurement is $z = 13$ with measurement noise variance $R = 9$.\nThe measurement model is $z = x + v$, where $v \\sim N(0, R)$.\n\nThe Kalman gain $K$ is computed as:\n$K = \\frac{\\Sigma_0}{\\Sigma_0 + R} = \\frac{4}{4 + 9} = \\frac{4}{13}$\n\nThe posterior mean $\\mu_1$ is computed as:\n$\\mu_1 = \\mu_0 + K(z - \\mu_0) = 10 + \\frac{4}{13}(13 - 10) = 10 + \\frac{4}{13}(3) = 10 + \\frac{12}{13} = \\frac{130 + 12}{13} = \\frac{142}{13}$\n\nThe posterior variance $\\Sigma_1$ is computed as:\n$\\Sigma_1 = (1 - K)\\Sigma_0 = (1 - \\frac{4}{13}) \\times 4 = (\\frac{13 - 4}{13}) \\times 4 = \\frac{9}{13} \\times 4 = \\frac{36}{13}$\n\nFINAL: mean=142/13, var=36/13"
+      }
+    ]
+  },
+  {
+    "question": "Robotics R4:\nA point in robot frame is pr=(2,1). The robot frame is rotated by 90 deg CCW relative to the world frame, and the robot origin is at world coordinates (5, -3).\nCompute the point in world coordinates pw.\n\nInstructions: Show key steps briefly. End with `FINAL: (x,y)=(...,...)`.",
+    "correct_answer": "FINAL: (x,y)=(4,-1)",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Rotation by +90\u00b0 CCW: R = [[0, -1], [1, 0]]\n- Translation t = (5, -3)\n- R * pr = [0 -1; 1 0] * [2; 1] = (-1, 2)\n- pw = R*pr + t = (-1+5, 2-3) = (4, -1)\n\nFINAL: (x,y)=(4,-1)"
+      },
+      {
+        "provider": "xai",
+        "answer": "To transform the point from the robot frame to the world frame:\n\n1. **Rotation matrix**: For 90\u00b0 CCW, R = [[0, -1], [1, 0]].\n\n2. **Apply rotation to pr = (2, 1)**:  \n   rotated_pr = R * pr = [0*2 + (-1)*1, 1*2 + 0*1] = [-1, 2].\n\n3. **Add translation t = (5, -3)**:  \n   pw = [-1 + 5, 2 + (-3)] = [4, -1].\n\nFINAL: (x,y)=(4,-1)"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Robot Frame to World Frame Transformation\n\n**Given:**\n- Point in robot frame: p_r = (2, 1)\n- Robot frame rotated 90\u00b0 CCW relative to world frame\n- Robot origin in world frame: (5, -3)\n\n**Step 1: Rotation Matrix for 90\u00b0 CCW**\n\n$$R = \\begin{pmatrix} \\cos(90\u00b0) & -\\sin(90\u00b0) \\\\ \\sin(90\u00b0) & \\cos(90\u00b0) \\end{pmatrix} = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$$\n\n**Step 2: Rotate the point**\n\n$$p_{rotated} = R \\cdot p_r = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix} \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} -1 \\\\ 2 \\end{pmatrix}$$\n\n**Step 3: Translate by robot origin**\n\n$$p_w = p_{rotated} + \\text{origin} = \\begin{pmatrix} -1 \\\\ 2 \\end{pmatrix} + \\begin{pmatrix} 5 \\\\ -3 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ -1 \\end{pmatrix}$$\n\n**FINAL: (x,y)=(4,-1)**"
+      },
+      {
+        "provider": "gemini",
+        "answer": "The transformation from robot frame to world frame can be represented by:\n$p_w = R_{rw} p_r + t_{w,r}$\n\nWhere:\n$p_r$ is the point in the robot frame.\n$p_w$ is the point in the world frame.\n$R_{rw}$ is the rotation matrix from the robot frame to the world frame.\n$t_{w,r}$ is the translation vector from the robot origin to the world origin.\n\nGiven:\n$p_r = (2, 1)$\nThe robot frame is rotated by 90 deg CCW relative to the world frame. This means the world frame is rotated by 90 deg CW relative to the robot frame.\nThe rotation matrix from robot to world ($R_{rw}$) is the rotation of the robot frame's axes in the world frame. If the robot frame is rotated 90 deg CCW relative to the world, then the robot's x-axis points in the world's y-direction and the robot's y-axis points in the negative world's x-direction.\nSo, $R_{rw} = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$.\n\nThe robot origin is at world coordinates $(5, -3)$. This is the translation vector $t_{w,r}$.\n$t_{w,r} = \\begin{pmatrix} 5 \\\\ -3 \\end{pmatrix}$\n\nNow, compute $p_w$:\n$p_w = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix} \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} + \\begin{pmatrix} 5 \\\\ -3 \\end{pmatrix}$\n\nFirst, perform the matrix multiplication:\n$\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix} \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} (0 \\times 2) + (-1 \\times 1) \\\\ (1 \\times 2) + (0 \\times 1) \\end{pmatrix} = \\begin{pmatrix} -1 \\\\ 2 \\end{pmatrix}$\n\nNow, perform the addition:\n$p_w = \\begin{pmatrix} -1 \\\\ 2 \\end{pmatrix} + \\begin{pmatrix} 5 \\\\ -3 \\end{pmatrix} = \\begin{pmatrix} -1 + 5 \\\\ 2 + (-3) \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ -1 \\end{pmatrix}$\n\nFINAL: (x,y)=(4,-1)"
+      }
+    ]
+  },
+  {
+    "question": "Robotics R5:\nA robot moves on a 5x5 grid from S to G using only up/down/left/right moves. Each move costs 1. Obstacles (#) are blocked.\nGrid (row 1 at top):\nRow1: S . # . .\nRow2: . . # . #\nRow3: # . . . .\nRow4: . # # . .\nRow5: . . . # G\nFind the length of the shortest path.\n\nInstructions: Show key steps briefly. End with `FINAL: <integer>`.",
+    "correct_answer": "FINAL: 8",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Start: S at (1,1), G at (5,5). Obstacles at (1,3),(2,3),(2,5),(3,1),(4,2),(4,3),(5,4).\n- BFS layers (distance):\n  - 0: (1,1)\n  - 1: (1,2), (2,1)\n  - 2: (2,2)\n  - 3: (3,2)\n  - 4: (3,3)\n  - 5: (3,4)\n  - 6: (2,4), (4,4), (3,5)\n  - 7: (1,4), (4,5)\n  - 8: (5,5) (G reached from (4,5))\n- Example shortest path (8 moves): (1,1) -> (1,2) -> (2,2) -> (3,2) -> (3,3) -> (3,4) -> (3,5) -> (4,5) -> (5,5)\nFINAL: 8"
+      },
+      {
+        "provider": "xai",
+        "answer": "### Step 1: Identify the Grid\n- Grid is 5x5 with 'S' at (1,1) and 'G' at (5,5).\n- Obstacles ('#') block paths at: (1,3), (2,3), (2,5), (3,1), (4,2), (4,3), (5,4).\n\n### Step 2: Apply BFS for Shortest Path\n- Use BFS starting from (1,1) since all moves cost 1.\n- Explore neighbors (up, down, left, right) only if within bounds and not blocked.\n- Key distances reached:\n  - (1,1): 0\n  - (1,2): 1\n  - (2,2): 2\n  - (3,2): 3\n  - (3,3): 4\n  - (3,4): 5\n  - (3,5): 6\n  - (4,5): 7\n  - (5,5): 8\n\n### Step 3: Verify Shortest Path\n- Shortest path length to (5,5) is 8, as confirmed by BFS exploration.\n\nFINAL: 8"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "I need to find the shortest path from S to G on this 5x5 grid using BFS.\n\n**Grid Setup:**\n```\nRow1: S . # . .\nRow2: . . # . #\nRow3: # . . . .\nRow4: . # # . .\nRow5: . . . # G\n```\n\nCoordinates (row, col) with 1-indexing:\n- S = (1,1)\n- G = (5,5)\n- Obstacles: (1,3), (2,3), (2,5), (3,1), (4,2), (4,3), (5,4)\n\n**BFS Approach:**\n\nStarting from S(1,1), I'll explore level by level:\n\n**Level 0:** (1,1)\n\n**Level 1:** From (1,1), can move to:\n- (1,2), (2,1)\n\n**Level 2:** From (1,2): (1,1)\u2713, (2,2), (1,3)\u2717\nFrom (2,1): (1,1)\u2713, (2,2)\u2713, (3,1)\u2717\nNew: (2,2)\n\n**Level 3:** From (2,2): (1,2)\u2713, (2,1)\u2713, (2,3)\u2717, (3,2)\nNew: (3,2)\n\n**Level 4:** From (3,2): (2,2)\u2713, (3,1)\u2717, (3,3), (4,2)\u2717\nNew: (3,3)\n\n**Level 5:** From (3,3): (2,3)\u2717, (3,2)\u2713, (3,4), (4,3)\u2717\nNew: (3,4)\n\n**Level 6:** From (3,4): (2,4), (3,3)\u2713, (3,5), (4,4)\nNew: (2,4), (3,5), (4,4)\n\n**Level 7:** From (2,4): (1,4), (2,3)\u2717, (2,5)\u2717, (3,4)\u2713\nFrom (3,5): (2,5)\u2717, (3,4)\u2713, (4,5)\nFrom (4,4): (3,4)\u2713, (4,3)\u2717, (4,5), (5,4)\u2717\nNew: (1,4), (4,5)\n\n**Level 8:** From (1,4): (1,3)\u2717, (1,5), (2,4)\u2713\nFrom (4,5): (3,5)\u2713, (4,4)\u2713, (5,5)\u2713 \u2190 **Found G!**\n\nThe path reaches G(5,5) at level 8.\n\n**FINAL: 8**"
+      },
+      {
+        "provider": "gemini",
+        "answer": "The problem asks for the shortest path from 'S' to 'G' on a 5x5 grid with obstacles, where each move costs 1. We can use Breadth-First Search (BFS) to find the shortest path in an unweighted graph.\n\nThe grid can be represented as follows, with (row, column) coordinates starting from (0,0) at the top-left:\n\nRow1: S(0,0) . (0,1) # (0,2) . (0,3) . (0,4)\nRow2: . (1,0) . (1,1) # (1,2) . (1,3) # (1,4)\nRow3: # (2,0) . (2,1) . (2,2) . (2,3) . (2,4)\nRow4: . (3,0) # (3,1) # (3,2) . (3,3) . (3,4)\nRow5: . (4,0) . (4,1) . (4,2) # (4,3) G (4,4)\n\nObstacles are at: (0,2), (1,2), (1,4), (2,0), (3,1), (3,2), (4,3).\nStart is S at (0,0).\nGoal is G at (4,4).\n\nWe can perform a BFS starting from S(0,0). We'll keep track of the distance from S to each reachable cell.\n\n1.  **Queue Initialization**: `queue = [(0,0,0)]` (row, col, distance)\n    **Visited Set**: `visited = {(0,0)}`\n\n2.  **Dequeue (0,0,0)**. Neighbors: (0,1), (1,0).\n    *   Add (0,1,1) to queue. `visited.add((0,1))`\n    *   Add (1,0,1) to queue. `visited.add((1,0))`\n    `queue = [(0,1,1), (1,0,1)]`\n\n3.  **Dequeue (0,1,1)**. Neighbors: (0,0) (visited), (0,2) (obstacle), (1,1).\n    *   Add (1,1,2) to queue. `visited.add((1,1))`\n    `queue = [(1,0,1), (1,1,2)]`\n\n4.  **Dequeue (1,0,1)**. Neighbors: (0,0) (visited), (1,1) (visited), (2,0) (obstacle).\n    `queue = [(1,1,2)]`\n\n5.  **Dequeue (1,1,2)**. Neighbors: (0,1) (visited), (1,0) (visited), (1,2) (obstacle), (2,1).\n    *   Add (2,1,3) to queue. `visited.add((2,1))`\n    `queue = [(2,1,3)]`\n\n6.  **Dequeue (2,1,3)**. Neighbors: (1,1) (visited), (2,0) (obstacle), (2,2), (3,1) (obstacle).\n    *   Add (2,2,4) to queue. `visited.add((2,2))`\n    `queue = [(2,2,4)]`\n\n7.  **Dequeue (2,2,4)**. Neighbors: (1,2) (obstacle),"
+      }
+    ]
+  },
+  {
+    "question": "Logic L1:\nOn an island, Knights always tell the truth and Knaves always lie.\nA says: \"B is a Knave.\"\nB says: \"C is a Knave.\"\nC says: \"A and B are of different types.\"\nDetermine who is Knight/Knave.\n\nInstructions: Show key steps briefly. End with `FINAL: A=..., B=..., C=...`.",
+    "correct_answer": "FINAL: A=Knight, B=Knave, C=Knight",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- If A is Knight, then B is Knave. B\u2019s statement is false, so C is Knight. C is Knight, so A and B are different; this matches A=Knight, B=Knave. Consistent.\n- If A is Knave, then B is Knight. B\u2019s statement is true, so C is Knave. C is Knave, so C\u2019s statement is false, meaning A and B are the same type; but A=Knave and B=Knight are different \u2014 a contradiction. Therefore this case is impossible.\n\nConclusion: only the first case works.\n\nFINAL: A=Knight, B=Knave, C=Knight"
+      },
+      {
+        "provider": "xai",
+        "answer": "### Step 1: Analyze A's statement\n- A says: \"B is a Knave.\"\n- If A is a Knight, then B is a Knave.\n- If A is a Knave, then B is a Knight.\n\n### Step 2: Analyze B's statement\n- B says: \"C is a Knave.\"\n- If B is a Knight, then C is a Knave.\n- If B is a Knave, then C is a Knight.\n\n### Step 3: Analyze C's statement\n- C says: \"A and B are of different types.\"\n- If C is a Knight, then A and B are different types.\n- If C is a Knave, then A and B are the same type.\n\n### Step 4: Test possibilities\n- Assume A is Knight: B is Knave (from A's statement).\n  - B is Knave, so C is Knight (from B's statement).\n  - C is Knight, so A and B are different types (A= Knight, B= Knave, which is true).\n  - Consistent: A= Knight, B= Knave, C= Knight.\n- Assume A is Knave: B is Knight (from A's statement).\n  - B is Knight, so C is Knave (from B's statement).\n  - C is Knave, so A and B are the same type (but A= Knave, B= Knight, which are different\u2014contradiction).\n  - Inconsistent.\n\n### FINAL: A= Knight, B= Knave, C= Knight."
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Logic Puzzle Solution\n\nI'll test each possible combination systematically.\n\n## Case 1: A is a Knight\n- A tells truth: \"B is a Knave\" \u2192 **B is a Knave** \u2713\n- B lies: \"C is a Knave\" \u2192 **C is a Knight** \u2713\n- C tells truth: \"A and B are different types\" \u2192 A is Knight, B is Knave (different) \u2713\n\n**This is consistent!**\n\n## Case 2: A is a Knave\n- A lies: \"B is a Knave\" \u2192 **B is a Knight** \u2713\n- B tells truth: \"C is a Knave\" \u2192 **C is a Knave** \u2713\n- C lies: \"A and B are different types\" \u2192 But A is Knave and B is Knight (they ARE different) \u2717\n\n**Contradiction! C should tell truth but the statement is true.**\n\n## Verification of Case 1:\n- A (Knight) says B is Knave: TRUE \u2713\n- B (Knave) says C is Knave: FALSE (C is Knight) \u2713\n- C (Knight) says A and B differ: TRUE (Knight \u2260 Knave) \u2713\n\nFINAL: **A=Knight, B=Knave, C=Knight**"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Here's the logical deduction:\n\n*   **Assume A is a Knight:**\n    *   If A is a Knight, A tells the truth. So, \"B is a Knave\" is true.\n    *   If B is a Knave, B lies. So, \"C is a Knave\" is false, meaning C is a Knight.\n    *   If C is a Knight, C tells the truth. So, \"A and B are of different types\" is true.\n    *   This is consistent: A (Knight) and B (Knave) are indeed of different types.\n\n*   **Check other possibilities (for completeness, though the first assumption worked):**\n    *   If A were a Knave, A would lie. So, \"B is a Knave\" would be false, meaning B is a Knight.\n    *   If B is a Knight, B tells the truth. So, \"C is a Knave\" is true.\n    *   If C is a Knave, C lies. So, \"A and B are of different types\" is false. This means A and B are of the *same* type.\n    *   This contradicts our initial assumption that A is a Knave and B is a Knight (different types). So, A cannot be a Knave.\n\nTherefore, the first assumption is correct.\n\nFINAL: A=Knight, B=Knave, C=Knight"
+      }
+    ]
+  },
+  {
+    "question": "Logic L2:\nThree friends make statements about a positive integer n. Exactly one statement is false:\n1) n is divisible by 6\n2) n is divisible by 4\n3) n is divisible by 3\nFind the smallest positive n that satisfies this.\n\nInstructions: Show key steps briefly. End with `FINAL: n=...`.",
+    "correct_answer": "FINAL: n=6",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Let A: n divisible by 6, B: n divisible by 4, C: n divisible by 3. Exactly one is false.\n- If A were false, while B and C true would force n divisible by 12 (hence by 6), a contradiction. So A cannot be the sole false; A must be true.\n- With A true, the single false must be either B or C. If C were false (n not divisible by 3) while A and B true, impossible since A implies divisibility by 3. So the only viable single false is B false.\n- Thus n is a multiple of 6 but not a multiple of 4. The smallest such n is 6. Check: A true, B false, C true.\n- Therefore the smallest n is 6.\n\nFINAL: n=6"
+      },
+      {
+        "provider": "xai",
+        "answer": "Key steps:  \n- Exactly one statement is false: A (n divisible by 6), B (n divisible by 4), or C (n divisible by 3).  \n- Case 1: A false, B and C true \u2192 n divisible by 4 and 3 (so by 12), but not by 6 \u2192 Impossible, as multiples of 12 are divisible by 6.  \n- Case 2: B false, A and C true \u2192 n divisible by 6 (and thus by 3), but not by 4. Multiples of 6: 6, 12, 18...; not divisible by 4: 6, 18...; smallest is 6.  \n- Case 3: C false, A and B true \u2192 n divisible by 6 and 4 (so by 12), but not by 3 \u2192 Impossible, as multiples of 6 are divisible by 3.  \n- Only Case 2 works; smallest n is 6.  \n\nFINAL: n=6"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "I need to find the smallest positive integer n where exactly one of these three statements is false.\n\nLet me consider each case where exactly one statement is false.\n\n**Case 1: Statement 1 is false, statements 2 and 3 are true**\n- n is NOT divisible by 6\n- n IS divisible by 4\n- n IS divisible by 3\n\nIf n is divisible by both 4 and 3, then n is divisible by lcm(4,3) = 12.\nSo n = 12k for some positive integer k.\n\nFor n to NOT be divisible by 6: Since 6 = 2\u00d73, and n = 12k = 4\u00d73\u00d7k is divisible by both 2 and 3, n must be divisible by 6.\nThis is a contradiction. **Case 1 is impossible.**\n\n**Case 2: Statement 2 is false, statements 1 and 3 are true**\n- n IS divisible by 6\n- n is NOT divisible by 4\n- n IS divisible by 3\n\nIf n is divisible by 6, then n = 6m for some positive integer m.\nSince 6 = 2\u00d73, n is automatically divisible by 3. \u2713\n\nFor n to NOT be divisible by 4: We need 6m to not be divisible by 4.\n- If m is odd, then 6m = 2\u00d73\u00d7(odd), which is not divisible by 4. \u2713\n\nSmallest such n: m = 1, so n = 6.\n\nCheck: \n- Divisible by 6? Yes \u2713\n- Divisible by 4? No \u2713\n- Divisible by 3? Yes \u2713\n\nExactly one false statement (statement 2). **This works!**\n\n**Case 3: Statement 3 is false, statements 1 and 2 are true**\n- n IS divisible by 6\n- n IS divisible by 4\n- n is NOT divisible by 3\n\nIf n is divisible by 6 = 2\u00d73, then n must be divisible by 3.\nThis contradicts statement 3 being false. **Case 3 is impossible.**\n\nThe smallest n from the valid cases is n = 6.\n\nFINAL: n=6"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Let the statements be:\nS1: n is divisible by 6 (i.e., n is divisible by 2 and 3)\nS2: n is divisible by 4\nS3: n is divisible by 3\n\nExactly one statement is false. We consider three cases:\n\nCase 1: S1 is false, S2 and S3 are true.\nIf S3 is true, n is divisible by 3.\nIf S2 is true, n is divisible by 4.\nSo, n is divisible by lcm(3, 4) = 12.\nIf n is divisible by 12, then n is divisible by 6. This means S1 would be true, which contradicts our assumption that S1 is false. So, this case is impossible.\n\nCase 2: S2 is false, S1 and S3 are true.\nIf S1 is true, n is divisible by 6. This implies n is divisible by 2 and 3.\nIf S3 is true, n is divisible by 3. This is consistent with S1.\nIf S2 is false, n is not divisible by 4.\nSo, n is divisible by 6 but not by 4.\nMultiples of 6 are 6, 12, 18, 24, 30, ...\nCheck divisibility by 4:\n6 is not divisible by 4. (S2 is false)\n12 is divisible by 4. (S2 is true)\n18 is not divisible by 4. (S2 is false)\n24 is divisible by 4. (S2 is true)\n30 is not divisible by 4. (S2 is false)\nWe need S1 and S3 to be true, and S2 to be false.\nFor n=6: S1 (divisible by 6) is true. S2 (divisible by 4) is false. S3 (divisible by 3) is true. This fits the condition.\nFor n=18: S1 (divisible by 6) is true. S2 (divisible by 4) is false. S3 (divisible by 3) is true. This fits the condition.\nFor n=30: S1 (divisible by 6) is true. S2 (divisible by 4) is false. S3 (divisible by 3) is true. This fits the condition.\nThe smallest positive n in this case is 6.\n\nCase 3: S3 is false, S1 and S2 are true.\nIf S3 is false, n is not divisible by 3.\nIf S1 is true, n is divisible by 6. This implies n is divisible by 2 and 3.\nThis creates a contradiction: n is divisible by 3 (from S1) and n is not divisible by 3 (from S3 being false). So, this case is impossible.\n\nComparing the possible cases, the smallest positive integer n is 6.\n\nFINAL: n=6"
+      }
+    ]
+  },
+  {
+    "question": "Logic L3 (fixed):\nYou see two cards, each with a statement:\nCard 1: \"Exactly one of these two cards is true.\"\nCard 2: \"Card 1 is false.\"\nAssume each statement is either True or False (no paradoxes).\nDetermine the truth values.\n\nInstructions: Show key steps briefly. End with `FINAL: Card1=..., Card2=...`.",
+    "correct_answer": "FINAL: Card1=True, Card2=False",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Let T1 be Card1's truth value, T2 be Card2's.\n- Card2 says: Card1 is false, so T2 = not T1.\n- Card1 says: exactly one of the two cards is true, i.e., T1 XOR T2.\n- With T2 = not T1, T1 XOR T2 = T1 XOR not T1 = True. So Card1's statement is true, hence T1 = True.\n- Then T2 = not T1 = False.\n\nVerify: Card1 true; Card2 false. Consistent.\n\nFINAL: Card1=True, Card2=False"
+      },
+      {
+        "provider": "xai",
+        "answer": "### Key Steps:\n1. **Assume Card 1 is True**: Its statement (\"Exactly one of these two cards is true\") must hold, so Card 2 must be False.\n2. **Check Card 2**: It says \"Card 1 is false.\" If Card 1 is True, Card 2 is False, which is consistent.\n3. **Assume Card 1 is False**: Then its statement is false, meaning either both cards are true or both are false.\n4. **Check Card 2**: If Card 1 is False, Card 2 (\"Card 1 is false\") would be True, leading to one true and one false\u2014contradicting the assumption that Card 1's statement is false.\n5. **Conclusion**: The only consistent scenario is Card 1 True and Card 2 False.\n\nFINAL: Card1=True, Card2=False."
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Logic L3 Analysis\n\nLet me test both possibilities:\n\n## Case 1: Card 1 is TRUE\n- Card 1 says \"Exactly one of these two cards is true\"\n- If Card 1 is true, then exactly one card is true\n- This means Card 2 must be false\n- Card 2 says \"Card 1 is false\"\n- If Card 2 is false, then Card 1 is NOT false (i.e., Card 1 is true) \u2713\n- **Consistent!**\n\n## Case 2: Card 1 is FALSE\n- Card 1 says \"Exactly one of these two cards is true\"\n- If Card 1 is false, then it's NOT the case that exactly one card is true\n- So either both cards are true or both are false\n- Card 2 says \"Card 1 is false\"\n- If Card 1 is false, then Card 2's statement is true, so Card 2 is true\n- But then we have Card 1 false and Card 2 true (exactly one true)\n- This contradicts our requirement that NOT exactly one is true \u2717\n- **Inconsistent!**\n\n---\n\n**FINAL: Card1=True, Card2=False**"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Let C1 be the statement on Card 1, and C2 be the statement on Card 2.\n\nAssume C1 is True.\nThen, \"Exactly one of these two cards is true\" is true.\nThis means either C1 is true and C2 is false, OR C1 is false and C2 is true.\nSince we assumed C1 is true, this implies C2 must be false.\nNow let's check if C2 being false is consistent with C1 being true.\nC2 states \"Card 1 is false\". If C2 is false, then \"Card 1 is false\" is false, which means Card 1 is true.\nThis is consistent with our initial assumption that C1 is true.\nSo, C1 is True and C2 is False is a valid solution.\n\nAssume C1 is False.\nThen, \"Exactly one of these two cards is true\" is false.\nThis means either both cards are true, OR both cards are false.\nIf C1 is false, then C2 must be true (because if both were false, C1 would be false, but C2 would also be false, contradicting the \"both false\" case if C2 is true).\nLet's check if C2 being true is consistent with C1 being false.\nC2 states \"Card 1 is false\". If C2 is true, then Card 1 is indeed false.\nThis is consistent with our assumption that C1 is false.\nSo, C1 is False and C2 is True is also a valid solution.\n\nLet's re-evaluate the first case more carefully.\nIf C1 is True: \"Exactly one of these two cards is true.\"\nThis implies (C1 is True AND C2 is False) OR (C1 is False AND C2 is True).\nSince we assumed C1 is True, the second part (C1 is False AND C2 is True) is impossible.\nSo, we must have C1 is True AND C2 is False.\nNow check C2: \"Card 1 is false.\" If C2 is False, then \"Card 1 is false\" is false, meaning Card 1 is True.\nThis is consistent. So, C1=True, C2=False is a valid assignment.\n\nLet's re-evaluate the second case.\nIf C1 is False: \"Exactly one of these two cards is true.\" is False.\nThis implies (C1 is True AND C2 is True) OR (C1 is False AND C2 is False).\nSince we assumed C1 is False, the first part (C1 is True AND C2 is True) is impossible.\nSo, we must have C1 is False AND C2 is False.\nNow check C2: \"Card 1 is false.\" If C2 is False, then \"Card 1 is false\" is false, meaning Card 1 is True.\nThis contradicts our assumption that C1 is False.\nTherefore, the case where C1 is False leads to a contradiction.\n\nThe only consistent solution is C1 is True and C2 is False.\n\nFINAL: Card1=True, Card2=False"
+      }
+    ]
+  },
+  {
+    "question": "Logic L4:\nThree people (Aria, Ben, Cato) each own a different pet (Cat, Dog, Fish) and live in different colored houses (Red, Blue, Green).\nClues:\n1) Aria does not live in Red.\n2) The Fish is owned by the person in Blue.\n3) Ben does not own the Dog.\n4) Cato lives in Green.\nDetermine each person's house color and pet.\n\nInstructions: Show key steps briefly. End with `FINAL: Aria=(color,pet), Ben=(color,pet), Cato=(color,pet)`.",
+    "correct_answer": "FINAL: Aria=(Blue,Fish), Ben=(Red,Cat), Cato=(Green,Dog)",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- From (4): Cato lives in Green.\n- Colors left for Aria and Ben: Red and Blue.\n- From (1): Aria is not Red, so Aria is Blue; Ben is Red.\n- From (2): Fish is owned by the Blue house owner, so Aria has Fish.\n- From (3): Ben does not own Dog, so Ben must have Cat; Cato then has Dog.\n\nFINAL: Aria=(Blue,Fish), Ben=(Red,Cat), Cato=(Green,Dog)"
+      },
+      {
+        "provider": "xai",
+        "answer": "### Key Steps:\n1. From clue 4, Cato lives in Green, so houses left: Red and Blue.\n2. From clue 1, Aria does not live in Red, so Aria lives in Blue (only option left).\n3. Thus, Ben lives in Red.\n4. From clue 2, the Fish is owned by the person in Blue, so Aria owns the Fish.\n5. From clue 3, Ben does not own the Dog, and pets left are Cat and Dog (Fish is with Aria), so Ben owns the Cat.\n6. Therefore, Cato owns the Dog.\n\n### FINAL:  \nAria=(Blue, Fish), Ben=(Red, Cat), Cato=(Green, Dog)"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Logic Puzzle Solution\n\n**Step 1: Determine house colors**\n- From clue 4: Cato lives in Green\n- From clue 1: Aria does not live in Red\n- Therefore: Aria lives in Blue, Ben lives in Red\n\n**Step 2: Determine pets**\n- From clue 2: The Fish is owned by the person in Blue\n- Since Aria lives in Blue: Aria owns Fish\n- From clue 3: Ben does not own the Dog\n- Since Aria owns Fish and Ben doesn't own Dog: Ben owns Cat, Cato owns Dog\n\n**Verification:**\n1. \u2713 Aria does not live in Red (lives in Blue)\n2. \u2713 Fish owner lives in Blue (Aria)\n3. \u2713 Ben does not own Dog (owns Cat)\n4. \u2713 Cato lives in Green\n\nFINAL: Aria=(Blue,Fish), Ben=(Red,Cat), Cato=(Green,Dog)"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Here's the breakdown:\n\n*   **From clue 4:** Cato lives in Green.\n*   **From clue 2 and Cato's house:** Since Cato lives in Green, and the Fish owner lives in Blue, Cato does not own the Fish.\n*   **From clue 1 and Cato's house:** Aria does not live in Red. Since Cato lives in Green, Aria must live in Blue.\n*   **From clue 2 and Aria's house:** Since Aria lives in Blue, Aria owns the Fish.\n*   **From clue 3 and Aria's pet:** Ben does not own the Dog. Since Aria owns the Fish, Ben must own the Cat.\n*   **Remaining pet and person:** The only remaining pet is the Dog, and the only remaining person is Cato. Therefore, Cato owns the Dog.\n*   **Remaining house color:** The only remaining house color is Red. Since Cato lives in Green and Aria lives in Blue, Ben must live in Red.\n\nFINAL: Aria=(Blue,Fish), Ben=(Red,Cat), Cato=(Green,Dog)"
+      }
+    ]
+  },
+  {
+    "question": "Logic L5:\nYou have three boxes labeled Apples, Oranges, Mixed. Each label is wrong. You may draw one fruit from one box (without looking inside) and must correctly relabel all boxes.\nWhich box do you pick from, and how do you relabel?\n\nInstructions: Show key steps briefly. End with `FINAL: pick=<...>; relabel: Apples->..., Oranges->..., Mixed->...`.",
+    "correct_answer": "FINAL: pick=Mixed; if draw Apple: Mixed->Apples, Oranges->Mixed, Apples->Oranges; if draw Orange: Mixed->Oranges, Apples->Mixed, Oranges->Apples",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "Key steps:\n- Pick from the box labeled Mixed (its label is wrong, so it\u2019s either Apples-only or Oranges-only).\n- Draw one fruit:\n  - If you draw an Apple, then Mixed-box is Apples. The Apples-labeled box cannot be Apples, so it is Oranges; the Oranges-labeled box must be Mixed.\n  - If you draw an Orange, then Mixed-box is Oranges. The Oranges-labeled box cannot be Oranges, so it is Apples; the Apples-labeled box must be Mixed.\n- Relabel accordingly:\n  - In the Apple-drawn case: Apples box -> Oranges, Oranges box -> Mixed, Mixed box -> Apples.\n  - In the Orange-drawn case: Apples box -> Mixed, Oranges box -> Apples, Mixed box -> Oranges.\n\nFINAL: pick=the box labeled Mixed; relabel: Apples->Oranges, Oranges->Mixed, Mixed->Apples"
+      },
+      {
+        "provider": "xai",
+        "answer": "### Key Steps:\n1. **Understand labels are wrong**: The box labeled \"Apples\" is not apples, \"Oranges\" is not oranges, and \"Mixed\" is not mixed (so it must be all apples or all oranges).\n2. **Choose box to pick from**: Pick from the box labeled \"Mixed\", as it contains either all apples or all oranges, providing clear information.\n3. **Analyze draw**:\n   - If you draw an apple: The \"Mixed\" box is actually apples.\n   - If you draw an orange: The \"Mixed\" box is actually oranges.\n4. **Deduce other boxes**:\n   - If apple drawn: \"Oranges\" box must be mixed (since it's not oranges and not apples), so \"Apples\" box is oranges.\n   - If orange drawn: \"Apples\" box must be mixed (since it's not apples and not oranges), so \"Oranges\" box is apples.\n5. **Relabel accordingly**.\n\nFINAL: pick=Mixed box; relabel: If apple drawn: Apples->Oranges, Oranges->Mixed, Mixed->Apples; If orange drawn: Apples->Mixed, Oranges->Apples, Mixed->Oranges."
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Logic L5 Solution\n\n## Key Steps\n\n1. **Identify the constraint**: All three labels are wrong, so:\n   - \"Apples\" box contains either Oranges or Mixed\n   - \"Oranges\" box contains either Apples or Mixed\n   - \"Mixed\" box contains either Apples or Oranges (not actually mixed)\n\n2. **Choose the optimal box**: Pick from the **\"Mixed\"** box\n   - Since its label is wrong, it must contain *only* one type of fruit\n   - One draw reveals its true contents\n\n3. **Determine relabeling**:\n   - Suppose we draw an **Apple** from \"Mixed\"\n     - \"Mixed\" box \u2192 relabel as **Apples**\n     - \"Apples\" box must contain **Oranges** (can't be Apples, can't be Mixed)\n     - \"Oranges\" box \u2192 relabel as **Mixed**\n\n   - If we drew an **Orange** instead:\n     - \"Mixed\" box \u2192 relabel as **Oranges**\n     - \"Oranges\" box must contain **Apples**\n     - \"Apples\" box \u2192 relabel as **Mixed**\n\n## Logic\nThe \"Mixed\" box is optimal because one fruit from it uniquely determines all three labels (since it can only contain one type, and the other two boxes must split the remaining types).\n\n---\n\n**FINAL: pick=Mixed; relabel: Apples\u2192Oranges, Oranges\u2192Mixed, Mixed\u2192Apples** \n*(assuming an Apple is drawn; swap Apples\u2194Oranges if an Orange is drawn)*"
+      },
+      {
+        "provider": "gemini",
+        "answer": "1.  **Analyze the problem:** All labels are incorrect.\n    *   The box labeled \"Apples\" cannot contain only apples.\n    *   The box labeled \"Oranges\" cannot contain only oranges.\n    *   The box labeled \"Mixed\" cannot contain a mix of apples and oranges.\n\n2.  **Identify the most informative box to pick from:**\n    *   If you pick from \"Apples\" and get an apple, it could be the \"Mixed\" box. If you get an orange, it could be the \"Oranges\" box. This doesn't immediately resolve all labels.\n    *   If you pick from \"Oranges\" and get an orange, it could be the \"Mixed\" box. If you get an apple, it could be the \"Apples\" box. This also doesn't immediately resolve all labels.\n    *   If you pick from \"Mixed\", you *must* get either an apple or an orange, because the \"Mixed\" label is wrong, meaning it *cannot* be mixed. It must be *either* all apples *or* all oranges.\n\n3.  **Scenario: Pick from \"Mixed\" and draw an Apple.**\n    *   The box labeled \"Mixed\" must actually contain only Apples.\n    *   Now consider the box labeled \"Apples\". It cannot contain only Apples (we just found that box) and it cannot contain only Oranges (because its label is wrong). Therefore, the box labeled \"Apples\" must contain the Mixed fruit.\n    *   By elimination, the box labeled \"Oranges\" must contain only Oranges.\n\n4.  **Scenario: Pick from \"Mixed\" and draw an Orange.**\n    *   The box labeled \"Mixed\" must actually contain only Oranges.\n    *   Now consider the box labeled \"Oranges\". It cannot contain only Oranges (we just found that box) and it cannot contain only Apples (because its label is wrong). Therefore, the box labeled \"Oranges\" must contain the Mixed fruit.\n    *   By elimination, the box labeled \"Apples\" must contain only Apples.\n\n5.  **Conclusion:** Picking from the \"Mixed\" box is the key.\n\nFINAL: pick=Mixed; relabel: If you draw an Apple from Mixed: Apples->Mixed, Oranges->Oranges, Mixed->Apples. If you draw an Orange from Mixed: Apples->Apples, Oranges->Mixed, Mixed->Oranges."
+      }
+    ]
+  },
+  {
+    "question": "Probability PR1:\nA disease affects 2% of people. A test has sensitivity 95% and specificity 90%.\nIf someone tests positive, what is P(disease | +)? Round to 3 decimals.\n\nInstructions: Show key steps briefly. End with `FINAL: <decimal>`.",
+    "correct_answer": "FINAL: 0.162",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "Key steps:\n- P(D)=0.02, P(~D)=0.98; P(+|D)=0.95, P(+|~D)=0.10\n- P(D|+)= (0.95\u00d70.02) / [(0.95\u00d70.02) + (0.10\u00d70.98)]\n- Numerator = 0.019; Denominator = 0.117; Value \u2248 0.162\n\nFINAL: 0.162"
+      },
+      {
+        "provider": "xai",
+        "answer": "Key steps:\n\n1. Define probabilities: P(Disease) = 0.02, Sensitivity = 0.95, Specificity = 0.90.  \n   False positive rate = 1 - Specificity = 0.10.  \n\n2. Calculate P(+): P(+) = (Sensitivity \u00d7 P(Disease)) + (False positive rate \u00d7 P(No Disease))  \n   = (0.95 \u00d7 0.02) + (0.10 \u00d7 0.98) = 0.019 + 0.098 = 0.117.  \n\n3. Apply Bayes' theorem: P(Disease | +) = [Sensitivity \u00d7 P(Disease)] / P(+)  \n   = (0.95 \u00d7 0.02) / 0.117 = 0.019 / 0.117 \u2248 0.162.  \n\nFINAL: 0.162"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Bayes' Theorem Solution\n\n**Given:**\n- P(disease) = 0.02\n- P(+ | disease) = 0.95 (sensitivity)\n- P(\u2212 | no disease) = 0.90 (specificity)\n- P(+ | no disease) = 1 \u2212 0.90 = 0.10\n\n**Step 1: Calculate P(+) using the law of total probability**\n\nP(+) = P(+ | disease) \u00d7 P(disease) + P(+ | no disease) \u00d7 P(no disease)\n\nP(+) = 0.95 \u00d7 0.02 + 0.10 \u00d7 0.98\n\nP(+) = 0.019 + 0.098 = 0.117\n\n**Step 2: Apply Bayes' Theorem**\n\nP(disease | +) = [P(+ | disease) \u00d7 P(disease)] / P(+)\n\nP(disease | +) = (0.95 \u00d7 0.02) / 0.117\n\nP(disease | +) = 0.019 / 0.117 = 0.162...\n\nFINAL: 0.162"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Let D be the event that a person has the disease.\nLet T be the event that a person tests positive.\n\nWe are given:\nP(D) = 0.02 (prevalence)\nP(T | D) = 0.95 (sensitivity)\nP(T' | D') = 0.90 (specificity)\n\nFrom specificity, we can find the false positive rate:\nP(T | D') = 1 - P(T' | D') = 1 - 0.90 = 0.10\n\nWe want to find P(D | T), the probability of having the disease given a positive test.\nWe can use Bayes' Theorem:\nP(D | T) = [P(T | D) * P(D)] / P(T)\n\nFirst, we need to calculate P(T), the overall probability of testing positive. We can use the law of total probability:\nP(T) = P(T | D) * P(D) + P(T | D') * P(D')\n\nWe need P(D'), the probability of not having the disease:\nP(D') = 1 - P(D) = 1 - 0.02 = 0.98\n\nNow, calculate P(T):\nP(T) = (0.95 * 0.02) + (0.10 * 0.98)\nP(T) = 0.019 + 0.098\nP(T) = 0.117\n\nNow, apply Bayes' Theorem:\nP(D | T) = (0.95 * 0.02) / 0.117\nP(D | T) = 0.019 / 0.117\nP(D | T) \u2248 0.162393\n\nRounding to 3 decimals:\nP(D | T) \u2248 0.162\n\nFINAL: 0.162"
+      }
+    ]
+  },
+  {
+    "question": "Probability PR2:\nThere are 4 doors: 1 car and 3 goats. You pick 1 door. The host then opens exactly two other doors, always revealing goats. If multiple valid ways to open two goat doors exist, the host chooses uniformly among them.\nYou then switch to the only remaining unopened door.\nWhat is the probability you win the car if you switch?\n\nInstructions: Show key steps briefly. End with `FINAL: <fraction or decimal>`.",
+    "correct_answer": "FINAL: 3/4",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Let A be your initial pick. Car is behind A with prob 1/4; behind some goat with prob 3/4.\n- If A has the car: among B/C/D all 3 are goats; host opens two goats, leaving one goat unopened. Switching loses.\n- If A has a goat: among B/C/D there is 1 car and 2 goats; host must open the two goats (only valid pair). The remaining unopened door is the car, so switching wins.\n- Therefore probability of winning by switching = 3/4.\n\nFINAL: 3/4"
+      },
+      {
+        "provider": "xai",
+        "answer": "Consider the scenarios based on the car's location among 4 doors, with you initially picking door 1.\n\n- **Car behind door 1 (probability 1/4):** Host opens two of the three goat doors (2, 3, or 4). You switch to the remaining goat door and lose.\n- **Car behind door 2 (probability 1/4):** Host opens doors 3 and 4 (both goats). You switch to door 2 and win.\n- **Car behind door 3 (probability 1/4):** Host opens doors 2 and 4 (both goats). You switch to door 3 and win.\n- **Car behind door 4 (probability 1/4):** Host opens doors 2 and 3 (both goats). You switch to door 4 and win.\n\nProbability of winning by switching: 0 * (1/4) + 1 * (1/4) + 1 * (1/4) + 1 * (1/4) = 3/4.\n\nFINAL: 0.75"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Solution\n\nLet me analyze this step-by-step using conditional probability.\n\n## Setup\n- 4 doors total: 1 car, 3 goats\n- You pick 1 door\n- Host opens exactly 2 doors (always goats)\n- You switch to the remaining unopened door\n\n## Case Analysis\n\n**Case 1: You initially picked the car (probability 1/4)**\n- Remaining 3 doors: all goats\n- Host opens any 2 of the 3 goat doors\n- You switch to the remaining door \u2192 **you get a goat** \u2717\n\n**Case 2: You initially picked a goat (probability 3/4)**\n- Remaining 3 doors: 1 car + 2 goats\n- Host must open the 2 goat doors (only valid option)\n- You switch to the remaining door \u2192 **you get the car** \u2713\n\n## Calculation\n\nUsing the law of total probability:\n\n$$P(\\text{win car after switch}) = P(\\text{car | initially picked car}) \\cdot P(\\text{initially picked car})$$\n$$+ P(\\text{car | initially picked goat}) \\cdot P(\\text{initially picked goat})$$\n\n$$= 0 \\cdot \\frac{1}{4} + 1 \\cdot \\frac{3}{4} = \\frac{3}{4}$$\n\nFINAL: 3/4"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Let $C$ be the event that the car is behind the chosen door.\nLet $G_1, G_2, G_3$ be the events that the car is behind door 1, 2, 3, or 4 respectively.\nThe probability of the car being behind any door is $1/4$.\n\nCase 1: You initially pick the door with the car.\nThe probability of this is $1/4$.\nIf you picked the car, the host can open any two of the remaining three doors, as they all have goats. The host has 3 choices for the first goat door and 2 choices for the second goat door, so $3 \\times 2 = 6$ ways to open two goat doors. However, the problem states the host opens *exactly two other doors*. If you picked the car, there are 3 goat doors. The host must open two of them. The number of ways to choose 2 goat doors out of 3 is $\\binom{3}{2} = 3$. The host chooses uniformly among these 3 ways.\nIf you switch, you will switch to a goat door. So you lose.\n\nCase 2: You initially pick a door with a goat.\nThe probability of this is $3/4$.\nLet's say you picked door 1, and it has a goat. The car is behind one of the other three doors (doors 2, 3, or 4).\nThe host must open two doors that have goats.\nIf the car is behind door 2, then doors 3 and 4 have goats. The host must open doors 3 and 4. There is only 1 way.\nIf the car is behind door 3, then doors 2 and 4 have goats. The host must open doors 2 and 4. There is only 1 way.\nIf the car is behind door 4, then doors 2 and 3 have goats. The host must open doors 2 and 3. There is only 1 way.\n\nLet's re-evaluate the host's action more carefully.\nSuppose you pick door 1.\n- If the car is behind door 1 (probability 1/4): Doors 2, 3, 4 have goats. The host can open any two of these. The host has $\\binom{3}{2} = 3$ ways to open two goat doors. The host chooses uniformly among these 3 ways. If you switch, you switch to one of the two remaining doors, both of which have goats. You lose.\n- If the car is behind door 2 (probability 1/4): Door 1 has a goat. Doors 3, 4 have goats. The host must open two goat doors from doors 3 and 4. The host must open doors 3 and 4. There is only 1 way. The remaining unopened door is door 2 (the car). If you switch, you switch to door 2. You win.\n- If the car is behind door 3 (probability 1/4): Door 1 has a goat. Doors 2, 4 have goats. The host must open doors 2 and 4. There is only 1 way. The remaining unopened door is door 3 (the car). If you switch, you switch to door 3. You win.\n- If the car is behind door 4 (probability 1/4): Door 1 has a goat. Doors 2, 3 have goats. The host must open doors 2 and 3. There is only 1 way. The remaining unopened door is door 4 (the car). If you switch, you switch to door 4. You win.\n\nLet'"
+      }
+    ]
+  },
+  {
+    "question": "Probability PR3:\nTwo cards are drawn from a standard 52-card deck without replacement.\nGiven that at least one card is a heart, what is the probability that both are hearts?\n\nInstructions: Show key steps briefly. End with `FINAL: <fraction>`.",
+    "correct_answer": "FINAL: 2/15",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Let A = both cards are hearts; B = at least one heart.\n- P(A) = (13/52)\u00d7(12/51) = 1/17.\n- P(no hearts) = (39/52)\u00d7(38/51) = 19/34, so P(B) = 1 \u2212 19/34 = 15/34.\n- P(A|B) = P(A)/P(B) = (1/17)/(15/34) = 2/15.\n\nFINAL: 2/15"
+      },
+      {
+        "provider": "xai",
+        "answer": "Two cards are drawn from a 52-card deck without replacement.\n\nLet A: Both cards are hearts.  \nLet B: At least one card is a heart.\n\nWe need P(A|B) = P(A \u2229 B) / P(B).\n\n- P(A) = Number of ways to draw 2 hearts / Total ways = C(13,2) / C(52,2) = 78 / 1326.  \n- P(B) = 1 - P(no hearts) = 1 - [C(39,2) / C(52,2)] = 1 - (741 / 1326) = 585 / 1326.  \n- A \u2229 B is A, so P(A \u2229 B) = 78 / 1326.  \n- Thus, P(A|B) = (78 / 1326) / (585 / 1326) = 78 / 585 = 2 / 15.\n\nFINAL: 2/15"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Conditional Probability Problem\n\nI need to find P(both hearts | at least one heart).\n\nUsing the conditional probability formula:\n$$P(\\text{both hearts | at least one heart}) = \\frac{P(\\text{both hearts AND at least one heart})}{P(\\text{at least one heart})}$$\n\nSince \"both hearts\" automatically satisfies \"at least one heart\":\n$$= \\frac{P(\\text{both hearts})}{P(\\text{at least one heart})}$$\n\n## Calculate P(both hearts)\n\n$$P(\\text{both hearts}) = \\frac{13}{52} \\times \\frac{12}{51} = \\frac{156}{2652}$$\n\n## Calculate P(at least one heart)\n\nUsing the complement:\n$$P(\\text{at least one heart}) = 1 - P(\\text{no hearts})$$\n\n$$P(\\text{no hearts}) = \\frac{39}{52} \\times \\frac{38}{51} = \\frac{1482}{2652}$$\n\n$$P(\\text{at least one heart}) = 1 - \\frac{1482}{2652} = \\frac{1170}{2652}$$\n\n## Calculate conditional probability\n\n$$P(\\text{both hearts | at least one heart}) = \\frac{156/2652}{1170/2652} = \\frac{156}{1170}$$\n\nSimplifying by dividing by GCD(156, 1170) = 6:\n$$\\frac{156}{1170} = \\frac{26}{195}$$\n\nFINAL: $\\frac{26}{195}$"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Let $A$ be the event that at least one card is a heart.\nLet $B$ be the event that both cards are hearts.\n\nWe want to find $P(B|A) = \\frac{P(A \\cap B)}{P(A)}$.\n\nThe event $A \\cap B$ is the event that both cards are hearts, which is the same as event $B$. So, $P(A \\cap B) = P(B)$.\n\nThe total number of ways to draw two cards from 52 is $\\binom{52}{2}$.\n$\\binom{52}{2} = \\frac{52 \\times 51}{2} = 26 \\times 51 = 1326$.\n\nThe number of ways to draw two hearts from the 13 hearts is $\\binom{13}{2}$.\n$\\binom{13}{2} = \\frac{13 \\times 12}{2} = 13 \\times 6 = 78$.\nSo, $P(B) = \\frac{78}{1326}$.\n\nThe event $A$ (at least one heart) is the complement of the event that no cards are hearts.\nThe number of non-heart cards is $52 - 13 = 39$.\nThe number of ways to draw two non-heart cards is $\\binom{39}{2}$.\n$\\binom{39}{2} = \\frac{39 \\times 38}{2} = 39 \\times 19 = 741$.\nThe probability of drawing no hearts is $P(\\text{no hearts}) = \\frac{741}{1326}$.\n\nThe probability of drawing at least one heart is $P(A) = 1 - P(\\text{no hearts}) = 1 - \\frac{741}{1326} = \\frac{1326 - 741}{1326} = \\frac{585}{1326}$.\n\nNow we can calculate $P(B|A)$:\n$P(B|A) = \\frac{P(B)}{P(A)} = \\frac{\\frac{78}{1326}}{\\frac{585}{1326}} = \\frac{78}{585}$.\n\nWe can simplify the fraction $\\frac{78}{585}$.\nBoth are divisible by 3: $78 \\div 3 = 26$, $585 \\div 3 = 195$.\nSo, $\\frac{26}{195}$.\nBoth are divisible by 13: $26 \\div 13 = 2$, $195 \\div 13 = 15$.\nSo, $\\frac{2}{15}$.\n\nAlternatively, using conditional probability directly:\nLet $H_1$ be the event that the first card is a heart.\nLet $H_2$ be the event that the second card is a heart.\n$P(H_1) = \\frac{13}{52} = \\frac{1}{4}$.\n$P(H_2|H_1) = \\frac{12}{51}$.\n$P(B) = P(H_1 \\cap H_2) = P(H_1)P(H_2|H_1) = \\frac{13}{52} \\times \\frac{12}{51} = \\frac{1}{4} \\times \\frac{12}{51} = \\frac{3}{51"
+      }
+    ]
+  },
+  {
+    "question": "Probability PR4:\nAn urn contains 3 red and 2 blue balls. Two balls are drawn without replacement.\nGiven that the two balls are different colors, what is the probability that the first ball drawn was red?\n\nInstructions: Show key steps briefly. End with `FINAL: <fraction>`.",
+    "correct_answer": "FINAL: 1/2",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Let A = first ball is red; B = two drawn balls are of different colors.\n- P(A \u2229 B) = P(R then B) = (3/5) * (2/4) = 3/10.\n- P(B) = P(RB) + P(BR) = (3/5 * 2/4) + (2/5 * 3/4) = 3/10 + 3/10 = 3/5.\n- P(A | B) = P(A \u2229 B) / P(B) = (3/10) / (3/5) = 1/2.\n\nFINAL: 1/2"
+      },
+      {
+        "provider": "xai",
+        "answer": "Key steps:\n\n1. Define events:  \n   - A: First ball is red.  \n   - B: The two balls are different colors.\n\n2. Calculate P(A and B):  \n   P(A and B) = P(first red and second blue) = (3/5) \u00d7 (2/4) = (3/5) \u00d7 (1/2) = 3/10.\n\n3. Calculate P(B):  \n   P(B) = P(first red and second blue) + P(first blue and second red)  \n   = (3/5) \u00d7 (2/4) + (2/5) \u00d7 (3/4) = 3/10 + (6/20) = 3/10 + 3/10 = 6/10 = 3/5.\n\n4. Conditional probability:  \n   P(A|B) = P(A and B) / P(B) = (3/10) / (3/5) = (3/10) \u00d7 (5/3) = 1/2.\n\nFINAL: 1/2"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Conditional Probability Problem\n\n**Given Information:**\n- 3 red balls, 2 blue balls (5 total)\n- Draw 2 balls without replacement\n- Condition: the two balls are different colors\n- Find: P(first ball is red | balls are different colors)\n\n**Using Bayes' Theorem:**\n\nLet R\u2081 = first ball is red, D = balls are different colors\n\n$$P(R_1|D) = \\frac{P(D|R_1) \\cdot P(R_1)}{P(D)}$$\n\n**Step 1: Calculate P(D|R\u2081)**\nIf first ball is red, second must be blue:\n$$P(D|R_1) = \\frac{2}{4} = \\frac{1}{2}$$\n\n**Step 2: Calculate P(R\u2081)**\n$$P(R_1) = \\frac{3}{5}$$\n\n**Step 3: Calculate P(D)**\nTwo cases for different colors:\n- Red first, then blue: $\\frac{3}{5} \\cdot \\frac{2}{4} = \\frac{6}{20}$\n- Blue first, then red: $\\frac{2}{5} \\cdot \\frac{3}{4} = \\frac{6}{20}$\n\n$$P(D) = \\frac{6}{20} + \\frac{6}{20} = \\frac{12}{20} = \\frac{3}{5}$$\n\n**Step 4: Apply Bayes' Theorem**\n$$P(R_1|D) = \\frac{\\frac{1}{2} \\cdot \\frac{3}{5}}{\\frac{3}{5}} = \\frac{1}{2}$$\n\nFINAL: $\\frac{1}{2}$"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Let R1 be the event that the first ball drawn is red.\nLet B1 be the event that the first ball drawn is blue.\nLet R2 be the event that the second ball drawn is red.\nLet B2 be the event that the second ball drawn is blue.\n\nThe total number of balls is 5.\n\nWe are given that the two balls drawn are of different colors. Let D be this event.\nD = (R1 and B2) or (B1 and R2)\n\nWe want to find the probability that the first ball drawn was red, given that the two balls are different colors. This is P(R1 | D).\n\nUsing the formula for conditional probability: P(R1 | D) = P(R1 and D) / P(D)\n\nFirst, let's calculate P(D):\nP(R1 and B2) = P(R1) * P(B2 | R1) = (3/5) * (2/4) = 6/20\nP(B1 and R2) = P(B1) * P(R2 | B1) = (2/5) * (3/4) = 6/20\nP(D) = P(R1 and B2) + P(B1 and R2) = 6/20 + 6/20 = 12/20\n\nNext, let's calculate P(R1 and D).\nIf the first ball is red (R1), and the two balls are of different colors (D), then the second ball must be blue (B2).\nSo, the event \"R1 and D\" is the same as the event \"R1 and B2\".\nP(R1 and D) = P(R1 and B2) = 6/20\n\nNow, we can calculate P(R1 | D):\nP(R1 | D) = P(R1 and D) / P(D) = (6/20) / (12/20) = 6/12 = 1/2\n\nKey steps:\n1. Define events.\n2. Calculate the probability of drawing balls of different colors, P(D).\n3. Calculate the probability of the first ball being red AND the balls being different colors, P(R1 and D).\n4. Use the conditional probability formula.\n\nP(D) = P(R1 and B2) + P(B1 and R2) = (3/5)*(2/4) + (2/5)*(3/4) = 6/20 + 6/20 = 12/20\nP(R1 and D) = P(R1 and B2) = (3/5)*(2/4) = 6/20\nP(R1 | D) = (6/20) / (12/20) = 6/12 = 1/2\n\nFINAL: 1/2"
+      }
+    ]
+  },
+  {
+    "question": "Probability PR5:\nYou roll a fair die repeatedly until you see a 6, or until you have rolled exactly 4 times (whichever comes first).\nWhat is the expected number of rolls?\n\nInstructions: Show key steps briefly. End with `FINAL: E=...` (exact fraction preferred; otherwise 5 decimals).",
+    "correct_answer": "FINAL: E = 671/216 (approx 3.10648)",
+    "answers_from_clients": [
+      {
+        "provider": "openai",
+        "answer": "- Let N be the number of rolls. We stop at 1, 2, 3, or 4 rolls with probabilities:\n  - P(N=1) = 1/6\n  - P(N=2) = (5/6)(1/6) = 5/36\n  - P(N=3) = (5/6)^2(1/6) = 25/216\n  - P(N=4) = (5/6)^3 = 125/216\n- E[N] = 1*(1/6) + 2*(5/36) + 3*(25/216) + 4*(125/216)\n  = 671/216 \u2248 3.10648\n\nFINAL: E=671/216"
+      },
+      {
+        "provider": "xai",
+        "answer": "To find the expected number of rolls, denote the random variable \\(X\\) as the number of rolls until a 6 is rolled or 4 rolls are reached.\n\nThe possible values are \\(X = 1, 2, 3, 4\\).\n\nProbabilities:\n- \\(P(X=1) = P(\\text{6 on first roll}) = \\frac{1}{6}\\)\n- \\(P(X=2) = P(\\text{not 6 on first, 6 on second}) = \\left(\\frac{5}{6}\\right) \\cdot \\frac{1}{6} = \\frac{5}{36}\\)\n- \\(P(X=3) = P(\\text{not 6 on first two, 6 on third}) = \\left(\\frac{5}{6}\\right)^2 \\cdot \\frac{1}{6} = \\frac{25}{216}\\)\n- \\(P(X=4) = P(\\text{not 6 on first three}) = \\left(\\frac{5}{6}\\right)^3 = \\frac{125}{216}\\)\n\nExpected value:\n\\[\nE[X] = 1 \\cdot P(X=1) + 2 \\cdot P(X=2) + 3 \\cdot P(X=3) + 4 \\cdot P(X=4)\n\\]\n\\[\nE[X] = 1 \\cdot \\frac{1}{6} + 2 \\cdot \\frac{5}{36} + 3 \\cdot \\frac{25}{216} + 4 \\cdot \\frac{125}{216}\n\\]\n\\[\n= \\frac{1}{6} + \\frac{10}{36} + \\frac{75}{216} + \\frac{500}{216}\n\\]\nCommon denominator (LCM of 6, 36, 216) is 216:\n\\[\n\\frac{1}{6} = \\frac{36}{216}, \\quad \\frac{10}{36} = \\frac{60}{216}\n\\]\n\\[\nE[X] = \\frac{36}{216} + \\frac{60}{216} + \\frac{75}{216} + \\frac{500}{216} = \\frac{36 + 60 + 75 + 500}{216} = \\frac{671}{216}\n\\]\n\nFINAL: E=671/216"
+      },
+      {
+        "provider": "anthropic",
+        "answer": "# Expected Number of Rolls\n\nLet me find the expected number of rolls when we stop at the first 6 or after 4 rolls, whichever comes first.\n\n## Setting up the problem\n\nOn each roll, P(rolling a 6) = 1/6 and P(not rolling a 6) = 5/6.\n\nWe stop when:\n- We roll a 6, OR\n- We complete 4 rolls\n\n## Calculating probabilities for each stopping point\n\n**Stop after roll 1:** Roll a 6\n- P(stop at 1) = 1/6\n\n**Stop after roll 2:** No 6 on roll 1, then 6 on roll 2\n- P(stop at 2) = (5/6)(1/6) = 5/36\n\n**Stop after roll 3:** No 6 on rolls 1-2, then 6 on roll 3\n- P(stop at 3) = (5/6)\u00b2(1/6) = 25/216\n\n**Stop after roll 4:** Either no 6 on rolls 1-3 then 6 on roll 4, OR no 6 on all 4 rolls\n- P(stop at 4) = (5/6)\u00b3(1/6) + (5/6)\u2074\n- P(stop at 4) = (5/6)\u00b3[(1/6) + (5/6)] = (5/6)\u00b3(1) = 125/216\n\n**Verification:** 1/6 + 5/36 + 25/216 + 125/216 = 36/216 + 30/216 + 25/216 + 125/216 = 216/216 \u2713\n\n## Computing expected value\n\n$$E = 1 \\cdot \\frac{1}{6} + 2 \\cdot \\frac{5}{36} + 3 \\cdot \\frac{25}{216} + 4 \\cdot \\frac{125}{216}$$\n\n$$E = \\frac{36}{216} + \\frac{60}{216} + \\frac{75}{216} + \\frac{500}{216}$$\n\n$$E = \\frac{671}{216}$$\n\nFINAL: E = 671/216 \u2248 3.10648"
+      },
+      {
+        "provider": "gemini",
+        "answer": "Let $X$ be the number of rolls. The possible values for $X$ are 1, 2, 3, 4.\nThe probability of rolling a 6 is $p = 1/6$.\nThe probability of not rolling a 6 is $q = 1 - p = 5/6$.\n\nThe probability of stopping at roll $k$ is:\n$P(X=1)$: Roll a 6 on the first roll. $P(X=1) = p = 1/6$.\n$P(X=2)$: Do not roll a 6 on the first roll, and roll a 6 on the second roll. $P(X=2) = qp = (5/6)(1/6) = 5/36$.\n$P(X=3)$: Do not roll a 6 on the first two rolls, and roll a 6 on the third roll. $P(X=3) = q^2p = (5/6)^2(1/6) = 25/216$.\n$P(X=4)$: This can happen in two ways:\n1. Do not roll a 6 on the first three rolls, and roll a 6 on the fourth roll. Probability is $q^3p = (5/6)^3(1/6) = 125/1296$.\n2. Do not roll a 6 on any of the first four rolls. Probability is $q^4 = (5/6)^4 = 625/1296$.\nSo, $P(X=4) = q^3p + q^4 = (5/6)^3(1/6) + (5/6)^4 = 125/1296 + 625/1296 = 750/1296$.\n\nLet's check if the probabilities sum to 1:\n$P(X=1) + P(X=2) + P(X=3) + P(X=4) = 1/6 + 5/36 + 25/216 + 750/1296$\n$= 216/1296 + 180/1296 + 150/1296 + 750/1296 = (216 + 180 + 150 + 750)/1296 = 1296/1296 = 1$.\n\nThe expected number of rolls $E[X]$ is given by:\n$E[X] = \\sum_{k=1}^{4} k \\cdot P(X=k)$\n$E[X] = 1 \\cdot P(X=1) + 2 \\cdot P(X=2) + 3 \\cdot P(X=3) + 4 \\cdot P(X=4)$\n$E[X] = 1 \\cdot (1/6) + 2 \\cdot (5/36) + 3 \\cdot (25/216) + 4 \\cdot (750/1296)$\n$E[X] = 1/6 + 10/36 + 75/216 + 3000/1296$\nTo sum these, we find a common denominator, which is 1296.\n$E[X] = (1 \\cdot 216)/1296 + (10 \\cdot 36)/12"
+      }
+    ]
+  }
+]
