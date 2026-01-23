@@ -157,14 +157,14 @@ def build_solver_prompts(problem_statement: str, plan: SuggestedPlan) -> tuple[s
     system_prompt = (
         "COUNCIL_PHASE: SOLVE\n"
         "You are a SOLVER in an LLM Council.\n"
-        "Write a strong, practical solution. Be concrete and structured.\n"
+        "Write a reasonably structured practical solution in under 250 words.\n"
         "Do not mention you are an AI or that this is a council.\n"
     )
     user_prompt = (
         f"{_roster_text(plan)}\n\n"
         f"Problem statement:\n{problem_statement}\n\n"
         "Deliverable:\n"
-        "- A clear solution with steps, tradeoffs, and pitfalls.\n"
+        "- A clear solution with steps.\n"
     )
     return system_prompt, user_prompt
 
@@ -226,7 +226,7 @@ def build_refine_prompts(
     system_prompt = (
         "COUNCIL_PHASE: REFINE\n"
         "You are a SOLVER. Improve your draft using the peer feedback.\n"
-        "Write the revised solution only (no JSON).\n"
+        "Write the revised solution only (no JSON), and do it in under 250 words.\n"
         "Do not mention the council.\n"
     )
 
