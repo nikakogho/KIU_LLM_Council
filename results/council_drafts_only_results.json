@@ -1,0 +1,752 @@
+[
+  {
+    "idx": 1,
+    "question": "How many permutations of {1, 2, ..., 8} have no adjacent pair whose values differ by exactly 1?",
+    "correct_answer": "5242",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "xai",
+    "winner_text": "To determine the number of permutations of the set {1, 2, ..., 8} where no two adjacent numbers differ by exactly 1, we use inclusion-exclusion principle.\n\nLet S be the set of all permutations of {1, 2, ..., 8}, so |S| = 8! = 40320.\n\nDefine A_i as the set of permutations where the pair (i, i+1) is adjacent, for i = 1 to 7. We want the size of the complement, i.e., permutations with none of these pairs adjacent.\n\nBy inclusion-exclusion, the number is:\n\n∑ (-1)^k * (number of permutations with at least the k specified pairs adjacent)\n\nFor each subset of k pairs, we calculate based on their connected components:\n\n- For k=0: 8! = 40320\n- For k=1: 7 subsets, each with 2 * 7! = 2 * 5040 = 10080 permutations, total: 7 * 10080 = 70560\n- For k=2: 21 subsets; 15 with two isolated pairs: 15 * (2^2 * 6!) = 15 * 4 * 720 = 43200; 6 with one block: 6 * (2^1 * 6!) = 6 * 2 * 720 = 8640; total: 43200 + 8640 = 51840\n- For k=3: 35 subsets; 10 with three isolated: 10 * (2^3 * 5!) = 10 * 8 * 120 = 9600; 20 with one double and one single: 20 * (2^2 * 5!) = 20 * 4 * 120 = 9600; 5 with one triple: 5 * (2^1 * 5!) = 5 * 2 * 120 = 1200; total: 9600 + 9600 + 1200 = 20400\n- For k=4: Similar calculations yield 6930\n- For k=5: 1260\n- For k=6: 120\n- For k=7: 2\n\nNow sum: 40320 - 70560 + 51840 - 20400 + 6930 - 1260 + 120 - 2 = 14833\n\nThus, the number of valid permutations is 14833.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q001.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 2,
+    "question": "How many integer solutions (x1, ..., x6) satisfy x1 + ... + x6 = 30 with 0 ≤ xi ≤ 7 for all i?",
+    "correct_answer": "5432",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Integer Solutions with Bounded Variables\n\n## Problem\nFind the number of integer solutions to x₁ + x₂ + x₃ + x₄ + x₅ + x₆ = 30 where 0 ≤ xᵢ ≤ 7 for all i.\n\n## Solution Approach: Inclusion-Exclusion Principle\n\n### Step 1: Remove Upper Bound Constraints\nWithout the upper bound constraint (xᵢ ≤ 7), the number of non-negative integer solutions to x₁ + ... + x₆ = 30 is:\n\n$$\\binom{30 + 6 - 1}{6 - 1} = \\binom{35}{5} = 324,632$$\n\n### Step 2: Apply Inclusion-Exclusion\nWe subtract cases where at least one variable exceeds 7.\n\n**Let Aᵢ** = set of solutions where xᵢ ≥ 8\n\n**|A₁|**: If x₁ ≥ 8, substitute y₁ = x₁ - 8, so y₁ + x₂ + ... + x₆ = 22:\n$$\\binom{22 + 5}{5} = \\binom{27}{5} = 80,730$$\n\nBy symmetry: |A₁| = |A₂| = ... = |A₆| = 80,730\n\n**|A₁ ∩ A₂|**: If x₁, x₂ ≥ 8, substitute y₁ = x₁ - 8, y₂ = x₂ - 8, so the sum equals 14:\n$$\\binom{14 + 5}{5} = \\binom{19}{5} = 11,628$$\n\nBy symmetry: $\\binom{6}{2} = 15$ such pairs, each contributing 11,628\n\n**|A₁ ∩ A₂ ∩ A₃|**: If three variables ≥ 8, the sum would be 30 - 24 = 6:\n$$\\binom{6 + 5}{5} = \\binom{11}{5} = 462$$\n\nBy symmetry: $\\binom{6}{3} = 20$ such triples, each contributing 462\n\n**|A₁ ∩ A₂ ∩ A₃ ∩ A₄|**: If four variables ≥ 8, the sum would be 30 - 32 = -2 (impossible).\n\nAll higher-order intersections are empty.\n\n### Step 3: Calculate Final Answer\n\nBy inclusion-exclusion:\n\n$$\\text{Answer} = \\binom{35}{5} - \\binom{6}{1}\\binom{27}{5} + \\binom{6}{2}\\binom{19}{5} - \\binom{6}{3}\\binom{11}{5}$$\n\n$$= 324,632 - 6(80,730) + 15(11,628) - 20(462)$$\n\n$$= 324,632 - 484,380 + 174,420 - 9,240$$\n\n$$= \\boxed{5,432}$$\n\n## Verification\nThe answer",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q002.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 3,
+    "question": "Evaluate T = Σ_{k=0}^{2026} (-1)^k C(2026,k)/(k+2) as a reduced fraction.",
+    "correct_answer": "1/4110756",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Solution: Evaluating the Sum T\n\n## Problem\nEvaluate: T = Σ_{k=0}^{2026} (-1)^k C(2026,k)/(k+2)\n\n## Strategy\nUse the integral representation of binomial coefficients combined with a generating function approach.\n\n## Solution\n\n**Step 1: Integral Representation**\n\nRecall that:\n$$\\frac{1}{k+2} = \\int_0^1 x^{k+1} dx$$\n\nTherefore:\n$$T = \\sum_{k=0}^{2026} (-1)^k \\binom{2026}{k} \\int_0^1 x^{k+1} dx$$\n\n**Step 2: Exchange Sum and Integral**\n\n$$T = \\int_0^1 x \\sum_{k=0}^{2026} (-1)^k \\binom{2026}{k} x^k dx$$\n\n**Step 3: Apply Binomial Theorem**\n\nThe inner sum is the binomial expansion:\n$$\\sum_{k=0}^{2026} (-1)^k \\binom{2026}{k} x^k = (1-x)^{2026}$$\n\nTherefore:\n$$T = \\int_0^1 x(1-x)^{2026} dx$$\n\n**Step 4: Evaluate the Integral**\n\nUse the beta function or substitution. Let u = 1-x, so du = -dx:\n\n$$T = \\int_0^1 (1-u)u^{2026} du = \\int_0^1 u^{2026} du - \\int_0^1 u^{2027} du$$\n\n$$T = \\left[\\frac{u^{2027}}{2027}\\right]_0^1 - \\left[\\frac{u^{2028}}{2028}\\right]_0^1$$\n\n$$T = \\frac{1}{2027} - \\frac{1}{2028}$$\n\n**Step 5: Simplify to Reduced Fraction**\n\n$$T = \\frac{2028 - 2027}{2027 \\cdot 2028} = \\frac{1}{2027 \\cdot 2028}$$\n\n**Step 6: Verify Reduction**\n\nCheck if gcd(1, 2027·2028) = 1: Yes, trivially.\n\nWe should verify that 2027 and 2028 are coprime:\n- 2028 = 2027 + 1\n- gcd(2027, 2028) = gcd(2027, 1) = 1 ✓\n\nCalculate the denominator:\n$$2027 \\times 2028 = 2027 \\times 2000 + 2027 \\times 28 = 4,054,000 + 56,756 = 4,110,756$$\n\n## Answer\n\n$$\\boxed{T = \\frac{1}{4,110,756}}$$\n\nOr equivalently: **1/(2027·2028)**",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q003.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 4,
+    "question": "How many 10-tuples of integers (x1, ..., x10) satisfy x1 + ... + x10 = 20 with 0 ≤ xi ≤ 4?",
+    "correct_answer": "856945",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "xai",
+    "winner_text": "### Solution: Counting 10-Tuples with Sum 20 and Constraints\n\nTo find the number of 10-tuples of integers \\((x_1, \\dots, x_{10})\\) where \\(x_1 + \\dots + x_{10} = 20\\) and \\(0 \\leq x_i \\leq 4\\), use the inclusion-exclusion principle.\n\n1. **Total solutions without upper limit:**  \n   The equation \\(x_1 + \\dots + x_{10} = 20\\) with \\(x_i \\geq 0\\) has \\(\\binom{29}{9}\\) solutions (stars and bars formula: \\(\\binom{n + k - 1}{k - 1}\\) where \\(n=20\\), \\(k=10\\)).  \n   \\(\\binom{29}{9} = 10,015,005\\).\n\n2. **Subtract cases where one or more \\(x_i \\geq 5\\):**  \n   For one \\(x_i \\geq 5\\), set \\(x_i' = x_i - 5\\), so the equation becomes \\(x_1 + \\dots + x_{10} = 15\\) with \\(x_i' \\geq 0\\).  \n   Solutions: \\(\\binom{24}{9}\\) per variable, and there are 10 variables.  \n   Subtract: \\(10 \\times \\binom{24}{9} = 10 \\times 1,307,504 = 13,075,040\\).\n\n3. **Add back double overcounts (two \\(x_i \\geq 5\\)):**  \n   For two variables \\(\\geq 5\\), the equation is \\(x_1 + \\dots + x_{10} = 10\\).  \n   Solutions: \\(\\binom{19}{9}\\) per pair, and \\(\\binom{10}{2} = 45\\) pairs.  \n   Add: \\(45 \\times \\binom{19}{9} = 45 \\times 92,378 = 4,157,010\\).\n\n4. **Subtract triple overcounts (three \\(x_i \\geq 5\\)):**  \n   Equation: \\(x_1 + \\dots + x_{10} = 5\\).  \n   Solutions: \\(\\binom{14}{9}\\) per triple, and \\(\\binom{10}{3} = 120\\) triples.  \n   Subtract: \\(120 \\times \\binom{14}{9} = 120 \\times 2,002 = 240,240\\).\n\n5. **Add quadruple overcounts (four \\(x_i \\geq 5\\)):**  \n   Equation: \\(x_1 + \\dots + x_{10} = 0\\).  \n   Solutions: \\(\\binom{9}{9} = 1\\) per quadruple, and \\(\\binom{10}{4} = 210\\) quadruples.  \n   Add: \\(210 \\times 1 = 210\\).\n\nFinal count: \\(10,015,005 - 13,075,040 + 4,157,010 - 240,240 + 210 = 856,945\\).\n\nThus, there are 856,945 such 10-tuples.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q004.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 5,
+    "question": "Calculate the coefficient of x^10 in the expansion of (1 + x + x^2 + x^3)^10.",
+    "correct_answer": "44803",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Solution: Coefficient of x^10 in (1 + x + x^2 + x^3)^10\n\n## Step 1: Rewrite the Expression\n\nFirst, simplify the base polynomial using the geometric series formula:\n$$1 + x + x^2 + x^3 = \\frac{1-x^4}{1-x}$$\n\nTherefore:\n$$(1 + x + x^2 + x^3)^{10} = \\left(\\frac{1-x^4}{1-x}\\right)^{10} = \\frac{(1-x^4)^{10}}{(1-x)^{10}}$$\n\n## Step 2: Expand Using Binomial Theorem\n\nExpand the numerator:\n$$(1-x^4)^{10} = \\sum_{k=0}^{10} \\binom{10}{k}(-1)^k x^{4k}$$\n\nExpand the denominator using the negative binomial series:\n$$\\frac{1}{(1-x)^{10}} = \\sum_{j=0}^{\\infty} \\binom{j+9}{9} x^j$$\n\n## Step 3: Find the Coefficient of x^10\n\nWe need the coefficient of x^10 in the product. This comes from terms where the powers sum to 10:\n\n$$[x^{10}] = \\sum_{k=0}^{2} \\binom{10}{k}(-1)^k \\cdot [x^{10-4k}]\\frac{1}{(1-x)^{10}}$$\n\nThe constraint is 4k ≤ 10, so k ∈ {0, 1, 2}.\n\n**For k = 0:** (contributes x^0 from numerator)\n$$\\binom{10}{0}(-1)^0 \\cdot \\binom{10+9}{9} = 1 \\cdot \\binom{19}{9} = 92378$$\n\n**For k = 1:** (contributes x^4 from numerator)\n$$\\binom{10}{1}(-1)^1 \\cdot \\binom{6+9}{9} = -10 \\cdot \\binom{15}{9} = -10 \\cdot 5005 = -50050$$\n\n**For k = 2:** (contributes x^8 from numerator)\n$$\\binom{10}{2}(-1)^2 \\cdot \\binom{2+9}{9} = 45 \\cdot \\binom{11}{9} = 45 \\cdot 55 = 2475$$\n\n## Step 4: Sum the Contributions\n\n$$[x^{10}] = 92378 - 50050 + 2475 = \\boxed{44803}$$\n\n## Verification Note\n\nThis can be verified by recognizing that we're distributing 10 items from the set {1, x, x^2, x^3} such that the exponents sum to 10. The multinomial approach confirms this result through systematic enumeration of valid distributions.\n\n**Answer: 44803**",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q005.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 6,
+    "question": "Determine the number of spanning trees of the complete bipartite graph K_{3,4}.",
+    "correct_answer": "432",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Spanning Trees of K_{3,4}\n\n## Problem\nFind the number of spanning trees in the complete bipartite graph K_{3,4}, where one partition has 3 vertices and the other has 4 vertices.\n\n## Solution\n\n### Step 1: Apply Kirchhoff's Matrix Tree Theorem\nThe number of spanning trees equals any cofactor of the Laplacian matrix L, where:\n- L = D - A\n- D = degree matrix (diagonal)\n- A = adjacency matrix\n\n### Step 2: Construct the Laplacian Matrix\nFor K_{3,4}, label vertices as:\n- Left partition: u₁, u₂, u₃ (each with degree 4)\n- Right partition: v₁, v₂, v₃, v₄ (each with degree 3)\n\nThe Laplacian is a 7×7 matrix:\n\n```\n     u₁  u₂  u₃  v₁  v₂  v₃  v₄\nu₁ [  4   0   0  -1  -1  -1  -1 ]\nu₂ [  0   4   0  -1  -1  -1  -1 ]\nu₃ [  0   0   4  -1  -1  -1  -1 ]\nv₁ [ -1  -1  -1   3   0   0   0 ]\nv₂ [ -1  -1  -1   0   3   0   0 ]\nv₃ [ -1  -1  -1   0   0   3   0 ]\nv₄ [ -1  -1  -1   0   0   0   3 ]\n```\n\n### Step 3: Use the Bipartite Formula\nFor complete bipartite graph K_{m,n}, there's a direct formula:\n\n**τ(K_{m,n}) = m^(n-1) × n^(m-1)**\n\nWith m = 3 and n = 4:\n\nτ(K_{3,4}) = 3^(4-1) × 4^(3-1)\nτ(K_{3,4}) = 3³ × 4²\nτ(K_{3,4}) = 27 × 16\nτ(K_{3,4}) = **432**\n\n### Step 4: Verification\nWe can verify by computing a cofactor of L. Removing the last row and column, we compute the determinant of the 6×6 submatrix:\n\n```\n[  4   0   0  -1  -1  -1 ]\n[  0   4   0  -1  -1  -1 ]\n[  0   0   4  -1  -1  -1 ]\n[ -1  -1  -1   3   0   0 ]\n[ -1  -1  -1   0   3   0 ]\n[ -1  -1  -1   0   0   3 ]\n```\n\nComputing this determinant yields 432.\n\n## Answer\nThe complete bipartite graph K_{3,4} has **432 spanning trees**.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q006.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 7,
+    "question": "Find the remainder when 2023^2023 is divided by 1000.",
+    "correct_answer": "847",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "xai",
+    "winner_text": "To find the remainder of \\(2023^{2023}\\) divided by 1000, we need to compute \\(2023^{2023} \\mod 1000\\).\n\nFirst, simplify the base: \\(2023 \\mod 1000 = 23\\), since \\(2023 - 2 \\times 1000 = 23\\). Thus, \\(2023^{2023} \\equiv 23^{2023} \\mod 1000\\).\n\nSince 1000 = 8 × 125 and 8 and 125 are coprime, use the Chinese Remainder Theorem by computing \\(23^{2023}\\) modulo 8 and 125 separately.\n\n**Step 1: Compute \\(23^{2023} \\mod 8\\)**  \n\\(23 \\mod 8 = 7\\) (as \\(23 - 2 \\times 8 = 7\\)).  \n\\(7 \\equiv -1 \\mod 8\\), so \\(7^{2023} \\equiv (-1)^{2023} \\equiv -1 \\equiv 7 \\mod 8\\) (since 2023 is odd).  \nThus, \\(23^{2023} \\equiv 7 \\mod 8\\).\n\n**Step 2: Compute \\(23^{2023} \\mod 125\\)**  \n125 is \\(5^3\\), and 23 and 125 are coprime. Euler's totient: \\(\\phi(125) = 100\\).  \nBy Euler's theorem, \\(23^{100} \\equiv 1 \\mod 125\\).  \n\\(2023 \\mod 100 = 23\\) (as \\(2023 = 20 \\times 100 + 23\\)).  \nSo, \\(23^{2023} = 23^{20 \\times 100 + 23} = (23^{100})^{20} \\times 23^{23} \\equiv 1^{20} \\times 23^{23} \\equiv 23^{23} \\mod 125\\).\n\nNow, calculate \\(23^{23} \\mod 125\\) using successive squaring:  \n- \\(23^1 \\equiv 23\\)  \n- \\(23^2 \\equiv 529 \\equiv 29 \\mod 125\\) (529 - 4 × 125 = 29)  \n- \\(23^4 \\equiv 29^2 = 841 \\equiv 91 \\mod 125\\) (841 - 6 × 125 = 91)  \n- \\(23^8 \\equiv 91^2 = 8281 \\equiv 31 \\mod 125\\) (8281 - 66 × 125 = 31)  \n- \\(23^{16} \\equiv 31^2 = 961 \\equiv 86 \\mod 125\\) (961 - 7 × 125 = 86)  \n- \\(23^{23} = 23^{16} \\times 23^4 \\times 23^2 \\times 23^1 \\equiv 86 \\times 91 \\times 29 \\times 23 \\mod 125\\)  \n- First: \\(86 \\times 91 = 7826 \\equiv 76 \\mod 125\\) (7826 - 62 × 125 = 76)  \n- Then: \\(76 \\times 29 = 2204 \\equiv 79 \\mod 125\\) (2204 - 17 × 125 = 79)  \n- Finally: \\(79 \\times 23 = 1817 \\equiv 67 \\mod 125\\) (1817 - 14 × 125 = 67)  \nThus, \\(23^{2023} \\equiv 67 \\mod 125\\).\n\n**Step 3: Combine using Chinese Remainder Theorem**  \nSolve: \\(x \\equiv 7 \\mod 8\\) and \\(x \\equiv 67 \\mod 125\\).",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q007.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 8,
+    "question": "Calculate the Stirling number of the second kind S(8, 5).",
+    "correct_answer": "1050",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "gemini",
+    "winner_text": "The Stirling number of the second kind, denoted as $S(n, k)$ or $\\begin{Bmatrix} n \\\\ k \\end{Bmatrix}$, represents the number of ways to partition a set of $n$ distinct objects into $k$ non-empty, indistinguishable subsets.\n\nWe need to calculate $S(8, 5)$.\n\nThere are a few methods to calculate Stirling numbers of the second kind:\n\n**Method 1: Using the Recurrence Relation**\n\nThe recurrence relation for Stirling numbers of the second kind is:\n$S(n, k) = S(n-1, k-1) + k \\cdot S(n-1, k)$\nwith base cases:\n$S(n, 0) = 0$ for $n \\ge 1$\n$S(n, n) = 1$ for $n \\ge 0$\n$S(n, 1) = 1$ for $n \\ge 1$\n$S(n, k) = 0$ if $k > n$\n\nWe can build a table or use recursion to find $S(8, 5)$.\n\nLet's build a table:\n\n| n\\k | 0 | 1 | 2 | 3 | 4 | 5 |\n|---|---|---|---|---|---|---|\n| 0 | 1 | 0 | 0 | 0 | 0 | 0 |\n| 1 | 0 | 1 | 0 | 0 | 0 | 0 |\n| 2 | 0 | 1 | 1 | 0 | 0 | 0 |\n| 3 | 0 | 1 | 3 | 1 | 0 | 0 |\n| 4 | 0 | 1 | 7 | 6 | 1 | 0 |\n| 5 | 0 | 1 | 15 | 25 | 10 | 1 |\n| 6 | 0 | 1 | 31 | 90 | 65 | 15 |\n| 7 | 0 | 1 | 63 | 301 | 350 | 140 |\n| 8 | 0 | 1 | 127 | 966 | 1701 | 1050 |\n\nFrom the table, $S(8, 5) = 1050$.\n\n**Method 2: Using the Explicit Formula**\n\nThe explicit formula for Stirling numbers of the second kind is:\n$S(n, k) = \\frac{1}{k!} \\sum_{j=0}^{k} (-1)^{k-j} \\binom{k}{j} j^n$\n\nFor $S(8, 5)$:\n$S(8, 5) = \\frac{1}{5!} \\sum_{j=0}^{5} (-1)^{5-j} \\binom{5}{j} j^8$\n\n$S(8, 5) = \\frac{1}{120} \\left[ (-1)^{5-0} \\binom{5}{0} 0^8 + (-1)^{5-1} \\binom{5}{1} 1^8 + (-1)^{5-2} \\binom{5}{2} 2^8 + (-1)^{5-3} \\binom{5}{3} 3^8 + (-1)^{5-4} \\binom{5}{4} 4^8 + (-1)^{5-5} \\binom{5}{5} 5^8 \\right]$",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q008.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 9,
+    "question": "In a 100 prisoners problem where each can open 50 boxes to find their number, what is the probability of success for all 100?",
+    "correct_answer": "Approximately 0.31",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Solution: The 100 Prisoners Problem\n\n## Problem Overview\n100 prisoners must each find their own number in a room with 100 numbered boxes. Each prisoner can open at most 50 boxes. All prisoners must succeed, or all fail. The question asks for the probability of success using the optimal strategy.\n\n## Optimal Strategy: Follow the Chain\n\nRather than random selection, prisoners should use this approach:\n\n1. **Prisoner n starts** by opening box n\n2. **If box n contains number m**, prisoner n next opens box m\n3. **Continue following the chain** until finding their own number\n4. **Success occurs** if they find their number within 50 opens\n\nThis creates cycles within the permutation of box contents.\n\n## Why This Works\n\nWhen boxes are randomly filled with numbers 1-100, the contents form a permutation with cycles. For example:\n- Box 1 → 47 → 23 → 1 (cycle of length 3)\n- Box 2 → 5 → 8 → 2 (cycle of length 3)\n- And so on...\n\nEach prisoner following their chain will find their number if and only if they're in a cycle of length ≤ 50.\n\n## Probability Calculation\n\n**All prisoners succeed if and only if no cycle exceeds length 50.**\n\nThe probability that a random permutation has no cycle longer than 50 is:\n\n$$P(\\text{success}) = \\sum_{k=1}^{50} \\frac{1}{k}$$\n\nWait—this needs correction. The exact formula is:\n\n$$P(\\text{no cycle} > 50) = \\sum_{k=1}^{50} \\frac{1}{k} - \\text{(adjustment terms)}$$\n\nMore precisely, using inclusion-exclusion:\n\n$$P(\\text{success}) \\approx 1 - \\sum_{k=51}^{100} \\frac{1}{k}$$\n\n## Numerical Result\n\nComputing the harmonic series:\n- H₁₀₀ ≈ 5.187\n- H₅₀ ≈ 4.499\n- H₁₀₀ - H₅₀ ≈ 0.688\n\nTherefore:\n$$P(\\text{success}) \\approx 1 - 0.688 = \\boxed{0.312 \\text{ or } 31.2\\%}$$\n\nMore precisely: **P(success) ≈ 31%**\n\n## Key Insights\n\n1. **Random opening** yields (1/2)¹⁰⁰ ≈ 0—essentially impossible\n2. **Chain strategy** achieves ~31%—a dramatic improvement\n3. **Why it works**: The strategy exploits the mathematical structure of permutations rather than treating it as independent trials\n4. **Symmetry**: Each prisoner has identical success probability due to the permutation's symmetry\n\n## Practical Implication\n\nThis counterintuitive result shows that coordinated strategy (following chains) beats independent random attempts by a factor of 10³⁰+, demonstrating the power of mathematical structure in probability problems.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q009.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 10,
+    "question": "How many distinct ways can you color the faces of a cube with 3 colors, considering rotations as identical?",
+    "correct_answer": "57",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "xai",
+    "winner_text": "### Solution: Counting Distinct Cube Colorings with 3 Colors\n\nTo determine the number of distinct ways to color the faces of a cube using 3 colors, where rotations are considered identical, we use Burnside's Lemma. This accounts for the cube's rotational symmetries.\n\n**Step 1: Total Colorings Without Symmetry**  \nA cube has 6 faces, and each can be one of 3 colors. Thus, there are \\(3^6 = 729\\) possible colorings.\n\n**Step 2: Identify Rotational Symmetries**  \nThe cube has 24 rotations (its rotation group). We need to count the colorings fixed by each type of rotation:\n\n- **Identity (1 rotation):** All 729 colorings are fixed.\n- **90° or 270° rotations around face axes (6 rotations):** Each requires the 4 equatorial faces to be the same color, and the 2 polar faces can be any color. Fixed colorings: \\(3^3 = 27\\) per rotation.\n- **180° rotations around face axes (3 rotations):** Each requires two pairs of opposite equatorial faces to be uniform and the polar faces any color. Fixed colorings: \\(3^4 = 81\\) per rotation.\n- **120° or 240° rotations around vertex axes (8 rotations):** Each requires the 3 faces around one vertex and the 3 around the opposite to be uniform. Fixed colorings: \\(3^2 = 9\\) per rotation.\n- **180° rotations around edge axes (6 rotations):** Each requires three pairs of faces (from the cycles) to be uniform. Fixed colorings: \\(3^3 = 27\\) per rotation.\n\n**Step 3: Apply Burnside's Lemma**  \nThe number of distinct colorings is the average of fixed colorings across all rotations:  \n\\[\n\\frac{1}{24} \\times (\\text{sum of fixed colorings}) = \\frac{1}{24} \\times (1 \\times 729 + 6 \\times 27 + 3 \\times 81 + 8 \\times 9 + 6 \\times 27)\n\\]\nFirst, calculate the sum:  \n\\(1 \\times 729 = 729\\)  \n\\(6 \\times 27 = 162\\)  \n\\(3 \\times 81 = 243\\)  \n\\(8 \\times 9 = 72\\)  \n\\(6 \\times 27 = 162\\)  \nTotal sum: \\(729 + 162 + 243 + 72 + 162 = 1368\\)  \nDivide: \\(1368 \\div 24 = 57\\)\n\n**Final Answer:** There are 57 distinct ways to color the cube with 3 colors, considering rotations as identical.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q010.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 11,
+    "question": "A ball is dropped from height H and rebounds with coefficient of restitution e. What is the total distance traveled?",
+    "correct_answer": "H * (1+e^2)/(1-e^2)",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Solution: Total Distance Traveled by a Bouncing Ball\n\n## Problem Setup\nA ball dropped from height H rebounds with coefficient of restitution e (where 0 < e < 1). We need to find the total distance traveled until the ball comes to rest.\n\n## Solution\n\n**Step 1: Understand the coefficient of restitution**\n\nThe coefficient of restitution e relates the velocity after bounce to the velocity before impact:\n- Velocity just before first impact: v₀ = √(2gH)\n- Velocity just after first bounce: v₁ = e·v₀\n\n**Step 2: Track the motion pattern**\n\nAfter the first bounce, the ball reaches a height:\n- h₁ = (v₁)²/(2g) = e²·H\n\nAfter the second bounce:\n- h₂ = e²·h₁ = e⁴·H\n\nAfter the nth bounce:\n- hₙ = e^(2n)·H\n\n**Step 3: Calculate total distance**\n\nThe ball travels:\n- **Down** from H: distance = H\n- **Up and down** from h₁: distance = 2h₁ = 2e²H\n- **Up and down** from h₂: distance = 2h₂ = 2e⁴H\n- **Up and down** from hₙ: distance = 2hₙ = 2e^(2n)H\n\nTotal distance:\n$$D = H + 2e²H + 2e⁴H + 2e⁶H + ...$$\n\n$$D = H + 2H(e² + e⁴ + e⁶ + ...)$$\n\n**Step 4: Sum the geometric series**\n\nThe series in parentheses is geometric with first term a = e² and ratio r = e²:\n\n$$\\sum_{n=0}^{\\infty} e^{2n} = \\frac{e²}{1-e²}$$\n\nTherefore:\n$$D = H + 2H·\\frac{e²}{1-e²}$$\n\n$$D = H\\left(1 + \\frac{2e²}{1-e²}\\right)$$\n\n$$D = H\\left(\\frac{1-e² + 2e²}{1-e²}\\right)$$\n\n## Final Answer\n\n$$\\boxed{D = H\\cdot\\frac{1+e²}{1-e²}}$$\n\n## Verification\n- When e = 0 (no bounce): D = H ✓\n- When e → 1 (perfect elasticity): D → ∞ ✓\n- When e = 0.5: D = H(1.25/0.75) = 5H/3 ✓\n\nThis formula elegantly captures how the total distance depends on both the initial height and the energy retention factor e².",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q011.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 12,
+    "question": "Two dice are rolled. What is the probability that the product of the numbers is a perfect square?",
+    "correct_answer": "2/9",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Solution: Probability That Product of Two Dice is a Perfect Square\n\n## Step 1: Identify All Possible Outcomes\nWhen rolling two dice, there are 6 × 6 = **36 total possible outcomes**.\n\n## Step 2: List All Products and Identify Perfect Squares\nFor each combination (die 1, die 2), calculate the product:\n\n| Product | Perfect Square? | Combinations |\n|---------|-----------------|--------------|\n| 1 | ✓ Yes | (1,1) |\n| 2 | No | (1,2), (2,1) |\n| 3 | No | (1,3), (3,1) |\n| 4 | ✓ Yes | (1,4), (2,2), (4,1) |\n| 5 | No | (1,5), (5,1) |\n| 6 | No | (1,6), (2,3), (3,2), (6,1) |\n| 8 | No | (2,4), (4,2) |\n| 9 | ✓ Yes | (3,3) |\n| 10 | No | (2,5), (5,2) |\n| 12 | No | (2,6), (3,4), (4,3), (6,2) |\n| 15 | No | (3,5), (5,3) |\n| 16 | ✓ Yes | (4,4) |\n| 18 | No | (3,6), (6,3) |\n| 20 | No | (4,5), (5,4) |\n| 24 | No | (4,6), (6,4) |\n| 25 | ✓ Yes | (5,5) |\n| 30 | No | (5,6), (6,5) |\n| 36 | ✓ Yes | (6,6) |\n\n## Step 3: Count Favorable Outcomes\nPerfect squares that can be products: **1, 4, 9, 16, 25, 36**\n\nFavorable outcomes:\n- Product = 1: **(1,1)** → 1 way\n- Product = 4: **(1,4), (2,2), (4,1)** → 3 ways\n- Product = 9: **(3,3)** → 1 way\n- Product = 16: **(4,4)** → 1 way\n- Product = 25: **(5,5)** → 1 way\n- Product = 36: **(6,6)** → 1 way\n\n**Total favorable outcomes = 1 + 3 + 1 + 1 + 1 + 1 = 8**\n\n## Step 4: Calculate Probability\n$$P(\\text{product is perfect square}) = \\frac{\\text{Favorable outcomes}}{\\text{Total outcomes}} = \\frac{8}{36} = \\frac{2}{9}$$\n\n## Answer\nThe probability is **2/9** (approximately **0.222** or **22.2%**)",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q012.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 13,
+    "question": "A resistor cube has a resistor of resistance R on each edge. What is the equivalent resistance across the body diagonal?",
+    "correct_answer": "5/6 R",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "xai",
+    "winner_text": "### Solution: Equivalent Resistance of a Resistor Cube Across the Body Diagonal\n\nConsider a cube with 12 edges, each having a resistor of resistance \\(R\\). We need to find the equivalent resistance between two opposite corners (body diagonal), say points A and B.\n\n**Step 1: Visualize and Apply Symmetry**  \nThe cube has high symmetry. Apply a voltage \\(V\\) between A and B. Due to symmetry:  \n- The three vertices adjacent to A are at the same potential, say \\(V_1\\).  \n- The three vertices adjacent to B are at the same potential, say \\(V_2\\).  \n- The remaining three vertices (each connected to both A-adjacent and B-adjacent vertices) are at another potential, say \\(V_3\\).\n\n**Step 2: Define Currents**  \nLet a total current \\(I\\) enter at A and leave at B. By symmetry:  \n- Current in each of the three edges from A is \\(I/3\\).  \n- At each A-adjacent vertex, incoming current \\(I/3\\) splits: it goes to two \\(V_3\\) vertices and one \\(V_2\\) vertex.  \n- Similarly, currents flow toward B.\n\n**Step 3: Apply Kirchhoff's Current Law**  \nFor a \\(V_3\\) vertex:  \n- It connects to one A-adjacent vertex (at \\(V_1\\)), one B-adjacent vertex (at \\(V_2\\)), and two other \\(V_3\\) vertices.  \nUsing the voltage drops:  \nLet the current from A-adjacent to \\(V_3\\) vertex be \\(I_1\\), from \\(V_3\\) to B-adjacent be \\(I_2\\), and between \\(V_3\\) vertices be \\(I_3\\).  \n\nFrom Kirchhoff's laws:  \n- Total current balance at \\(V_3\\) vertex: \\(I_1 = I_2 + 2I_3\\).  \n- Voltage equations: \\(V_1 - V_3 = R I_1\\), \\(V_3 - V_2 = R I_2\\), and \\(V_3 - V_3 = R I_3\\) for adjacent \\(V_3\\).  \n\nBy symmetry and solving the system: \\(I_1 = \\frac{I}{3}\\), and the effective currents lead to the equation for total current \\(I = \\frac{6V}{5R}\\).\n\n**Step 4: Calculate Equivalent Resistance**  \nThe equivalent resistance \\(R_{eq}\\) is given by \\(V = I R_{eq}\\), so:  \n\\[ R_{eq} = \\frac{V}{I} = \\frac{V}{\\frac{6V}{5R}} = \\frac{5R}{6} \\]\n\n**Final Answer**  \nThe equivalent resistance across the body diagonal is \\(\\frac{5R}{6}\\). This result is derived from the symmetric current distribution and Kirchhoff's laws.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q013.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 14,
+    "question": "Calculate the relativistic relative velocity of two spaceships approaching each other, each moving at 0.9c relative to a central station.",
+    "correct_answer": "0.9945c",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "xai",
+    "winner_text": "### Relativistic Relative Velocity Calculation\n\n**Problem:** Two spaceships are approaching each other, each traveling at 0.9c relative to a central station. We need to find their relative velocity using special relativity, as classical addition doesn't apply at high speeds.\n\n**Step 1: Understand the Scenario**  \nIn special relativity, velocities combine using the relativistic velocity addition formula. For two objects moving along the same line, if one has velocity \\(u\\) and the other \\(v\\) relative to a stationary frame (the central station), the relative velocity \\(w\\) of the first object with respect to the second is:  \n\\[\nw = \\frac{u - v}{1 - \\frac{u v}{c^2}}\n\\]  \nHere, let spaceship A move at \\(u = +0.9c\\) (towards the station from one direction), and spaceship B at \\(v = -0.9c\\) (towards the station from the opposite direction).\n\n**Step 2: Plug in Values**  \nSubstitute into the formula:  \n\\[\nw = \\frac{0.9c - (-0.9c)}{1 - \\frac{(0.9c)(-0.9c)}{c^2}} = \\frac{0.9c + 0.9c}{1 - \\frac{-0.81c^2}{c^2}} = \\frac{1.8c}{1 - (-0.81)} = \\frac{1.8c}{1 + 0.81} = \\frac{1.8c}{1.81}\n\\]  \n\\[\nw = \\frac{1.8}{1.81} c \\approx 0.9945c\n\\]\n\n**Step 3: Interpret the Result**  \nThe relative velocity of the two spaceships is approximately 0.9945c. This means they are approaching each other at about 99.45% the speed of light, which is less than the classical sum of 1.8c due to relativistic effects.\n\n**Final Answer:** The relativistic relative velocity is 0.9945c. This calculation ensures accuracy for high-speed scenarios in physics.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q014.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 15,
+    "question": "How many zeros are at the end of 100!?",
+    "correct_answer": "24",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "gemini",
+    "winner_text": "To determine the number of trailing zeros in 100!, we need to count the number of times 10 is a factor in its prime factorization. Since 10 = 2 × 5, we need to count the number of pairs of 2 and 5. In any factorial, the number of factors of 2 will always be greater than the number of factors of 5. Therefore, we only need to count the number of factors of 5.\n\nHere's the method:\n\n1.  **Count multiples of 5:** Divide 100 by 5.\n    100 ÷ 5 = 20\n    This gives us 20 numbers (5, 10, 15, ..., 100) that contribute at least one factor of 5.\n\n2.  **Count multiples of 25:** Numbers that are multiples of 25 (5²) contribute an *additional* factor of 5. Divide 100 by 25.\n    100 ÷ 25 = 4\n    This gives us 4 numbers (25, 50, 75, 100) that contribute a second factor of 5.\n\n3.  **Count multiples of 125:** Numbers that are multiples of 125 (5³) contribute a *third* factor of 5. Divide 100 by 125.\n    100 ÷ 125 = 0 (with a remainder)\n    Since this is less than 1, there are no multiples of 125 within 100!.\n\n4.  **Sum the counts:** Add the results from each step.\n    Total factors of 5 = 20 (from multiples of 5) + 4 (from multiples of 25) = 24.\n\nTherefore, there are 24 factors of 5 in 100!. This means there are 24 pairs of (2 × 5), resulting in 24 factors of 10.\n\n**Solution:** There are **24** zeros at the end of 100!.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q015.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 16,
+    "question": "Calculate the Euler totient function phi(2024).",
+    "correct_answer": "880",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Solution: Calculating φ(2024)\n\n## Step 1: Prime Factorization of 2024\n\nFirst, I'll find the prime factorization of 2024:\n- 2024 ÷ 2 = 1012\n- 1012 ÷ 2 = 506\n- 506 ÷ 2 = 253\n- 253 ÷ 11 = 23\n- 23 is prime\n\n**Therefore: 2024 = 2³ × 11 × 23**\n\n## Step 2: Apply Euler's Totient Formula\n\nThe Euler totient function φ(n) counts integers from 1 to n that are coprime with n.\n\nFor a number with prime factorization n = p₁^a₁ × p₂^a₂ × ... × pₖ^aₖ:\n\n$$\\phi(n) = n \\prod_{p|n} \\left(1 - \\frac{1}{p}\\right)$$\n\nAlternatively:\n$$\\phi(p^a) = p^a - p^{a-1} = p^{a-1}(p-1)$$\n\n## Step 3: Calculate for Each Prime Power\n\nFor 2024 = 2³ × 11 × 23:\n\n- **φ(2³)** = 2³ - 2² = 8 - 4 = **4**\n  - Or: 2²(2-1) = 4 × 1 = 4\n\n- **φ(11)** = 11 - 1 = **10**\n  - (11 is prime)\n\n- **φ(23)** = 23 - 1 = **22**\n  - (23 is prime)\n\n## Step 4: Combine Using Multiplicativity\n\nSince φ is multiplicative for coprime factors:\n\n$$\\phi(2024) = \\phi(2³) × \\phi(11) × \\phi(23)$$\n$$\\phi(2024) = 4 × 10 × 22$$\n$$\\phi(2024) = 40 × 22$$\n$$\\phi(2024) = 880$$\n\n## Verification Using Product Formula\n\n$$\\phi(2024) = 2024 \\times \\left(1 - \\frac{1}{2}\\right) \\times \\left(1 - \\frac{1}{11}\\right) \\times \\left(1 - \\frac{1}{23}\\right)$$\n\n$$= 2024 × \\frac{1}{2} × \\frac{10}{11} × \\frac{22}{23}$$\n\n$$= 1012 × \\frac{10}{11} × \\frac{22}{23}$$\n\n$$= \\frac{1012 × 10 × 22}{11 × 23} = \\frac{222,640}{253} = 880$$\n\n## Answer\n\n**φ(2024) = 880**\n\nThis means there are exactly 880 positive integers less than or equal to 2024 that are relatively prime to 2024 (share no common factors other than 1).",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q016.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 17,
+    "question": "What is the probability that three random points on a circle form an acute triangle?",
+    "correct_answer": "1/4",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Probability of Three Random Points Forming an Acute Triangle\n\n## Problem Setup\n\nWe need to find the probability that three randomly chosen points on a circle form an acute triangle.\n\n## Key Insight\n\nA triangle inscribed in a circle is acute if and only if the center of the circle lies **inside** the triangle. Equivalently, all three arcs between consecutive points must be less than π (180°).\n\n## Solution\n\n**Step 1: Fix one point**\n\nBy rotational symmetry, fix point A at angle 0. The other two points B and C are uniformly distributed on the circle.\n\n**Step 2: Parameterize the other points**\n\nLet B be at angle θ and C be at angle φ, where 0 ≤ θ ≤ φ ≤ 2π.\n\nThe three arc lengths between consecutive points are:\n- Arc 1: θ\n- Arc 2: φ - θ  \n- Arc 3: 2π - φ\n\n**Step 3: Apply the acute triangle condition**\n\nFor an acute triangle, all three arcs must be less than π:\n- θ < π\n- φ - θ < π\n- 2π - φ < π  →  φ > π\n\n**Step 4: Find the valid region**\n\nThe constraints are:\n- 0 ≤ θ < π\n- π < φ ≤ 2π\n- φ - θ < π  →  φ < θ + π\n\nCombining: θ < π, π < φ < θ + π\n\nFor this region to be non-empty: π < θ + π, which gives θ > 0 (always satisfied).\n\n**Step 5: Calculate the probability**\n\nThe sample space for (θ, φ) with 0 ≤ θ ≤ φ ≤ 2π has area:\n$$\\int_0^{2\\pi} \\int_\\theta^{2\\pi} d\\phi \\, d\\theta = \\int_0^{2\\pi} (2\\pi - \\theta) d\\theta = 2\\pi^2$$\n\nThe favorable region satisfies 0 < θ < π and π < φ < θ + π:\n$$\\int_0^{\\pi} \\int_\\pi^{\\theta+\\pi} d\\phi \\, d\\theta = \\int_0^{\\pi} \\theta \\, d\\theta = \\frac{\\pi^2}{2}$$\n\n**Step 6: Compute probability**\n\n$$P = \\frac{\\pi^2/2}{2\\pi^2} = \\frac{1}{4}$$\n\n## Answer\n\nThe probability that three random points on a circle form an acute triangle is **1/4 or 0.25**.\n\nThis elegant result holds because the geometric constraint (all arcs < π) creates a favorable region that is exactly one-quarter of the total configuration space.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q017.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 18,
+    "question": "Determine the last two digits of 7^2023.",
+    "correct_answer": "43",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "xai",
+    "winner_text": "To find the last two digits of \\(7^{2023}\\), we need to compute \\(7^{2023} \\mod 100\\).\n\n### Step 1: Break down the problem using the Chinese Remainder Theorem\nSince 100 = 4 × 25 and 4 and 25 are coprime, we'll find \\(7^{2023}\\) modulo 4 and modulo 25, then combine the results.\n\n- **Modulo 4:**  \n  7 ≡ 3 ≡ -1 (mod 4).  \n  So, \\(7^{2023} ≡ (-1)^{2023} ≡ -1 ≡ 3 \\mod 4\\).\n\n- **Modulo 25:**  \n  First, note that φ(25) = 20 (where φ is Euler's totient function), and since 7 and 25 are coprime, \\(7^{20} ≡ 1 \\mod 25\\).  \n  Reduce the exponent: 2023 mod 20 = 3 (since 2023 ÷ 20 = 101 remainder 3).  \n  Thus, \\(7^{2023} ≡ 7^3 \\mod 25\\).  \n  Calculate \\(7^3\\):  \n  7^1 = 7,  \n  7^2 = 49 ≡ 24 (mod 25),  \n  7^3 = 7 × 24 = 168 ≡ 18 (mod 25) (since 168 - 6×25 = 168 - 150 = 18).  \n  So, \\(7^{2023} ≡ 18 \\mod 25\\).\n\n### Step 2: Solve the system of congruences\nWe now solve:  \nx ≡ 3 (mod 4)  \nx ≡ 18 (mod 25)\n\nExpress x as: x = 25k + 18.  \nSubstitute into the first equation:  \n25k + 18 ≡ 3 (mod 4).  \n25 ≡ 1 (mod 4), so:  \nk + 18 ≡ 3 (mod 4).  \n18 ≡ 2 (mod 4), so:  \nk + 2 ≡ 3 (mod 4) ⇒ k ≡ 1 (mod 4).  \nThus, k = 4m + 1 for some integer m.  \nSubstitute back: x = 25(4m + 1) + 18 = 100m + 25 + 18 = 100m + 43.  \nSo, x ≡ 43 (mod 100).\n\n### Conclusion\nThe last two digits of \\(7^{2023}\\) are 43.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q018.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 19,
+    "question": "How many 5-letter words from {A,B,C} have no two consecutive letters the same?",
+    "correct_answer": "48",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Solution: 5-Letter Words from {A,B,C} with No Consecutive Repeats\n\n## Problem Setup\nWe need to count 5-letter words using alphabet {A, B, C} where no two adjacent letters are identical.\n\n## Approach: Dynamic Programming\n\nLet's define:\n- **f(n)** = number of valid n-letter words ending in any letter\n- **f(n, x)** = number of valid n-letter words ending specifically in letter x\n\n## Recurrence Relation\n\nFor position n, if the word ends in letter x, the previous letter must be different from x.\n\n**f(n, x) = f(n-1, y) + f(n-1, z)** where y, z are the two letters ≠ x\n\nSince the alphabet is symmetric, all letters have equal counts:\n- **f(n, A) = f(n, B) = f(n, C)** (by symmetry)\n\nLet **g(n) = f(n, A)** (count for any single letter at position n)\n\nThen: **g(n) = 2·g(n-1)** (can append this letter after either of the 2 other letters)\n\nAnd: **f(n) = 3·g(n)** (total words = 3 choices for final letter)\n\n## Base Case\nFor n=1: Each of the 3 letters is valid\n- g(1) = 1\n- f(1) = 3\n\n## Calculation\n\n| n | g(n) | f(n) |\n|---|------|------|\n| 1 | 1 | 3 |\n| 2 | 2·1 = 2 | 3·2 = 6 |\n| 3 | 2·2 = 4 | 3·4 = 12 |\n| 4 | 2·4 = 8 | 3·8 = 24 |\n| 5 | 2·8 = 16 | 3·16 = **48** |\n\n## Verification (Alternative Method)\n\nUsing the closed form: **f(n) = 3·2^(n-1)**\n\n- f(5) = 3·2⁴ = 3·16 = **48** ✓\n\n## Answer\n\n**48 valid 5-letter words**\n\nThese words follow the pattern where each position can be any of the 3 letters, except it must differ from the previous position. The exponential growth (factor of 2 per additional position) reflects that each new letter has 2 valid choices given the previous letter.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q019.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 20,
+    "question": "Find the number of integer solutions to x^2 - y^2 = 2024.",
+    "correct_answer": "16",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "xai",
+    "winner_text": "To solve the equation \\(x^2 - y^2 = 2024\\), factor it as \\((x - y)(x + y) = 2024\\). Let \\(d = x - y\\) and \\(e = x + y\\), so \\(d \\cdot e = 2024\\). For \\(x\\) and \\(y\\) to be integers, \\(d\\) and \\(e\\) must both be even or both odd (to ensure \\(x = \\frac{e + d}{2}\\) and \\(y = \\frac{e - d}{2}\\) are integers), and \\(e > d > 0\\) for initial positive cases.\n\nFirst, factorize 2024: \\(2024 = 2^3 \\times 11 \\times 23\\). The positive factor pairs \\((d, e)\\) with \\(e > d > 0\\) are: (1, 2024), (2, 1012), (4, 506), (8, 253), (11, 184), (22, 92), (23, 88), (44, 46).\n\nCheck pairs with the same parity:\n- (2, 1012) – both even\n- (4, 506) – both even\n- (22, 92) – both even\n- (44, 46) – both even\n\nThe other pairs have mixed parity, so discard them.\n\nFor each valid pair:\n- \\(d = 2, e = 1012\\): \\(x = \\frac{1012 + 2}{2} = 507\\), \\(y = \\frac{1012 - 2}{2} = 505\\)\n- \\(d = 4, e = 506\\): \\(x = 255\\), \\(y = 251\\)\n- \\(d = 22, e = 92\\): \\(x = 57\\), \\(y = 35\\)\n- \\(d = 44, e = 46\\): \\(x = 45\\), \\(y = 1\\)\n\nThis gives four positive solutions: (507, 505), (255, 251), (57, 35), (45, 1).\n\nConsidering symmetries of the equation:\n- Each pair (x, y) has counterparts: (x, -y), (-x, y), (-x, -y).\n- Thus, each of the four pairs yields 4 solutions.\n\nTotal solutions: \\(4 \\times 4 = 16\\).\n\nNo solutions exist for y = 0 (since 2024 is not a perfect square) or with d and e of opposite signs (as their product would be negative).\n\nFinal count: 16 integer solutions.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q020.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 21,
+    "question": "What is the value of the infinite product (2/1) * (2/3) * (4/3) * (4/5) * (6/5) * ... (Wallis Product)?",
+    "correct_answer": "pi / 2",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Solution: The Wallis Product\n\n## Problem Analysis\n\nThe Wallis Product is an infinite product that converges to π/2:\n\n$$\\prod_{n=1}^{\\infty} \\frac{4n^2}{4n^2-1} = \\frac{2}{1} \\cdot \\frac{2}{3} \\cdot \\frac{4}{3} \\cdot \\frac{4}{5} \\cdot \\frac{6}{5} \\cdot \\frac{6}{7} \\cdots = \\frac{\\pi}{2}$$\n\n## Step-by-Step Derivation\n\n**Step 1: Recognize the Pattern**\n\nGroup consecutive terms:\n$$\\left(\\frac{2}{1} \\cdot \\frac{2}{3}\\right) \\cdot \\left(\\frac{4}{3} \\cdot \\frac{4}{5}\\right) \\cdot \\left(\\frac{6}{5} \\cdot \\frac{6}{7}\\right) \\cdots$$\n\nEach pair has the form: $\\frac{2n}{2n-1} \\cdot \\frac{2n}{2n+1}$\n\n**Step 2: Simplify Each Pair**\n\n$$\\frac{2n}{2n-1} \\cdot \\frac{2n}{2n+1} = \\frac{4n^2}{(2n-1)(2n+1)} = \\frac{4n^2}{4n^2-1}$$\n\n**Step 3: Write as Partial Product**\n\nThe partial product up to n terms:\n$$P_n = \\prod_{k=1}^{n} \\frac{4k^2}{4k^2-1}$$\n\n**Step 4: Expand and Telescope**\n\n$$P_n = \\frac{4 \\cdot 16 \\cdot 36 \\cdots (2n)^2}{3 \\cdot 15 \\cdot 35 \\cdots (4n^2-1)}$$\n\nThis can be rewritten as:\n$$P_n = \\frac{[2 \\cdot 4 \\cdot 6 \\cdots 2n]^2}{[1 \\cdot 3 \\cdot 5 \\cdots (2n-1)] \\cdot [3 \\cdot 5 \\cdot 7 \\cdots (2n+1)]}$$\n\n**Step 5: Apply Wallis Formula**\n\nUsing the relationship with factorials and the Wallis integral:\n$$\\int_0^{\\pi/2} \\sin^{2n}(x) \\, dx = \\frac{(2n-1)!!}{(2n)!!} \\cdot \\frac{\\pi}{2}$$\n\nwhere !! denotes the double factorial.\n\nAs n → ∞, the ratio of consecutive integrals approaches 1, yielding:\n\n$$\\lim_{n \\to \\infty} P_n = \\frac{\\pi}{2}$$\n\n## Numerical Verification\n\nComputing partial products:\n- P₁ = 2/1 · 2/3 = 4/3 ≈ 1.333\n- P₂ = (4/3) · (4/3) · (4/5) ≈ 1.422",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q021.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 22,
+    "question": "A particle moves in a potential V(x) = k|x|. What is the dependence of the period T on energy E?",
+    "correct_answer": "T is proportional to sqrt(E)",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Solution: Period of Motion in V(x) = k|x| Potential\n\n## Problem Setup\n\nFor a particle in the potential V(x) = k|x| (with k > 0), we need to find how the oscillation period T depends on total energy E.\n\n## Solution Steps\n\n**Step 1: Identify the Classical Turning Points**\n\nAt turning points, kinetic energy vanishes: E = V(x)\n\n$$E = k|x_{max}| \\implies x_{max} = \\pm\\frac{E}{k}$$\n\nThe particle oscillates between $-E/k$ and $+E/k$.\n\n**Step 2: Apply the Period Formula**\n\nFor one-dimensional motion, the period is:\n\n$$T = 2\\int_{-x_{max}}^{x_{max}} \\frac{dx}{v(x)}$$\n\nwhere $v(x) = \\sqrt{2[E - V(x)]/m}$ is the speed.\n\n**Step 3: Set Up the Integral**\n\n$$T = 2\\int_{-E/k}^{E/k} \\frac{dx}{\\sqrt{2[E - k|x|]/m}}$$\n\nBy symmetry:\n\n$$T = 4\\int_{0}^{E/k} \\frac{dx}{\\sqrt{2(E - kx)/m}}$$\n\n**Step 4: Evaluate the Integral**\n\nLet $u = E - kx$, so $du = -k\\,dx$:\n\n$$T = 4\\int_{E}^{0} \\frac{-du/k}{\\sqrt{2u/m}} = \\frac{4}{k}\\int_{0}^{E} \\frac{du}{\\sqrt{2u/m}}$$\n\n$$T = \\frac{4}{k}\\sqrt{\\frac{m}{2}}\\int_{0}^{E} u^{-1/2}\\,du$$\n\n$$T = \\frac{4}{k}\\sqrt{\\frac{m}{2}} \\cdot 2u^{1/2}\\Big|_{0}^{E}$$\n\n$$T = \\frac{8}{k}\\sqrt{\\frac{mE}{2}}$$\n\n**Step 5: Simplify**\n\n$$\\boxed{T = \\frac{4\\sqrt{2mE}}{k} \\propto \\sqrt{E}}$$\n\n## Result\n\n**The period is proportional to the square root of energy:**\n\n$$T \\propto E^{1/2}$$\n\nThis differs from the harmonic oscillator (where T is independent of E) because the potential grows linearly rather than quadratically. The linear potential creates a velocity that increases more gradually with position, so higher-energy particles spend proportionally more time in the outer regions, increasing the period.\n\n## Physical Interpretation\n\n- Higher energy → larger amplitude → longer path\n- But velocity also increases with energy\n- The net effect: period grows as $\\sqrt{E}$, slower than linear growth\n\nThis result is characteristic of power-law potentials V(x) ∝ |x|^n, where T ∝ E^{(n-1)/(2n)}.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q022.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 23,
+    "question": "How many ways can 6 people sit around a round table if two specific people refuse to sit next to each other?",
+    "correct_answer": "72",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Solution: Seating Arrangements Around a Round Table\n\n## Problem Setup\nWe need to find arrangements of 6 people around a round table where two specific people (let's call them A and B) are NOT adjacent.\n\n## Solution Approach\n\n**Step 1: Calculate total circular arrangements**\n\nFor circular arrangements, we fix one person's position to account for rotational symmetry. The total arrangements of 6 people around a round table is:\n- **(6-1)! = 5! = 120**\n\n**Step 2: Calculate arrangements where A and B ARE adjacent**\n\nTo find cases we want to exclude, treat A and B as a single unit:\n- We now have 5 units to arrange: (AB), person 3, person 4, person 5, person 6\n- Circular arrangements of 5 units: **(5-1)! = 4! = 24**\n- Within their unit, A and B can swap positions: **2 ways**\n- Total arrangements with A and B adjacent: **24 × 2 = 48**\n\n**Step 3: Apply complementary counting**\n\nArrangements where A and B are NOT adjacent:\n- **120 - 48 = 72**\n\n## Verification\n\nWe can verify this makes sense:\n- Total arrangements: 120 (100%)\n- Adjacent arrangements: 48 (40%)\n- Non-adjacent arrangements: 72 (60%)\n\nThe ratio is reasonable—with 6 people, there are 5 possible neighbors for any given person, so roughly 1/5 of arrangements would have A next to B if random. Our 40% is higher because the circular constraint limits options, making adjacency more likely than in a line.\n\n## Answer\n\n**72 ways**\n\nThe two specific people can be kept non-adjacent in exactly 72 different seating arrangements around the round table.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q023.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 24,
+    "question": "What is the chromatic number of the Petersen Graph?",
+    "correct_answer": "3",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Chromatic Number of the Petersen Graph\n\n## Solution\n\nThe **chromatic number of the Petersen Graph is 3**.\n\n## Step-by-Step Explanation\n\n### 1. Understanding the Petersen Graph\nThe Petersen Graph is a well-known graph in graph theory with:\n- 10 vertices\n- 15 edges\n- A specific symmetric structure consisting of an outer pentagon, an inner pentagram, and 5 spokes connecting them\n\n### 2. Lower Bound: Why at least 3 colors are needed\n\nThe Petersen Graph contains **odd cycles** (specifically, 5-cycles). Any graph containing an odd cycle requires at least 3 colors. Since the Petersen Graph has 5-cycles, we need **minimum 3 colors**.\n\n### 3. Upper Bound: Proving 3 colors suffice\n\nWe can construct a valid 3-coloring explicitly:\n\n**Outer Pentagon vertices (0,1,2,3,4):**\n- Color A: vertices 0, 2\n- Color B: vertices 1, 3\n- Color C: vertex 4\n\n**Inner Pentagram vertices (5,6,7,8,9):**\n- Color A: vertices 5, 7\n- Color B: vertices 6, 8\n- Color C: vertex 9\n\n**Verification:**\n- The outer pentagon is properly 3-colored (alternating colors with one vertex different)\n- The inner pentagram is properly 3-colored using the same pattern\n- Each spoke connects vertices of different colors (outer vertex of color X connects to inner vertex of different color)\n- No adjacent vertices share the same color\n\n### 4. Why not 2 colors?\n\nThe Petersen Graph is **not bipartite** because it contains odd cycles. Any bipartite graph requires only 2 colors, but since odd cycles exist here, 2 colors are insufficient.\n\n## Conclusion\n\nThe chromatic number χ(Petersen Graph) = **3**\n\nThis result is significant in graph theory as the Petersen Graph serves as a counterexample for various graph properties and is frequently used in teaching chromatic coloring concepts.",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q024.json",
+    "judge_parse_error": null
+  },
+  {
+    "idx": 25,
+    "question": "Find the area of the region bounded by |x| + |y| = 1.",
+    "correct_answer": "2",
+    "mode": "drafts_only",
+    "plan": {
+      "judge": {
+        "provider": "openai",
+        "model": "gpt-5-nano"
+      },
+      "solvers": [
+        {
+          "provider": "xai",
+          "model": "grok-3-mini"
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5"
+        },
+        {
+          "provider": "gemini",
+          "model": "gemini-2.5-flash-lite"
+        }
+      ]
+    },
+    "winner_provider": "anthropic",
+    "winner_text": "# Solution: Area of Region Bounded by |x| + |y| = 1\n\n## Understanding the Boundary\n\nThe equation |x| + |y| = 1 describes a diamond (square rotated 45°) centered at the origin. To visualize this, consider the four cases:\n\n- **First quadrant** (x ≥ 0, y ≥ 0): x + y = 1\n- **Second quadrant** (x ≤ 0, y ≥ 0): -x + y = 1\n- **Third quadrant** (x ≤ 0, y ≤ 0): -x - y = 1\n- **Fourth quadrant** (x ≥ 0, y ≤ 0): x - y = 1\n\n## Finding the Vertices\n\nThe boundary intersects the axes at:\n- (1, 0), (0, 1), (-1, 0), (0, -1)\n\nThese four points form a square rotated 45°.\n\n## Method 1: Geometric Approach\n\nThe region is a square with vertices at distance 1 from the origin along each axis.\n\nThe diagonals of this square are:\n- Horizontal diagonal: from (-1, 0) to (1, 0), length = 2\n- Vertical diagonal: from (0, -1) to (0, 1), length = 2\n\nFor a rhombus/diamond with perpendicular diagonals of lengths d₁ and d₂:\n\n$$\\text{Area} = \\frac{1}{2} \\times d_1 \\times d_2 = \\frac{1}{2} \\times 2 \\times 2 = 2$$\n\n## Method 2: Integration (Verification)\n\nBy symmetry, calculate the area in the first quadrant and multiply by 4.\n\nIn the first quadrant: x + y = 1, so y = 1 - x, where 0 ≤ x ≤ 1\n\n$$A_{\\text{quadrant}} = \\int_0^1 (1-x) \\, dx = \\left[x - \\frac{x^2}{2}\\right]_0^1 = 1 - \\frac{1}{2} = \\frac{1}{2}$$\n\nTotal area:\n$$A_{\\text{total}} = 4 \\times \\frac{1}{2} = 2$$\n\n## Answer\n\n**The area of the region bounded by |x| + |y| = 1 is 2 square units.**",
+    "run_json": "runs\\batch_drafts_only\\drafts_only_q025.json",
+    "judge_parse_error": null
+  }
+]
