@@ -1,0 +1,152 @@
+[
+  {
+    "question": "How many permutations of {1, 2, ..., 8} have no adjacent pair whose values differ by exactly 1?",
+    "correct_answer": "5242",
+    "full_council_got_correct": false,
+    "draft_only_council_got_correct": false
+  },
+  {
+    "question": "How many integer solutions (x1, ..., x6) satisfy x1 + ... + x6 = 30 with 0 \u2264 xi \u2264 7 for all i?",
+    "correct_answer": "5432",
+    "full_council_got_correct": false,
+    "draft_only_council_got_correct": true
+  },
+  {
+    "question": "Evaluate T = \u03a3_{k=0}^{2026} (-1)^k C(2026,k)/(k+2) as a reduced fraction.",
+    "correct_answer": "1/4110756",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": true
+  },
+  {
+    "question": "How many 10-tuples of integers (x1, ..., x10) satisfy x1 + ... + x10 = 20 with 0 \u2264 xi \u2264 4?",
+    "correct_answer": "856945",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": true
+  },
+  {
+    "question": "Calculate the coefficient of x^10 in the expansion of (1 + x + x^2 + x^3)^10.",
+    "correct_answer": "44803",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": true
+  },
+  {
+    "question": "Determine the number of spanning trees of the complete bipartite graph K_{3,4}.",
+    "correct_answer": "432",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": true
+  },
+  {
+    "question": "Find the remainder when 2023^2023 is divided by 1000.",
+    "correct_answer": "847",
+    "full_council_got_correct": false,
+    "draft_only_council_got_correct": false
+  },
+  {
+    "question": "Calculate the Stirling number of the second kind S(8, 5).",
+    "correct_answer": "1050",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": true
+  },
+  {
+    "question": "In a 100 prisoners problem where each can open 50 boxes to find their number, what is the probability of success for all 100?",
+    "correct_answer": "Approximately 0.31",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": true
+  },
+  {
+    "question": "How many distinct ways can you color the faces of a cube with 3 colors, considering rotations as identical?",
+    "correct_answer": "57",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": true
+  },
+  {
+    "question": "A ball is dropped from height H and rebounds with coefficient of restitution e. What is the total distance traveled?",
+    "correct_answer": "H * (1+e^2)/(1-e^2)",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": true
+  },
+  {
+    "question": "Two dice are rolled. What is the probability that the product of the numbers is a perfect square?",
+    "correct_answer": "2/9",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": true
+  },
+  {
+    "question": "A resistor cube has a resistor of resistance R on each edge. What is the equivalent resistance across the body diagonal?",
+    "correct_answer": "5/6 R",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": true
+  },
+  {
+    "question": "Calculate the relativistic relative velocity of two spaceships approaching each other, each moving at 0.9c relative to a central station.",
+    "correct_answer": "0.9945c",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": true
+  },
+  {
+    "question": "How many zeros are at the end of 100!?",
+    "correct_answer": "24",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": true
+  },
+  {
+    "question": "Calculate the Euler totient function phi(2024).",
+    "correct_answer": "880",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": true
+  },
+  {
+    "question": "What is the probability that three random points on a circle form an acute triangle?",
+    "correct_answer": "1/4",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": null
+  },
+  {
+    "question": "Determine the last two digits of 7^2023.",
+    "correct_answer": "43",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": null
+  },
+  {
+    "question": "How many 5-letter words from {A,B,C} have no two consecutive letters the same?",
+    "correct_answer": "48",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": null
+  },
+  {
+    "question": "Find the number of integer solutions to x^2 - y^2 = 2024.",
+    "correct_answer": "16",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": null
+  },
+  {
+    "question": "What is the value of the infinite product (2/1) * (2/3) * (4/3) * (4/5) * (6/5) * ... (Wallis Product)?",
+    "correct_answer": "pi / 2",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": null
+  },
+  {
+    "question": "A particle moves in a potential V(x) = k|x|. What is the dependence of the period T on energy E?",
+    "correct_answer": "T is proportional to sqrt(E)",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": null
+  },
+  {
+    "question": "How many ways can 6 people sit around a round table if two specific people refuse to sit next to each other?",
+    "correct_answer": "72",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": null
+  },
+  {
+    "question": "What is the chromatic number of the Petersen Graph?",
+    "correct_answer": "3",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": null
+  },
+  {
+    "question": "Find the area of the region bounded by |x| + |y| = 1.",
+    "correct_answer": "2",
+    "full_council_got_correct": true,
+    "draft_only_council_got_correct": null
+  }
+]
