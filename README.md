@@ -276,23 +276,9 @@ pytest -q
 
 ---
 
-## Accuracy checks / charts
+## Accuracy Chart
 
-This section is intentionally a placeholder for the charts I plan to add.
-
-Suggested charts to drop in here (images):
-
-* Council vs single-shot success rate (by problem set)
-* Win rate by provider
-* Judge parse success rate / fallback usage rate
-* Ablation: drafts-only vs +reviews vs +revise
-
-<!-- INSERT CHART IMAGES BELOW -->
-
-<!-- Example:
-![](docs/charts/accuracy_overview.png)
-![](docs/charts/fallback_rate.png)
--->
+![Accuracy](accuracies.png)
 
 ---
 
